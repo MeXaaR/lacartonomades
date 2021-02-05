@@ -78,7 +78,7 @@ const LastNewsModal = () => {
 
       <ModalFooter className="modal-card-foot">
         <Link to="/menu" className="is-right">
-          <button className={`button is-danger`}>{t("buttons.close")}</button>
+          <button className={`button is-success`}>{t("buttons.close")}</button>
         </Link>
       </ModalFooter>
     </>
