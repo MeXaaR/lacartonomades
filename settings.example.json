@@ -1,0 +1,20 @@
+{
+  "public": {
+    "LOCALSTORAGE_STATE": "lacartonomades-state",
+    "LOCALSTORAGE_STATE_MAP": "lacartonomades-state-map",
+    "LOCALSTORAGE_FIRST_CONNECT": "lacartonomades-first-connect",
+    "LIMIT_SEARCH_SURFACE": true,
+    "LIMIT_SEARCH_DISTANCE": 30000,
+    "MARKER_SURFACE": 0.4,
+    "APPS": {
+      "playstore": "https://play.google.com/store",
+      "aptoide": "https://www.f-droid.org/",
+      "myserver": "https://s3.mexar/"
+    }
+  },
+  "private": {
+    "IMGBB_API_KEY": "uneclétropbien",
+    "mailjetAPI": "uneclétropbien",
+    "mailjetSECRET": "uneclétropbien"
+  }
+}

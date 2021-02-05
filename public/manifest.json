@@ -1,0 +1,15 @@
+{
+  "background_color": "#f0eded",
+  "theme_color": "#3e9f74",
+  "name": "La Carto'Nomades",
+  "short_name": "Carto'N",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

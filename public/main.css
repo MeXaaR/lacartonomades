@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "DKBorisBrush";
+  src: local("DKBorisBrush"), local("DKBorisBrush"),
+    url("./fonts/DKBorisBrush/DKBorisBrush.woff2") format("woff2"),
+    url("./fonts/DKBorisBrush/DKBorisBrush.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  padding: 0px;
+}
+#app {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+nav * {
+  z-index: 440;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.hidden {
+  display: none;
+}
+.MainContentContainer {
+  height: calc(100% - 52px);
+}

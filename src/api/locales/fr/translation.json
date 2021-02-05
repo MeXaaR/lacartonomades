@@ -1,0 +1,325 @@
+{
+  "FAVORITES": "Favoris",
+  "PRIVATES": "Lieux privés",
+  "SPOTS_NATURE": "Spots nature",
+  "SPOTS_PARKING": "Parkings",
+  "SPOTS_PRIVATE_LAND": "Terrains privés",
+  "SPOTS_REST_AERA": "Aires de repos",
+  "UTILS_COMPOST": "Compost",
+  "UTILS_GARAGE": "Garagistes",
+  "PRESENCES": "Nomades",
+  "UTILS_OIL": "Huile de friture",
+  "UTILS_WAREHOUSE": "Hangars",
+  "UTILS_WATER": "Eau",
+  "UTILS_WOOD_DUST": "Sciure",
+  "access": {
+    "complicated": "Chemin accidenté",
+    "label": "Accès",
+    "limited_height": "Hauteur limitée",
+    "small_path": "Passage étroit"
+  },
+  "bottom_menu": {
+    "display_list": "Liste",
+    "display_map": "Carte",
+    "filters": "Filtres",
+    "refresh": "Rafraîchir",
+    "locate_me": "Trouve-moi",
+    "offline_mode": "Mode Hors-Ligne"
+  },
+  "buttons": {
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "login": "Connexion",
+    "logout": "Se déconnecter",
+    "register": "S'enregistrer",
+    "send": "Envoyer",
+    "validate": "Valider",
+    "back": "Retour",
+    "github": "Voir le projet GitHub"
+  },
+  "compost_access": {
+    "free": "Libre d'accès",
+    "label": "Accès",
+    "private": "Privé"
+  },
+  "compost_type": {
+    "foodies": "Alimentaire",
+    "label": "Type",
+    "shities": "Toilettes sèches"
+  },
+  "drawer": {
+    "all_categories": "TOUS",
+    "all_places": "Tous les endroits"
+  },
+  "equipment": {
+    "drinking_water": "Eau potable",
+    "label": "Équipement public",
+    "table": "Table",
+    "toilet": "Toilettes",
+    "trash_bin": "Poubelle"
+  },
+  "lost_password": {
+    "explanation": "Entre ton adresse et on t'envoi un lien tout de suite pour réinitialiser ton mot de passe.",
+    "email_sent": "Email envoyé à ton adresse"
+  },
+  "reset_password": {
+    "explanation": "Choisis toi un nouveau mot de passe pour ce compte.",
+    "password_reset": "Mot de passe réinitialisé."
+  },
+  "errors": {
+    "Password may not be empty": "Le mot de passe ne peut pas être vide.",
+    "Username already exists.": "Nom d'utilisateur déjà pris.",
+    "you_need_an_account": "Tu dois être connecté pour effectuer cette action",
+    "this_picture_format_is_not_accepted": "Ce format d'image n'est pas accepté",
+    "picture_too_big": "Cette image dépasse la taille max de",
+    "you_cannot_do_that": "Tu n'es pas autorisé à faire ça",
+    "already_stepped_for_delete": "Tu as déjà signalé ce lieu",
+    "password_dont_match": "tes mots de passe ne correspondent pas",
+    "this_is_not_your_private_place": "Tu ne peux pas éditer les lieux privés des autres.",
+    "you_are_already_present": "Tu as déjà signalé ta présence, tu peux annuler sur ton profil"
+  },
+  "features": {
+    "electricity": "Électricité",
+    "label": "Équipement",
+    "tools": "Outillage",
+    "water": "Eau"
+  },
+  "garage_type": {
+    "asso": "Associatif",
+    "label": "Type de garage",
+    "nomad": "Itinérant",
+    "pro": "Garagiste",
+    "rviste": "Équipementier"
+  },
+  "geolocalise": "Géolocalisé",
+  "information": {
+    "spots_private_land": "Pour un terrain privé, n'oublie pas d'indiquer les coordonnées du propriétaire que les utilisateurs puissent le/la contacter. N'ajoutes ces informations qu'avec l'accord de la personne en question."
+  },
+  "internet": {
+    "4g": "4G",
+    "good": "Bon réseau",
+    "label": "Réseau",
+    "none": "Aucun",
+    "random": "Aléatoire"
+  },
+  "login_form": {
+    "email_not_valid": "Ton format d'email n'est pas valide",
+    "go_to_login": "Tu as déjà un compte ?",
+    "go_to_lost-password": "Tu as perdu ton mot de passe ?",
+    "go_to_register": "Tu veux t'inscrire ?",
+    "logged_out": "Tu as été déconnecté(e)",
+    "no_email_creation_account": "Tu peux créer un compte sans adresse email si tu tiens a rester anonyme. Mais si tu oublies ton mot de passe, il sera impossible de le récupérer",
+    "private_places_deleted_from_device": "private_places_deleted_from_device",
+    "welcome_onboard": "Bienvenue sur La Carto'Nomades"
+  },
+  "map": {
+    "drag_me_around": "Déplace moi"
+  },
+  "menu": {
+    "about": "À propos",
+    "add_a_place": "Ajouter un lieu",
+    "login": "Se connecter",
+    "logout": "Se déconnecter",
+    "profile": "Profil",
+    "devtools": "Outils Dev",
+    "updates": "Nouveautés",
+    "mentions": "Mentions légales",
+    "help": "Un peu d'aide"
+  },
+  "modal_titles": {
+    "about_title": "À propos",
+    "about_welcome_title": "Bienvenue",
+    "edit_title": "Modifier un lieu",
+    "login_title": "Se connecter",
+    "lost-password_title": "Mot de passe perdu",
+    "newplace_title": "Ajouter un lieu",
+    "profile_title": "Profil",
+    "register_title": "Créer un compte",
+    "menu_title": "Menu principal",
+    "avatar_title": "Choisis ton avatar",
+    "updates_title": "Les nouveautés",
+    "signal_title": "Signaler une erreur",
+    "reset_password_title": "Nouveau mot de passe",
+    "mentions_title": "Mentions Légales",
+    "help_title": "Un peu d'aide"
+  },
+  "natural_water": {
+    "label": "Point d'eau naturel",
+    "lake": "Lac",
+    "nothing": "Aucun",
+    "river": "Cours d'eau"
+  },
+  "participation": {
+    "free": "Gratuit",
+    "label": "Participation",
+    "paid": "Payant"
+  },
+  "participation_warehouse": {
+    "collectivity": "Tâches collectives",
+    "free": "Gratuit",
+    "label": "Participation",
+    "paid": "Payant",
+    "trade": "Troc"
+  },
+  "place": {
+    "address": "Adresse",
+    "favorites": "Favoris",
+    "go_to_place": "Y aller",
+    "information": "informations",
+    "last_update": "Dernière mise à jour",
+    "less_info": "Moins d'infos",
+    "modify": "Modifier",
+    "more_info": "Plus d'infos",
+    "share_url": "Partager",
+    "this_is_a_private_place": "Endroit privé",
+    "signal": "Signaler",
+    "presences_of_nomads": "Nomades présents",
+    "no_nomads": "Aucun nomade n'a signalé sa présence",
+    "no_connection_for_nomads": "Tu ne peux pas avoir accès a cette info en mode Hors-Ligne",
+    "say_i_am_here": "J'suis là !",
+    "cancel": "Annuler",
+    "how_long": "Combien de temps veux-tu apparaître ici ?",
+    "12": "12 heures",
+    "24": "Un jour",
+    "48": "2 jours",
+    "presence_removed": "Ta présence à été annulée",
+    "presence_created": "Ta présence sera indiquée pendant",
+    "send_email": "Envoyer",
+    "write_email": "Écrire un email",
+    "email_sender_label": "Écris ton email pour les contacter",
+    "email_sender_placeholder": "Présente toi et fournis tes coordonnées",
+    "email_sent": "Ton email a bien été envoyé",
+    "account_for_nomads": "Tu dois être connecté à un compte pour profiter de cette fonctionnalité",
+    "zoom": "Zoomer"
+  },
+  "place_deletion": {
+    "cancel_error": "Annuler les signalements",
+    "signal_error": "Signaler une erreur",
+    "removed_success": "Lieu supprimé avec succès",
+    "signal_success": "Lieu signalé avec succès",
+    "signals": "Signalements",
+    "cancel_success": "Signalements sur le lieu annulés",
+    "community": "La communauté décide",
+    "delete": "Supprimer",
+    "your_creation": "Tu as créé ce lieu, tu peux donc le supprimer en une seule fois",
+    "explanation": "Tu peux signaler une erreur à la communauté de manière à supprimer cet endroit si d'autres utilisateurs confirment que cet endroit doit être supprimé.",
+    "type": "Chaque type de lieu à un nombre de signalement requis avant suppression automatique, tu peux voir ça ci-dessous. Si tu ne vois qu'une seule case, c'est qu'un seul signalement supprime automatiquement le lieu."
+  },
+  "place_form": {
+    "add_a_category": "Ajouter une catégorie",
+    "categories_and_details": "Détails pour",
+    "choose_a_category": "Choisis une catégorie",
+    "create_a_private_place": "Créer un endroit privé (uniquement pour toi).",
+    "created_success": "Lieu créé avec succès",
+    "edit_place_explaination": "Tu vas modifier un lieu. Prends soin de bien vérifier tes infos, ceci est une carte communautaire. Il n'y a pas d'administrateur pour vérifier tes données",
+    "new_place_explaination": "Tu es sur le point d'ajouter un nouvel endroit. Tout le monde a la liberté d'ajouter, de modifier et de voir les endroits ajoutés par la communauté.",
+    "no_category_selected": "Aucune catégorie séléctionnée",
+    "place_address": "Adresse de l'endroit",
+    "place_address_placeholder": "Saisis l'adresse de l'endroit",
+    "place_description": "Description du lieu",
+    "place_description_placeholder": "Décris en quelques mots ou phrases cet endroit",
+    "place_name": "Nom de l'endroit",
+    "place_name_placeholder": "Saisis le nom de l'endroit",
+    "place_picture": "Prendre une photo",
+    "picture_select": "Choisir une photo",
+    "select_a_category": "Sélectionne une catégorie",
+    "this_is_your_private_place": "Ceci est ton endroit privé, si tu le mets en public, il ne sera plus possible de le remettre en privé",
+    "updated_success": "Lieu mis à jour avec succès",
+    "no_picture_for_private": "Nous ne stockons pas de photos pour les lieux privés",
+    "private": "Ce champs ne sera pas affiché publiquement, un module permettra d'envoyer un email"
+  },
+  "pollution": {
+    "clean": "Propre",
+    "cleaned": "Nettoyé",
+    "deserve_cleanup": "Ça mérite un nettoyage",
+    "label": "Propreté de l'endroit",
+    "some_rubbish": "Quelques déchets"
+  },
+  "profile": {
+    "since": "Depuis le",
+    "not_yet": "Rien pour l'instant dans le profil à part ta présence si tu l'as indiqué. N'hésite pas à nous contacter sur Telegram si tu as des idées pour cette page.",
+    "change_avatar": "Tu peux changer ton avatar en cliquant dessus.",
+    "info": "Infos",
+    "security": "Sécurité",
+    "empty_cache": "Vider le mode Hors-Ligne",
+    "cache_removed": "Les endroits stockés dans l'appareil ont été effacés.",
+    "delete": "Supprimer mon compte",
+    "presence_on_a_place": "Tu as indiqué ta presence sur un lieu",
+    "time_left": "Elle sera encore indiquée pendant",
+    "lets_go_check": "Aller voir le lieu",
+    "delete_explain": "Cette action supprime ton compte et tes endroits privés de notre base de données. C'est irréversible et il est impossible de récupérer les données."
+  },
+  "results": "results",
+  "search": {
+    "geolocalise": "Géolocalisé(e)",
+    "label": "Chercher",
+    "results": "Résultats"
+  },
+  "size": {
+    "big": "Palaces",
+    "label": "Taille du spot",
+    "many": "Moyen",
+    "small": "Petit"
+  },
+  "system": {
+    "places_list": "Liste des lieux",
+    "url_not_paste_to_clipboard": "URL non copié dans le presse papier",
+    "url_paste_to_clipboard": "URL copié dans le presse papier",
+    "you_need_an_account": "Tu dois être connecté pour effectuer cette action",
+    "loading": "Chargement",
+    "results": "Résultats",
+    "updated": "Le site a été mis à jour, recharge la page pour voir les nouveautés :)",
+    "app_updated": "L'application a été mise à jour"
+  },
+  "usage": {
+    "label": "Usage",
+    "storage": "Stockage",
+    "workshop": "Travaux"
+  },
+  "user": {
+    "email": "Adresse Email",
+    "password": "Mot de passe",
+    "username": "Nom d'utilisateur",
+    "new_password": "Nouveau mot de passe",
+    "check_password": "Vérification du mot de passe"
+  },
+  "vehicule": {
+    "label": "Type de véhicules",
+    "pl": "Poids lourd",
+    "rv": "Camping-car",
+    "vl": "Véhicule léger"
+  },
+  "water_quality": {
+    "drinking_water": "Potable",
+    "label": "Qualité",
+    "not_drinking": "Non potable"
+  },
+  "telephone": {
+    "label": "Numéro de télephone"
+  },
+  "email": {
+    "label": "Adresse email"
+  },
+  "category_menu": {
+    "offline_info": "Les filtres sont désactivés quand tu es en mode Hors-Ligne. Trouve du réseau ou désactive le mode Hors-ligne."
+  },
+  "components": {
+    "ConfirmButton": {
+      "sure": "Tu es sûr(e)?"
+    }
+  },
+  "help": {
+    "the_plus": "Le petit truc qui fait la différence",
+    "the_plus_text": "Cette application est construite avec une technologie spéciale qui nous permet de la mettre à jour chaque fois que nous mettons à jour le site Web sans passer par l'AppStore. Lorsque cela se produit, tu peux apercevoir un flah rapide ou une actualisation de l'application. Ce n'est pas un bug, c'est une mise à jour ;)",
+    "nomadics": "Nomades",
+    "nomadics_text": "Cette fonctionnalité permet de voir si des nomades ont indiqué leur position sur un endroit. Les lieux apparaissent pour l'instant sans restrictions de zone, ca pourra changer. C'est en test :)",
+    "filters": "Filtres",
+    "filters_text": "Les filtres servent à afficher plus ou moins de types d'endroits en fonction de ce que tu souhaites. Il est possible que la certe ralentisse un peu quand elle affiche toutes les catégories en même temps.",
+    "refresh":"Rafraîchir",
+    "refresh_text": "Ce bouton sert à rechercher les lieux en fonctions des filtres sélectionnés sur un cercle de 30 km autour du centre de l'écran.",
+    "offline": "Mode Hors-Ligne",
+    "offline_text": "Ce mod est très pratique quand on part dans un endroit sans réseau. Chaque endroit que l'on ouvre dans l'application est sauvegardé dans le téléphone/navigateur. Du coup, dès qu'on ne capte plus ou qu'on active le mode, la carte affiche tous ces lieux sans restriction de zone.",
+    "gps": "Localisation",
+    "gps_text": "La localisation comporte deux modes. Un repérage suivi, quand il y a une point au milieu de l'icône ou un repérage unique quand le point n'est pas présent. Il est possible de passer de l'un à l'autre en appuyant sur le bouton."
+  }
+}

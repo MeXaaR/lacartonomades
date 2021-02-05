@@ -1,0 +1,48 @@
+[
+  {
+    "version": "1.0.1-3",
+    "date": "2021-02-04",
+    "features": [],
+    "corrections": [
+      "Reset des filtres à chaque démarrage",
+      "Temps de géoloc raccourci à 5 secondes max"
+    ]
+  },
+  {
+    "version": "1.0.1-2",
+    "date": "2021-02-03",
+    "features": [],
+    "corrections": [
+      "Amélioration du mode liste",
+      "Suppression de bugs sur la geoloc de la liste"
+    ]
+  },
+  {
+    "version": "1.0.1-1",
+    "date": "2021-01-30",
+    "features": [
+      "Ajout des liens téléphones et emails",
+      "Afficher le bon icone en cas de catégories multiples"
+    ],
+    "corrections": [
+      "Enlever un endroit des favoris de tous quand il est supprimé"
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "date": "2021-01-29",
+    "features": [],
+    "corrections": [
+      "Rendu des marqueurs plus rapide",
+      "Suppression de la lenteur lors d'un déplacement sur la carte",
+      "Correction des icones qui disparaissent au zoom",
+      "Modification de la couleur de l'huile pour la lisibilité"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2021-01-22",
+    "features": ["Applications et site prêts au lancement"],
+    "corrections": []
+  }
+]

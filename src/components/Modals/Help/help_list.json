@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "mdi mdi-tune",
+    "title": "help.filters",
+    "text": "help.filters_text"
+  },
+  {
+    "icon": "mdi mdi-refresh",
+    "title": "help.refresh",
+    "text": "help.refresh_text"
+  },
+  {
+    "icon": "mdi mdi-wifi",
+    "title": "help.offline",
+    "text": "help.offline_text"
+  },
+  {
+    "icon": "mdi mdi-crosshairs-gps",
+    "title": "help.gps",
+    "text": "help.gps_text"
+  },
+  {
+    "icon": "mdi mdi-account-group",
+    "title": "help.nomadics",
+    "text": "help.nomadics_text"
+  },
+  {
+    "icon": "mdi mdi-plus",
+    "title": "help.the_plus",
+    "text": "help.the_plus_text"
+  }
+]

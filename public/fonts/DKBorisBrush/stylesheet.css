@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'DK Boris Brush';
+    src: local('DK Boris Brush'), local('DKBorisBrush'),
+        url('DKBorisBrush.woff2') format('woff2'),
+        url('DKBorisBrush.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

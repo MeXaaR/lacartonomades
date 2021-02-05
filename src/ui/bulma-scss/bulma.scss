@@ -1,0 +1,25 @@
+/*! bulma.io v0.9.1 | MIT License | github.com/jgthms/bulma */
+@import "utilities/_all";
+@import "base/_all";
+@import "elements/_all";
+@import "form/_all";
+@import "components/_all";
+@import "grid/_all";
+@import "helpers/_all";
+@import "layout/_all";
+
+.Toastify__toast--default {
+  background-color: $link !important;
+}
+.Toastify__toast--info {
+  background-color: $info !important;
+}
+.Toastify__toast--success {
+  background-color: #3e9f74 !important;
+}
+.Toastify__toast--warning {
+  background-color: $warning !important;
+}
+.Toastify__toast--error {
+  background-color: $danger !important;
+}

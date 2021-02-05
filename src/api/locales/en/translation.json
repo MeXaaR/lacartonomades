@@ -1,0 +1,323 @@
+{
+  "FAVORITES": "Favorites",
+  "PRIVATES": "Private places",
+  "SPOTS_NATURE": "Nature spots",
+  "SPOTS_PARKING": "Parkings",
+  "SPOTS_PRIVATE_LAND": "Private lands",
+  "SPOTS_REST_AERA": "Rest aera",
+  "UTILS_COMPOST": "Compost",
+  "UTILS_GARAGE": "Mechanics",
+  "PRESENCES": "Nomadics",
+  "UTILS_OIL": "Bio Diesel",
+  "UTILS_WAREHOUSE": "Warehouse",
+  "UTILS_WATER": "Water",
+  "UTILS_WOOD_DUST": "Sawdust",
+  "access": {
+    "complicated": "Rugged path",
+    "label": "Access",
+    "limited_height": "Limited height",
+    "small_path": "Narrow passage"
+  },
+  "bottom_menu": {
+    "display_list": "List",
+    "display_map": "Map",
+    "filters": "Filters",
+    "refresh": "Refresh",
+    "locate_me": "Find me",
+    "offline_mode": "Offline mode"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "login": "Connection",
+    "logout": "Disconnect",
+    "register": "Register",
+    "send": "Send",
+    "validate": "Validate",
+    "back": "Back",
+    "github": "Check GitHub project"
+  },
+  "compost_access": {
+    "free": "Free access",
+    "label": "Accessibility",
+    "private": "Private"
+  },
+  "compost_type": {
+    "foodies": "Food waste",
+    "label": "Type",
+    "shities": "Dry toilets"
+  },
+  "drawer": {
+    "all_categories": "ALL",
+    "all_places": "All places"
+  },
+  "equipment": {
+    "drinking_water": "Drinking water",
+    "label": "public equipments",
+    "table": "Table",
+    "toilet": "Toilets",
+    "trash_bin": "Trash can"
+  },
+  "lost_password": {
+    "explanation": "Enter your address and we'll send you a link right away to reset your password.",
+    "email_sent": "Email sent to your address"
+  },
+  "reset_password": {
+    "explanation": "Choose a new password for this account.",
+    "password_reset": "Password reset"
+  },
+  "errors": {
+    "Password may not be empty": "Password can't be void",
+    "Username already exists.": "Username already taken",
+    "you_need_an_account": "You must be logged in to do this",
+    "this_picture_format_is_not_accepted": "This image format is not accepted",
+    "picture_too_big": "This image exceeds the max size of",
+    "you_cannot_do_that": "You are authorized to do this",
+    "already_stepped_for_delete": "You have already reported this place",
+    "password_dont_match": "YOur passwords don't match",
+    "this_is_not_your_private_place": "You cannot edit other people's private places.",
+    "you_are_already_present": "You have already indicated your presence, you can cancel on your profile"
+  },
+  "features": {
+    "electricity": "Electricity",
+    "label": "Equipments",
+    "tools": "Tools",
+    "water": "Water"
+  },
+  "garage_type": {
+    "asso": "Associative",
+    "label": "Mechanic type",
+    "nomad": "Itinerant",
+    "pro": "Mechanic",
+    "rviste": "OEM"
+  },
+  "geolocalise": "Geolocalised",
+  "information": {
+    "spots_private_land": "For private land, don't forget to indicate the owner's contact details so that users can contact him / her. Add this information only with the consent of the person in question."
+  },
+  "internet": {
+    "4g": "4G",
+    "good": "Good network",
+    "label": "Network",
+    "none": "None",
+    "random": "Random"
+  },
+  "login_form": {
+    "email_not_valid": "Your email format is not valid",
+    "go_to_login": "You have an account ?",
+    "go_to_lost-password": "Lost your password ?",
+    "go_to_register": "You want to register ?",
+    "logged_out": "You've been logged out",
+    "no_email_creation_account": "You can create an account without an email address if you want to remain anonymous. But if you forget your password, it will be impossible to recover it",
+    "welcome_onboard": "Welcome on La Carto'Nomades"
+  },
+  "map": {
+    "drag_me_around": "Drag me around"
+  },
+  "menu": {
+    "about": "About",
+    "add_a_place": "Add a new place",
+    "login": "Sign in",
+    "logout": "Log Out",
+    "profile": "Profile",
+    "devtools": "Dev Tools",
+    "updates": "News",
+    "mentions": "Legales mentions",
+    "help": "A bit of help"
+  },
+  "modal_titles": {
+    "about_title": "About",
+    "about_welcome_title": "Welcome",
+    "edit_title": "Edit a place",
+    "login_title": "Sign In",
+    "lost-password_title": "Lost password",
+    "newplace_title": "Add a new place",
+    "profile_title": "Profile",
+    "register_title": "Create an account",
+    "menu_title": "Main Menu",
+    "avatar_title": "Pick an avatar",
+    "updates_title": "The news",
+    "signal_title": "Report a mistake",
+    "reset_password_title": "New password",
+    "mentions_title": "legales mentions",
+    "help_title": "A bit of help"
+  },
+  "natural_water": {
+    "label": "Natural water point",
+    "lake": "Lake",
+    "nothing": "None",
+    "river": "Watercourse"
+  },
+  "participation": {
+    "free": "Free",
+    "label": "Participation",
+    "paid": "Paying"
+  },
+  "participation_warehouse": {
+    "collectivity": "Collective tasks",
+    "free": "Free",
+    "label": "Participation",
+    "paid": "Paying",
+    "trade": "Barter"
+  },
+  "place": {
+    "address": "Address",
+    "favorites": "Favorites",
+    "go_to_place": "Let's go",
+    "information": "Information",
+    "last_update": "Last update",
+    "less_info": "Less Info",
+    "modify": "Edit",
+    "more_info": "More Info",
+    "share_url": "Share",
+    "this_is_a_private_place": "Private place",
+    "signal": "Report",
+    "presences_of_nomads": "Signaled Nomadics",
+    "no_nomads": "Presence of Nomads",
+    "no_connection_for_nomads": "You cannot access this info in Offline mode",
+    "say_i_am_here": "I'm here !",
+    "cancel": "Cancel",
+    "how_long": "How long do you want to appear here ?",
+    "12": "12 hours",
+    "24": "A day",
+    "48": "2 days",
+    "presence_removed": "Your presence has been canceled",
+    "presence_created": "Your presence will be indicated for",
+    "send_email": "Send",
+    "write_email": "Write an email",
+    "email_sender_label": "Write your email to contact them",
+    "email_sender_placeholder": "Introduce yourself and provide your contact details",
+    "email_sent": "You email has been sent",
+    "account_for_nomads": "You must be logged in to an account to use this feature",
+    "zoom": "Zoom In"
+  },
+  "place_deletion": {
+    "cancel_error": "Cancel the reports",
+    "signal_error": "Report a mistake",
+    "removed_success": "Place deleted successfully",
+    "signal_success": "Place reported successfully",
+    "signals": "Reports",
+    "cancel_success": "Reports on this place has been canceled",
+    "community": "The community decide",
+    "delete": "Delete",
+    "your_creation": "You created this place, so you can delete it all at once",
+    "explanation": "You can report an error to the community to remove this place if other users confirm that this place needs to be removed.",
+    "type": "Each type of place has a number of reports required before automatic deletion, you can see that below. If you only see one box, a single report automatically deletes the place."
+  },
+  "place_form": {
+    "add_a_category": "Add a category",
+    "categories_and_details": "Details for",
+    "choose_a_category": "Choose a category",
+    "create_a_private_place": "Create as a private place (only for you)",
+    "created_success": "LPlace created successfully",
+    "edit_place_explaination": "You are going to modify a place. Be sure to check your info, this is a community card. There is no administrator to check your data",
+    "new_place_explaination": "You are about to add a new location. Everyone has the freedom to add, edit, and view places added by the community.",
+    "no_category_selected": "No category selected",
+    "place_address": "Address place",
+    "place_address_placeholder": "Enter the address of the place",
+    "place_description": "Place description",
+    "place_description_placeholder": "Describe this place in a few words",
+    "place_name": "Place name",
+    "place_name_placeholder": "Enter the place name",
+    "place_picture": "Take a picture",
+    "picture_select": "Choose a picture",
+    "select_a_category": "Choose a category",
+    "this_is_your_private_place": "This is your private place, if you put it in public it will no longer be possible to put it back in private",
+    "updated_success": "Place updated successfully",
+    "no_picture_for_private": "We do not store photos for private places",
+    "private": "This info will not be displayed publicly, a module will allow users to send an email"
+  },
+  "pollution": {
+    "clean": "Clean",
+    "cleaned": "Cleaned",
+    "deserve_cleanup": "It deserves some cleaning",
+    "label": "Cleanliness of the place",
+    "some_rubbish": "Some rubbish"
+  },
+  "profile": {
+    "since": "Since",
+    "not_yet": "Nothing for the moment in the profile except your presence if you indicated it. Do not hesitate to contact us on Telegram if you have ideas for this page",
+    "change_avatar": "You can change your avatar by clicking on it.",
+    "info": "Info",
+    "security": "Security",
+    "empty_cache": "Empty Offline mode data",
+    "cache_removed": "The locations stored in the device have been erased.",
+    "delete": "Delete my account",
+    "presence_on_a_place": "You signaled your presence on a place",
+    "time_left": "It will be displayed for",
+    "lets_go_check": "Go check the place",
+    "delete_explain": "This action removes your account and your private places from our database. It is irreversible and it is impossible to recover the data."
+  },
+  "search": {
+    "geolocalise": "Geolocalised",
+    "label": "Search",
+    "results": "Results"
+  },
+  "size": {
+    "big": "Palace",
+    "label": "Spot size",
+    "many": "Medium",
+    "small": "Small"
+  },
+  "system": {
+    "places_list": "Places list",
+    "url_not_paste_to_clipboard": "URL not copied to clipboard",
+    "url_paste_to_clipboard": "URL copied to clipboard",
+    "you_need_an_account": "You must be logged in to perform this action",
+    "loading": "Loading",
+    "results": "Results",
+    "updated": "The website has been updated, refresh the page to see what's new :)",
+    "app_updated": "Application has been updated"
+  },
+  "usage": {
+    "label": "Usage",
+    "storage": "Storage",
+    "workshop": "Workshop"
+  },
+  "user": {
+    "email": "Email address",
+    "password": "Password",
+    "username": "Username",
+    "new_password": "New password",
+    "check_password": "Password verification"
+  },
+  "vehicule": {
+    "label": "Vehicle type",
+    "pl": "Heavy weight",
+    "rv": "Camping car",
+    "vl": "Light vehicle"
+  },
+  "water_quality": {
+    "drinking_water": "Drinking",
+    "label": "Quality",
+    "not_drinking": "Not drinkable"
+  },
+  "telephone": {
+    "label": "Phone number"
+  },
+  "email": {
+    "label": "Email address"
+  },
+  "category_menu": {
+    "offline_info": "Filters are disabled when you are in Offline mode. Finds from the network or deactivates offline mode."
+  },
+  "components": {
+    "ConfirmButton": {
+      "sure": "Are you sure ?"
+    }
+  },
+  "help": {
+    "the_plus": "The thing that make the difference",
+    "the_plus_text": "This app is built with a special technology that allow us to update it whenever we update the website without going through the AppStore. When it happens, you can experience a quick flah or refresh of the app.",
+    "nomadics": "Nomads",
+    "nomadics_text": "This feature allows you to see if nomads have indicated their position on a place. The locations appear for the moment without zone restrictions, that may change. It's in test :)",
+    "filters": "Filters",
+    "filters_text": "Filters are used to display more or less types of places depending on what you want. It is possible that the certe slows down a bit when it displays all the categories at the same time.",
+    "refresh": "Refresh",
+    "refresh_text": "This button is used to search the places according to the selected filters on a circle of 30 km around the center of the screen. ",
+    "offline": "Offline Mode",
+    "offline_text": "This mod comes in handy when going to a place without a network. Every place you open in the app is saved in the phone / browser. Suddenly, as soon as you no longer receive or activate the mode, the map displays all these places without zone restriction.",
+    "gps": "Location",
+    "gps_text": "The location has two modes. Tracking tracking, when there is a point in the middle of the icon, or single tracking when the point is not present. It is possible to switch between them by pressing the button."
+  }
+}
