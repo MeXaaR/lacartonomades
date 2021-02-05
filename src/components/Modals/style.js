@@ -136,8 +136,9 @@ export const AboutWrapper = styled.section`
       display: flex;
       align-items: center;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       height: 100%;
+      text-align: center;
     }
   }
   .telegram {

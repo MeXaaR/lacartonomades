@@ -92,6 +92,11 @@ const SettingsMenu = ({ history }) => {
       condition: !!user,
     },
     {
+      text: "menu.last-news",
+      link: "/last-news",
+      condition: true,
+    },
+    {
       text: "menu.mentions",
       link: "/mentions",
       condition: true,

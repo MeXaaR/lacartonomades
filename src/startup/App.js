@@ -18,6 +18,7 @@ import { ROLES_ENUMS } from "/src/api/users/roles";
 import MenuButton from "../components/Drawer/MenuButton";
 import { useLocalStorage } from "../api/utils/hooks";
 import { useHistory } from "react-router";
+import { MESSAGE_VERSION } from "../components/Modals/LastNewsModal";
 
 const MDT = lazy(() => import("/src/components/mdt/client/DevTools"));
 
@@ -27,10 +28,14 @@ const App = (props) => {
   const [cameBefore] = useLocalStorage(
     Meteor.settings.public.LOCALSTORAGE_FIRST_CONNECT
   );
+  const [newsMessageVersion] = useLocalStorage("news_message_version");
+
   const history = useHistory();
   useEffect(() => {
     if (!cameBefore) {
       history.push("/about");
+    } else if(newsMessageVersion !== MESSAGE_VERSION){
+      history.push("/last-news");
     }
       if(Meteor.isCordova){
         universalLinks.subscribe("openLinkForApp", data => {

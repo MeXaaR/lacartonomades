@@ -124,7 +124,8 @@
     "devtools": "Outils Dev",
     "updates": "Nouveautés",
     "mentions": "Mentions légales",
-    "help": "Un peu d'aide"
+    "help": "Un peu d'aide",
+    "last-news": "Message des auteurs"
   },
   "modal_titles": {
     "about_title": "À propos",
@@ -141,7 +142,8 @@
     "signal_title": "Signaler une erreur",
     "reset_password_title": "Nouveau mot de passe",
     "mentions_title": "Mentions Légales",
-    "help_title": "Un peu d'aide"
+    "help_title": "Un peu d'aide",
+    "last-news_title": "Un mot de la team"
   },
   "natural_water": {
     "label": "Point d'eau naturel",

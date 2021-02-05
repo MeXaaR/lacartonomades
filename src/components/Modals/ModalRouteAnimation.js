@@ -17,6 +17,7 @@ import { useLocalStorage } from "../../api/utils/hooks";
 import DeletionSteps from "./Places/DeletionStep";
 import ResetPassword from "./Account/ResetPassword";
 import Mentions from "./Mentions";
+import LastNewsModal from "./LastNewsModal";
 
 const ModalRouteAnimations = () => {
   const location = useLocation();
@@ -49,6 +50,13 @@ const ModalRouteAnimations = () => {
         goBack
         style={props}
         title={cameBefore ? "about" : "about_welcome"}
+      />
+      <ModalRouteWrapper
+        exact
+        path="/last-news"
+        component={LastNewsModal}
+        condition
+        style={props}
       />
       <ModalRouteWrapper
         exact

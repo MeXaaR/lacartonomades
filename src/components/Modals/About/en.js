@@ -4,62 +4,66 @@ import Divider from "/src/components/system/Divider";
 const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
     <>
         <div className="column is-full">
-            <h3 className="title is-5">A map for all nomadics</h3>
+            <h3 className="title is-5">A map for all nomads</h3>            
             <p>
-                Collaborative map of useful things. Share and enjoy the coupons
-                plans of each.
-            </p>
-            <br />
+                La Carto’Nomades is made for everyone: permanent and temporary nomadics,
+                seasonals who wants to land somewhere, those who live in a caravan
+                in a land, sunny days vanlifers or those who customize their small car
+                and share it with three dogs, owners of eco-places and others living places 
+                who want to host traveling people...
+                And those who don't fit these descriptions.</p>
             <p>
-                The Carto'Nomades is made for everyone: permanent nomads and
-                temporary workers, owners wishing to host
-                passing people, seasonal workers who want to land a few
-                weather, frequent travelers and those looking for a hot spot for
-                a night.
+
+                We are counting on you to contribute to this card, in a respect
+                 essential for everyone's places and space! 
             </p>
-            <Divider />
+            <p>
+            In all circumstances, respect the place and its inhabitants. <br />
+                 Leave the place clean, even if it wasn't when you arrived ...
+            </p>
             {Meteor.isCordova &&
             <>
                 <Divider />
-                <h3 className="title is-5">Standalone updates</h3>
+                <h3 className="title is-5">Independent updates</h3>
                 <p>
-                    If you experience a blink, like a refresh on a the first start, 
-                    it is because the apps has been updated by the website. It will happen
-                    everytime we update the website.
+                If you see a refreshment at the first launch,
+                     it is simply because the application has been put
+                     updated by the site. This will happen with every update of the website. 
                 </p>
             </>}
-            <h3 className="title is-5">In the collaborative way</h3>
-            <p>
-                <b>
-                La Carto’Nomades is, and will remain, a free site, without ads and
-                free of rights.
-                </b>
-                There is no tracker, and no data is transmitted to a
-                third party. Not even traffic analysis, nothing.
-            </p>
-            <br />
-            <p>
-                We are counting on you to contribute to this map, with a
-                respect for places and for people!
-                <br />
-                <br />
-                If you find private land, make sure of the
-                owner and contact details before adding it.
-            </p>
-            <p>
-                You can indicate your presence at a location by consulting
-                its page. We did this to improve the community aspect
-                of nomadic life. Thank you everyone for respecting each other.
-            </p>
             <Divider />
-            <h3 className="title is-5">Places to complete</h3>
+            <h3 className="title is-5">Collaborative mode</h3>
             <p>
-                All places with "À préciser" data are GPS points which
+                 La Carto’Nomades is not just a list of places,
+                 it is above all a collaborative card.
+                 Without you, without your knowledge, there is no map.
+             </p>
+             <p>
+                 It is up to everyone to register the places they deem appropriate
+                 (if a registered place needs to be protected from human presence,
+                 point it out, we can remove it from the map. If you discover a
+                 magical place that needs to remain unknown, do not register it ...)
+                 Our presence on the scene has consequences and we are there
+                 more and more numerous.
+             </p>
+             <p>
+                 If you know of private land, suggest to the owner of
+                 add it with a description and contact details.
+             </p> 
+             <p>
+             La Carto'Nomades is also a way of meeting nomads. <br />
+             You can indicate your presence at a location by consulting its file.
+             We believe that this tool can improve the community aspect of nomadic life.
+             Thank you, once again, to everyone for respecting each other.
+             </p> 
+            <Divider />
+            <h3 className="title is-5"> Places to complete </h3>
+            <p>
+                All places with "To be specified" data are GPS points which
                 were retrieved from a website by {""}
                 <b> a perfectly legal way </b>. We only collected the
                 GPS coordinates which are common knowledge, that is why the
-                other info will have to be filled in by all of us together.
-
+                other information will have to be filled in by all of us together.
             </p>
             <p>
                 We justify this action in a simple way. We think, in
@@ -70,16 +74,16 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
             </p>
             <p>
                 As subscriptions and advertisements invaded our lives,
-                we believe that mutual help is the key to a better world.
-            </p>
+                we believe that mutual aid is the key to a better world.
+            </p> 
             <Divider />
-            <h3 className="title is-5">There is more !</h3>
-            <p>
-                You who are nomadic and who are looking for good alternative plans on your
-                road (short circuits, organic, fair or local, eco-craftsmen,
-                places of ecological and social transition projects ...), you can
-                also use these sites:
-            </p>
+            <h3 className="title is-5">And there is more! </h3>
+             <p>
+                 You who are nomadic and who are looking for good alternative plans on your
+                 road (short circuits, organic, fair or local, eco-craftsmen,
+                 places of ecological and social transition projects ...), you can
+                 also use these sites:
+             </p> 
             </div>
             {gogocarto.map(({ title, desc, pic, href }) => (
             <a
@@ -101,15 +105,27 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
             {!Meteor.isCordova && (
             <div className="column is-full">
                 <Divider />
-                <h3 className="title is-5">Mobiles Apps</h3>
+                <h3 className="title is-5">A mobile App</h3>
                 <p>
-                Mobile Apps are available on the Google Play Store,
-                on the AppStore but also, for android only, on GitHub where we
-                host a version without going through Google.
+                    <b>
+                    La Carto’Nomades is, and will remain, a free site, without ads and
+                    Royalty-free
+                    </b>
+                    . There is no tracker, and no data is transmitted to a
+                    third. Not even traffic analysis, nothing.
+                </p>
+                <p>
+                    We have chosen to remove the app from the Apple and Google stores.
+                    We hope to be able to share this application with "word of mouth"
+                    mainly. It will still be downloadable, but through an alternative medium
+                    and not referenced on the internet. The website itself is not referenceable.
+                </p>
+                <p>
+                The mobile application is therefore available for Android only on GitHub where we
+                let's host a version without going through Google.
+                <br /> 
                 <br />
-                <br />
-                If you choose to download the app from GitHub, we
-                will send message on the Telegram group to warn for updates.
+                We will send messages to the Telegram group to prevent updates. 
                 </p>
             </div>
             )}
@@ -125,12 +141,12 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
             ))}
             <div className="column is-full">
             <Divider />
-            <h3 className="title is-5">Have a good trip everyone!</h3>
+            <h3 className="title is-5">Have a good trip everyone! </h3>
             <p>
-                La Carto’Nomades was created by François and Marie-Aure.
-                <br />
-                <br />
-                A group to discuss the Carto'Nomades exists on Telegram
+            La Carto’Nomades was created by François and Marie-Aure.
+                 <br />
+                 <br />
+                 A group to discuss the Carto'Nomades exists on Telegram 
                 <br />
                 <br />
                 <a

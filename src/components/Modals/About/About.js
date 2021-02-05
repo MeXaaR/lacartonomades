@@ -24,14 +24,6 @@ const gogocarto = [
 
 const apps = [
   {
-    name: "playstore",
-    pic: "/images/playstore.png",
-  },
-  {
-    name: "appstore",
-    pic: "/images/appstore.png",
-  },
-  {
     name: "myserver",
     pic: "/images/myserver.png",
   },

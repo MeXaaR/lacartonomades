@@ -123,7 +123,8 @@
     "devtools": "Dev Tools",
     "updates": "News",
     "mentions": "Legales mentions",
-    "help": "A bit of help"
+    "help": "A bit of help",
+    "last-news": "Message from the authors"
   },
   "modal_titles": {
     "about_title": "About",
@@ -140,7 +141,8 @@
     "signal_title": "Report a mistake",
     "reset_password_title": "New password",
     "mentions_title": "legales mentions",
-    "help_title": "A bit of help"
+    "help_title": "A bit of help",
+    "last-news_title": "Last news"
   },
   "natural_water": {
     "label": "Natural water point",
