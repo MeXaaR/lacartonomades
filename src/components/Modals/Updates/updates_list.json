@@ -4,7 +4,8 @@
     "date": "2021-02-08",
     "features": [
       "Ajout d'un lien de partage de l'appli sur la page à propos",
-      "Ajout d'un lien de partage de l'appli sur le menu"
+      "Ajout d'un lien de partage de l'appli sur le menu",
+      "Possibilité de modifier Email et Username"
     ],
     "corrections": [
       "Obligation de mettre un nom d'utilisateur"
