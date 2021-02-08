@@ -1,7 +1,7 @@
 import React from 'react'
 import Divider from "/src/components/system/Divider";
 
-const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
+const EnAbout = ({ gogocarto, apps, openBrowser, firstTime, share }) => (
     <>
         <div className="column is-full">
             <h3 className="title is-5">A map for all nomads</h3>            
@@ -102,7 +102,6 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
                 </div>
             </a>
             ))}
-            {!Meteor.isCordova && (
             <div className="column is-full">
                 <Divider />
                 <h3 className="title is-5">A mobile App</h3>
@@ -127,9 +126,12 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
                 <br />
                 We will send messages to the Telegram group to prevent updates. 
                 </p>
+                {!Meteor.isCordova && (
+                <p>You can share the link to your friends with this button</p>
+                )}
             </div>
-            )}
-            {!Meteor.isCordova &&
+            
+            {!Meteor.isCordova ?
             apps.map(({ pic, name }) => (
                 <div key={name} className="column is-one-third">
                 <a href={Meteor.settings.public.APPS[name]} target="_blank">
@@ -138,7 +140,18 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime }) => (
                     </figure>
                 </a>
                 </div>
-            ))}
+            ))
+            :
+            apps.map(({ pic, name }) => (
+                <div key={name} className="column is-one-third">
+                <a onClick={() => share(Meteor.settings.public.APPS[name], "en")}>
+                    <figure className={`${name} image`}>
+                    <img src={pic} alt={name} />
+                    </figure>
+                </a>
+                </div>
+            ))
+            }
             <div className="column is-full">
             <Divider />
             <h3 className="title is-5">Have a good trip everyone! </h3>
