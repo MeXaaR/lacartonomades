@@ -68,7 +68,7 @@
   },
   "errors": {
     "Password may not be empty": "Password can't be void",
-    "Username already exists.": "Username already taken",
+    "Uusername_exists": "Username already taken",
     "you_need_an_account": "You must be logged in to do this",
     "this_picture_format_is_not_accepted": "This image format is not accepted",
     "picture_too_big": "This image exceeds the max size of",
@@ -109,7 +109,8 @@
     "go_to_register": "You want to register ?",
     "logged_out": "You've been logged out",
     "no_email_creation_account": "You can create an account without an email address if you want to remain anonymous. But if you forget your password, it will be impossible to recover it",
-    "welcome_onboard": "Welcome on La Carto'Nomades"
+    "welcome_onboard": "Welcome on La Carto'Nomades",
+    "username_mandatory": "You must enter your username"
   },
   "map": {
     "drag_me_around": "Drag me around"
@@ -124,7 +125,8 @@
     "updates": "News",
     "mentions": "Legales mentions",
     "help": "A bit of help",
-    "last-news": "Message from the authors"
+    "last-news": "Message from the authors",
+    "share": "Share the App"
   },
   "modal_titles": {
     "about_title": "About",
@@ -269,7 +271,8 @@
     "loading": "Loading",
     "results": "Results",
     "updated": "The website has been updated, refresh the page to see what's new :)",
-    "app_updated": "Application has been updated"
+    "app_updated": "Application has been updated",
+    "share_app": "Download the Android App for La Carto'Nomades and join the community."
   },
   "usage": {
     "label": "Usage",

@@ -126,7 +126,7 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime, share }) => (
                 <br />
                 We will send messages to the Telegram group to prevent updates. 
                 </p>
-                {!Meteor.isCordova && (
+                {Meteor.isCordova && (
                 <p>You can share the link to your friends with this button</p>
                 )}
             </div>

@@ -127,7 +127,7 @@ const FrAbout = ({ gogocarto, apps, openBrowser, share }) => (
                 <br />
                 Nous enverrons des messages sur le groupe Telegram pour prévenir des mises à jour.
                 </p>
-                {!Meteor.isCordova && (
+                {Meteor.isCordova && (
                     <p>Tu peux partager le lien vers l'application en cliquant sur le bouton ci-dessous</p>
                 )}
             </div>

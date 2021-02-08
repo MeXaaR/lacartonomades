@@ -34,6 +34,17 @@ const SettingsMenu = ({ history }) => {
     });
   };
 
+  const share = () => {
+    navigator
+    .share({
+      title: "La Carto'Nomades - Android App",
+      text: t("system.share_app"),
+      url: Meteor.settings.public.APPS.myserver,
+    })
+    .then(() => console.log("Successful share"))
+    .catch((error) => console.log("Error sharing", error));
+  }
+
   const buttons = [
     {
       text: "menu.add_a_place",
@@ -53,7 +64,7 @@ const SettingsMenu = ({ history }) => {
       text: "menu.login",
       action: null,
       link: "/login",
-      className: "",
+      className: "is-success",
       condition: !user,
     },
     {
@@ -85,11 +96,11 @@ const SettingsMenu = ({ history }) => {
       content: <Divider key="divider" />,
     },
     {
-      text: "menu.logout",
-      action: handleLogout,
+      text: "menu.share",
+      action: share,
       link: null,
-      className: "is-danger",
-      condition: !!user,
+      className: "is-info",
+      condition: Meteor.isCordova,
     },
     {
       text: "menu.last-news",
@@ -100,6 +111,13 @@ const SettingsMenu = ({ history }) => {
       text: "menu.mentions",
       link: "/mentions",
       condition: true,
+    },
+    {
+      text: "menu.logout",
+      action: handleLogout,
+      link: null,
+      className: "is-danger",
+      condition: !!user,
     },
     {
       text: "menu.devtools",
