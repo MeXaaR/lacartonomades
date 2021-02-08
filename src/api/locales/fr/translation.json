@@ -68,7 +68,7 @@
   },
   "errors": {
     "Password may not be empty": "Le mot de passe ne peut pas être vide.",
-    "Username already exists.": "Nom d'utilisateur déjà pris.",
+    "Uusername_exists": "Nom d'utilisateur déjà pris. Choisis en un autre :)",
     "you_need_an_account": "Tu dois être connecté pour effectuer cette action",
     "this_picture_format_is_not_accepted": "Ce format d'image n'est pas accepté",
     "picture_too_big": "Cette image dépasse la taille max de",
@@ -110,7 +110,8 @@
     "logged_out": "Tu as été déconnecté(e)",
     "no_email_creation_account": "Tu peux créer un compte sans adresse email si tu tiens a rester anonyme. Mais si tu oublies ton mot de passe, il sera impossible de le récupérer",
     "private_places_deleted_from_device": "private_places_deleted_from_device",
-    "welcome_onboard": "Bienvenue sur La Carto'Nomades"
+    "welcome_onboard": "Bienvenue sur La Carto'Nomades",
+    "username_mandatory": "Tu dois choisir un nom d'utilisateur"
   },
   "map": {
     "drag_me_around": "Déplace moi"
@@ -125,7 +126,8 @@
     "updates": "Nouveautés",
     "mentions": "Mentions légales",
     "help": "Un peu d'aide",
-    "last-news": "Message des auteurs"
+    "last-news": "Message des auteurs",
+    "share": "Partager l'Appli"
   },
   "modal_titles": {
     "about_title": "À propos",
@@ -249,6 +251,7 @@
     "presence_on_a_place": "Tu as indiqué ta presence sur un lieu",
     "time_left": "Elle sera encore indiquée pendant",
     "lets_go_check": "Aller voir le lieu",
+    "your_info": "Tes informations",
     "delete_explain": "Cette action supprime ton compte et tes endroits privés de notre base de données. C'est irréversible et il est impossible de récupérer les données."
   },
   "results": "results",
@@ -270,8 +273,12 @@
     "you_need_an_account": "Tu dois être connecté pour effectuer cette action",
     "loading": "Chargement",
     "results": "Résultats",
+    "username_changed": "Nom d'utilisateur modifié",
+    "email_changed": "Email modifié",
+    "save": "Enregistrer",
     "updated": "Le site a été mis à jour, recharge la page pour voir les nouveautés :)",
-    "app_updated": "L'application a été mise à jour"
+    "app_updated": "L'application a été mise à jour",
+    "share_app": "Télécharge l'application La Carto'Nomades pour Android et rejoins la communauté."
   },
   "usage": {
     "label": "Usage",

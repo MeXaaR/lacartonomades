@@ -52,6 +52,21 @@ const About = ({ history }) => {
       cordova.InAppBrowser.open(url, "_system");
     }
   };
+
+  const share = (url, lang) => {
+    const texts = {
+      fr: "Télécharge l'application La Carto'Nomades pour Android et rejoins la communauté.",
+      en: "Download the Android App for La Carto'Nomades and join the community.",
+    }
+    navigator
+    .share({
+      title: "La Carto'Nomades - Android App",
+      text: texts[lang],
+      url,
+    })
+    .then(() => console.log("Successful share"))
+    .catch((error) => console.log("Error sharing", error));
+  }
   const LanguageComponent = Languages[i18n.language]
   return (
     <>
@@ -59,7 +74,7 @@ const About = ({ history }) => {
         {showLanguage && 
           <LanguagePicker />
         }
-        <LanguageComponent gogocarto={gogocarto} apps={apps} openBrowser={openBrowser} />
+        <LanguageComponent gogocarto={gogocarto} apps={apps} openBrowser={openBrowser} share={share} />
       </AboutWrapper>
 
       <ModalFooter className="modal-card-foot">

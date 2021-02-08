@@ -47,7 +47,6 @@ const ModalRouteAnimations = () => {
         path="/about"
         component={About}
         condition
-        goBack
         style={props}
         title={cameBefore ? "about" : "about_welcome"}
       />

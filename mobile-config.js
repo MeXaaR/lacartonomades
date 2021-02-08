@@ -6,8 +6,8 @@ App.info({
   author: "MeXaR",
   email: "contact@mexar.fr",
   website: "https://mexar.fr",
-  version: "1.0.1-3",
-  buildNumber: "10130"
+  version: "1.0.2-1",
+  buildNumber: "10210"
 });
 App.setPreference("android-targetSdkVersion", "29");
 

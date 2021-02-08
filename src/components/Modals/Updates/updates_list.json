@@ -1,12 +1,25 @@
 [
   {
+    "version": "1.0.2-1",
+    "date": "2021-02-08",
+    "features": [
+      "Ajout d'un lien de partage de l'appli sur la page à propos",
+      "Ajout d'un lien de partage de l'appli sur le menu",
+      "Possibilité de modifier Email et Username"
+    ],
+    "corrections": [
+      "Obligation de mettre un nom d'utilisateur"
+    ]
+  },
+  {
     "version": "1.0.2",
     "date": "2021-02-05",
     "features": [],
     "corrections": [
       "Suppression de l'application des stores légaux"
     ]
-  },{
+  },
+  {
     "version": "1.0.1-3",
     "date": "2021-02-04",
     "features": [],

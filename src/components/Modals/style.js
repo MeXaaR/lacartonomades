@@ -131,6 +131,9 @@ export const AboutWrapper = styled.section`
     font-family: ${FONTS.TITLES};
     color: ${COLORS.MAIN};
   }
+  .column.is-full {
+    text-align: justify;
+  }
   .column.is-half {
     .box {
       display: flex;
@@ -146,6 +149,10 @@ export const AboutWrapper = styled.section`
   }
   .title.is-5.margin-top {
     margin-top: 2rem;
+  }
+  .myserver {
+    max-width: 50%;
+    margin: auto;
   }
 `;
 

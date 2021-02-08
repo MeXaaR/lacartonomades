@@ -28,11 +28,24 @@ const Register = () => {
         reason: t("login_form.email_not_valid"),
       });
       return;
+    } else if(!state.username){
+      setError({
+        reason: t("login_form.username_mandatory"),
+      });
+      return
+
     }
     toggleLoading();
     Accounts.createUser({ ...state }, (error) => {
       toggleLoading();
       if (error) {
+        if(error.reason === "Username already exists."){
+          setError({
+            reason: t(`errors.Uusername_exists`),
+          });
+          return
+        }
+        console.log(t(`errors.${error.reason}`))
         const errorMessage =
           t(`errors.${error.reason}`) === `errors.${error.reason}`
             ? error.reason
