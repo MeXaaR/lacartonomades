@@ -38,3 +38,40 @@ export const removeAccount = new ValidatedMethod({
     }
   },
 });
+
+export const changeUserName = new ValidatedMethod({
+  name: "users.methods.changeUserName",
+  validate: null,
+  applyOptions: {
+    noRetry: true,
+  },
+  run({ newUsername }) {
+    try {
+      console.log(`User account modified: ${this.userId} - ${newUsername}`);
+      return Accounts.setUsername(this.userId, newUsername)
+    } catch (error) {
+      throw new Meteor.Error(error.code, error.reason);
+    }
+  },
+});
+export const changeEmail = new ValidatedMethod({
+  name: "users.methods.changeEmail",
+  validate: null,
+  applyOptions: {
+    noRetry: true,
+  },
+  run({ newEmail }) {
+    try {
+      console.log(`User account modified: ${this.userId} - ${newEmail}`);
+      const user = Meteor.users.findOne({ _id: this.userId })
+
+      if(user.emails && user.emails[0]){
+        Accounts.removeEmail(this.userId, user.emails[0].address)
+      } else if(newEmail){
+        return Accounts.addEmail(this.userId, newEmail)
+      }
+    } catch (error) {
+      throw new Meteor.Error(error.code, error.reason);
+    }
+  },
+});

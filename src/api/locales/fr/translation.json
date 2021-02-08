@@ -251,6 +251,7 @@
     "presence_on_a_place": "Tu as indiqué ta presence sur un lieu",
     "time_left": "Elle sera encore indiquée pendant",
     "lets_go_check": "Aller voir le lieu",
+    "your_info": "Tes informations",
     "delete_explain": "Cette action supprime ton compte et tes endroits privés de notre base de données. C'est irréversible et il est impossible de récupérer les données."
   },
   "results": "results",
@@ -272,6 +273,9 @@
     "you_need_an_account": "Tu dois être connecté pour effectuer cette action",
     "loading": "Chargement",
     "results": "Résultats",
+    "username_changed": "Nom d'utilisateur modifié",
+    "email_changed": "Email modifié",
+    "save": "Enregistrer",
     "updated": "Le site a été mis à jour, recharge la page pour voir les nouveautés :)",
     "app_updated": "L'application a été mise à jour",
     "share_app": "Télécharge l'application La Carto'Nomades pour Android et rejoins la communauté."

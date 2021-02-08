@@ -244,6 +244,7 @@
     "change_avatar": "You can change your avatar by clicking on it.",
     "info": "Info",
     "security": "Security",
+    "your_info": "Your info",
     "empty_cache": "Empty Offline mode data",
     "cache_removed": "The locations stored in the device have been erased.",
     "delete": "Delete my account",
@@ -270,6 +271,9 @@
     "you_need_an_account": "You must be logged in to perform this action",
     "loading": "Loading",
     "results": "Results",
+    "save": "Save",
+    "username_changed": "Username changed",
+    "email_changed": "Email changed",
     "updated": "The website has been updated, refresh the page to see what's new :)",
     "app_updated": "Application has been updated",
     "share_app": "Download the Android App for La Carto'Nomades and join the community."

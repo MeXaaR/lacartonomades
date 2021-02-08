@@ -11,7 +11,6 @@ import LacartoLoader from "../../Places/LacartoLoader";
 import ConfirmButton from "../../system/ConfirmButton";
 import Divider from "/src/components/system/Divider";
 import { msToTime } from "../../../api/utils/functions";
-import LanguagePicker from "../../system/LanguagePicker";
 
 const tabs = [
   {
@@ -29,12 +28,16 @@ const Profile = () => {
   const [currentTab, setTab] = useState(tabs[0].name);
   const [loading, setLoading] = useState(false);
   const [{ user = {} }] = useAppContext();
-  const { profile = {} } = user;
+  const { profile = {}, username = "", emails = [] } = user;
+  const currentEmail = emails[0] && emails[0].address || ""
+  const [newUsername, setNewUsername] = useState(username);
+  const [newEmail, setNewEmail] = useState(currentEmail);
   const removeDataFromCache = () => {
     Places.clearPersisted().then((r) => {
       msg.info(t("profile.cache_removed"));
     });
   };
+  console.log(emails)
   const isPresentOnPlace = profile.presentInPlace;
   const timeLeftOnPlace = profile.presenceUntil - new Date().valueOf();
   const deleteAccount = () => {
@@ -52,6 +55,34 @@ const Profile = () => {
       setLoading(false);
     });
   };
+
+  const changeUsername = () => {
+    if(!newUsername){
+      msg.error(t("login_form.username_mandatory"))
+    } else {
+      setLoading(true)
+      Meteor.call("users.methods.changeUserName",{ newUsername }, (e,s) => {
+        setLoading(false)
+        if(e){
+          msg.error(e.reason)
+        } else {
+          msg.info(t("system.username_changed"))
+        }
+      })
+    }
+  }
+  const changeEmail = () => {
+      setLoading(true)
+      Meteor.call("users.methods.changeEmail",{ newEmail }, (e,s) => {
+        console.log(e, s)
+        setLoading(false)
+        if(e){
+          msg.error(e.reason)
+        } else {
+          msg.info(t("system.email_changed"))
+        }
+      })
+  }
   return (
     <>
       <ProfileWrapper className="modal-card-body columns is-multiline is-centered">
@@ -108,41 +139,88 @@ const Profile = () => {
             {currentTab === "info" && (
               <>
                 <div className="content">{profile.about}</div>
-                {!!isPresentOnPlace ? (
-                  <article className="message is-info">
+                <article className="message is-info">
                     <div className="message-body">
-                      <p>{t("profile.presence_on_a_place")}</p>
+                      <h3 className="title is-4">{t("profile.your_info")}</h3>
                       <p>
-                        {t("profile.time_left")} {msToTime(timeLeftOnPlace)}
+                      <div className="field">
+                      <label class="label">{t("user.username")}</label>
+                        <div className="control has-icons-left has-icons-right"  style={{ display: "flex"}}>
+                          <input
+                            onChange={({ target: { value }}) => setNewUsername(value)}
+                            className={`input ${loading ? "is-loading" : null}`}
+                            value={newUsername}
+                            name="username"
+                            disabled={loading}
+                            placeholder={t("user.username")}
+                          />
+                          <span className="icon is-small is-left">
+                            <i className="mdi mdi-account"></i>
+                          </span>
+                          
+                        {username !== newUsername && 
+                        <span className="button is-success" onClick={changeUsername}>
+                            {t("system.save")}
+                        </span>
+                        }
+                        </div>
+                      </div>
+                      <div className="field">
+                      <label class="label">{t("user.email")}</label>
+                        <div className="control has-icons-left has-icons-right" style={{ display: "flex"}}>
+                          <input
+                            onChange={({ target: { value }}) => setNewEmail(value)}
+                            className={`input ${loading ? "is-loading" : null}`}
+                            value={newEmail}
+                            type="email"
+                            name="email"
+                            disabled={loading}
+                            placeholder={t("user.email")}
+                          />
+                          <span className="icon is-small is-left">
+                            <i className="mdi mdi-email"></i>
+                          </span>
+                          {currentEmail !== newEmail && 
+                            <span className="button is-success" onClick={changeEmail}>
+                                {t("system.save")}
+                            </span>
+                          }
+                        </div>
+                      </div>
                       </p>
-                      <br />
-                      <Link to={`/map/places/${isPresentOnPlace}`}>
-                        <button className="button is-success">
-                          {t("profile.lets_go_check")}
-                        </button>
-                      </Link>
                     </div>
                   </article>
-                ) : (
-                  <article className="message is-info">
-                    <div className="message-body">
-                      {t("profile.not_yet")}
-                    </div>
-                  </article>
+                {!!isPresentOnPlace && (
+                  <>
+                    <Divider />
+                    <article className="message is-info">
+                      <div className="message-body">
+                        <p>{t("profile.presence_on_a_place")}</p>
+                        <p>
+                          {t("profile.time_left")} {msToTime(timeLeftOnPlace)}
+                        </p>
+                        <br />
+                        <Link to={`/map/places/${isPresentOnPlace}`}>
+                          <button className="button is-success">
+                            {t("profile.lets_go_check")}
+                          </button>
+                        </Link>
+                      </div>
+                    </article>
+                  </>
                 )}
+                <button
+                  onClick={removeDataFromCache}
+                  className="button is-warning is-fullwidth"
+                >
+                  {t("profile.empty_cache")}
+                </button>
+                <br />
               </>
             )}
             {currentTab === "security" && (
               <>
                 <div className="content">
-                  <button
-                    onClick={removeDataFromCache}
-                    className="button is-warning is-fullwidth"
-                  >
-                    {t("profile.empty_cache")}
-                  </button>
-                  <br />
-                  <Divider />
                   <ConfirmButton
                     text={t("profile.delete")}
                     onAction={deleteAccount}

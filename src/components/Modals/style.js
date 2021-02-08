@@ -132,7 +132,7 @@ export const AboutWrapper = styled.section`
     color: ${COLORS.MAIN};
   }
   .column.is-full {
-    text-align: center;
+    text-align: justify;
   }
   .column.is-half {
     .box {
