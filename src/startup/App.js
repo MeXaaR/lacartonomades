@@ -28,12 +28,13 @@ const App = (props) => {
   const [cameBefore] = useLocalStorage(
     Meteor.settings.public.LOCALSTORAGE_FIRST_CONNECT
   );
-  const [newsMessageVersion] = useLocalStorage("news_message_version");
+  const [newsMessageVersion, setNewsVersion] = useLocalStorage("news_message_version");
 
   const history = useHistory();
   useEffect(() => {
     if (!cameBefore) {
       history.push("/about");
+      setNewsVersion(MESSAGE_VERSION)
     } else if(newsMessageVersion !== MESSAGE_VERSION){
       history.push("/last-news");
     }
