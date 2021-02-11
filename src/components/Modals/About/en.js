@@ -1,7 +1,7 @@
 import React from 'react'
 import Divider from "/src/components/system/Divider";
 
-const EnAbout = ({ gogocarto, apps, openBrowser, firstTime, share }) => (
+const EnAbout = ({ gogocarto, openBrowser, firstTime, share }) => (
     <>
         <div className="column is-full">
             <h3 className="title is-5">A map for all nomads</h3>            
@@ -57,13 +57,10 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime, share }) => (
              Thank you, once again, to everyone for respecting each other.
              </p> 
             <Divider />
-            <h3 className="title is-5"> Places to complete </h3>
             <p>
-                All places with "To be specified" data are GPS points which
-                were retrieved from a website by {""}
-                <b> a perfectly legal way </b>. We only collected the
-                GPS coordinates which are common knowledge, that is why the
-                other information will have to be filled in by all of us together.
+                We removed all the places we would have checked out
+                from another site (Park4Night or another one) but you are free to
+                add them whenever you want;)
             </p>
             <p>
                 We justify this action in a simple way. We think, in
@@ -132,25 +129,21 @@ const EnAbout = ({ gogocarto, apps, openBrowser, firstTime, share }) => (
             </div>
             
             {!Meteor.isCordova ?
-            apps.map(({ pic, name }) => (
-                <div key={name} className="column is-one-third">
-                <a href={Meteor.settings.public.APPS[name]} target="_blank">
-                    <figure className={`${name} image`}>
-                    <img src={pic} alt={name} />
+                <div className="column is-half">
+                <a href={Meteor.settings.public.APPS.myserver} target="_blank">
+                    <figure className={`myserver image`}>
+                    <img src="/images/myserver.png" alt="myserver" />
                     </figure>
                 </a>
                 </div>
-            ))
             :
-            apps.map(({ pic, name }) => (
-                <div key={name} className="column is-one-third">
-                <a onClick={() => share(Meteor.settings.public.APPS[name], "en")}>
-                    <figure className={`${name} image`}>
-                    <img src={pic} alt={name} />
-                    </figure>
-                </a>
+                <div  className="column is-half">
+                    <a onClick={() => share(Meteor.settings.public.APPS.myserver, "en")}>
+                        <figure className={`myserver image`}>
+                        <img src="/images/myserver.png" alt="myserver" />
+                        </figure>
+                    </a>
                 </div>
-            ))
             }
             <div className="column is-full">
             <Divider />
