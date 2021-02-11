@@ -251,7 +251,7 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       <Footer color={category.color} color_text={category.color_text}>
         <div className="columns is-multiline is-centered">
           {footerActions.map(({ icon, text, onClick, props }) => (
-            <a className="column is-4" key={text} onClick={onClick} 
+            <a className={`column ${footerActions.length === 4 ? "is-3" : "is-4"}`} key={text} onClick={onClick} 
             {...props}>
               <span className="icon">
                 <i className={`mdi ${icon}`}></i>

@@ -36,7 +36,7 @@ const AllInformation = ({ place }) => {
       >
         <div className="columns is-multiline is-mobile is-centered">
           {footerActions.map(({ icon, text, onClick, props }) => (
-            <a className="column is-one-fifth" key={text} onClick={onClick} {...props} >
+            <a className={`column is-narrow ${footerActions.length === 5 ? "is-one-fifth" : "is-one-quarter"}`} key={text} onClick={onClick} {...props} >
               <span className="icon">
                 <i className={`mdi ${icon}`}></i>
               </span>

@@ -272,7 +272,7 @@ const DrawerMobile = ({ match, location: { state } }) => {
         <div className="columns is-multiline is-mobile">
           {footerActions.map(({ icon, text, onClick, props = {} }) => (
             <a
-              className="column is-one-fifth is-narrow"
+              className={`column is-narrow ${footerActions.length === 5 ? "is-one-fifth" : "is-one-quarter"}`}
               key={text}
               onClick={onClick}
               {...props}

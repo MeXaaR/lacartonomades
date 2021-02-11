@@ -7,6 +7,7 @@ import {
   removePlaceToFavorites,
 } from "../../api/users/methods";
 import { useAppContext } from "../../context/appContext";
+import allCategories from "../../settings/categories";
 
 export const useFooterActions = (place = {}) => {
   const history = useHistory();
@@ -89,7 +90,14 @@ export const useFooterActions = (place = {}) => {
     }
   };
 
-  return [
+
+  const isOnlyOwner = !!place && place.category && allCategories.find((cat) => place.category.find(c => c === cat.name) && cat.onlyOwner)
+  const actionModify = {
+    text: "place.modify",
+    onClick: handleEdit,
+    icon: "mdi-pencil",
+  }
+  const actions = [
     {
       text: "place.favorites",
       onClick: handleFavorites,
@@ -110,14 +118,16 @@ export const useFooterActions = (place = {}) => {
       }
     },
     {
-      text: "place.modify",
-      onClick: handleEdit,
-      icon: "mdi-pencil",
-    },
-    {
       text: "place.signal",
       onClick: handleSignal,
       icon: "mdi-alert-octagon",
     },
-  ];
+  ]
+  if(isOnlyOwner && place.createdBy !== Meteor.userId()){
+    return actions
+  }
+  return [
+    ...actions,
+    actionModify
+  ]
 };

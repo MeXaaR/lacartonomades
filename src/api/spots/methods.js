@@ -66,7 +66,8 @@ export const updatePlace = new ValidatedMethod({
         throw new Meteor.Error("405", "you_need_an_account");
       }
       const placeDB = Places.findOne({ _id });
-      if (!!placeDB && placeDB.private && placeDB.createdBy !== this.userId) {
+      const isOnlyOwner = !!placeDB && allCategories.find((cat) => placeDB.category.find(c => c === cat.name) && cat.onlyOwner)
+      if (!!placeDB && (placeDB.private || isOnlyOwner) && placeDB.createdBy !== this.userId) {
         throw new Meteor.Error("405", "this_is_not_your_private_place");
       }
       if (newPlace.picture && Meteor.isServer) {

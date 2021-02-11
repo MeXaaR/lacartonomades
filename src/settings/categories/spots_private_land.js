@@ -31,6 +31,7 @@ const spots_private_land = {
   comments: true,
   delete_steps: 1,
   presences: true,
+  onlyOwner: true,
 };
 
 export default spots_private_land;
