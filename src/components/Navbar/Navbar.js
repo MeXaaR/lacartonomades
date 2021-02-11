@@ -31,21 +31,21 @@ const Navbar = () => {
               
         <div className="navbar-item">
           <Link 
-            to="/newplace" 
-            className="navbar-link is-arrowless"
-            data-tip={t("top_menu.new_place")}
-          >
-            <span className="icon is-large">
-                <i className="mdi mdi-24px mdi-map-marker-plus"></i>
-            </span>
-          </Link>
-          <Link 
             to="/activities" 
             className="navbar-link is-arrowless"
             data-tip={t("top_menu.last-activities")}
           >
             <span className="icon is-large">
                 <i className="mdi mdi-24px mdi-bell-ring"></i>
+            </span>
+          </Link>
+          <Link 
+            to="/newplace" 
+            className="navbar-link is-arrowless"
+            data-tip={t("top_menu.new_place")}
+          >
+            <span className="icon is-large">
+                <i className="mdi mdi-24px mdi-map-marker-plus"></i>
             </span>
           </Link>
           <Link 
