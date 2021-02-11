@@ -16,9 +16,13 @@ Il est possible que ton téléphone refuse de l'installer par securité. En fait
 Voici un tuto qui nous vient de Frandroid
 
 Allez dans les paramètres, puis Sécurité
+
 Activez les sources inconnues
+
 Recherchez l’APK sur votre téléphone (à l’aide d’un explorateur de fichiers par exemple)
+
 Lancez le fichier APK et suivez les instructions
+
 (Optionnel, mais conseillé) Désactivez les sources inconnues
 
 [Tuto avec plus d'explication si ca fonctionne pas](http://https://www.frandroid.com/comment-faire/tutoriaux/184151_comment-installer-un-fichier-apk-sur-son-terminal-android "Tuto avec plus d'explication si ca fonctionne pas")
