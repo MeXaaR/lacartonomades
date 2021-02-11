@@ -8,7 +8,8 @@
     ],
     "corrections": [
       "Modification de l'icone SPOTS_NATURE",
-      "Suppression de tous les endroits venant d'une autre base, sauf ceux modifiés"
+      "Suppression de tous les endroits venant d'une autre base, sauf ceux modifiés",
+      "iOS: 'Y aller' ouvre désormais la carte même depuis un navigateur"
     ]
   },
   {
