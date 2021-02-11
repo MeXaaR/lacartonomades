@@ -52,7 +52,7 @@ const LastNewsModal = () => {
                     Donc, on appuie sur le gros bouton rouge pour supprimer les points concernés et on redémarre avec le peu de points qu'on a chacun ajouté.
                      Mais la carte est jeune de quelques jours seulement donc nous pensons que La Carto'Nomades se contruira rapidement et de façon autonome.
                      <br/><br/>
-                     <b>Nous avons ajouté un petit outil (la cloche) qui permet de voir l'activité de la communauté sur la carte.</b> Selon vos etours, on verra s'il restera à l'avenir.
+                     <b>Nous avons ajouté un petit outil (la cloche) qui permet de voir l'activité de la communauté sur la carte.</b> Selon vos retours, on verra s'il restera à l'avenir.
                     <br/><br/>
                     <b>Franchement, merci à tous pour vos retours. On passe beaucoup de temps dessus en ce moment et on est contents 
                     de lire vos réactions ;)</b>
