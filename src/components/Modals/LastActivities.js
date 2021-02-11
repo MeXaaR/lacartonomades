@@ -29,20 +29,20 @@ const LastActivities = () => {
                 </figure>
                 <div className="media-content activity">
                   <div className="content">
-                      <p>
+                      <div>
                       <strong>{a.createdByUsername}</strong>
                       <br/>
                       <div className="icon-text">
                           <span className={`icon ${ACTIVITIES_COLORS[a.type]}`}>
                               <i className={` mdi-18px ${ACTIVITIES_ICONS[a.type]}`}></i>
                           </span>
-                          <span>{t(`activities.${a.type}`)} {a.name}</span>
+                          <span>{t(`activities.${a.type}`)} <b>{a.name}</b></span>
                       </div>
-                      <small>{moment(a.createdAt).locale(i18n.language).fromNow()}{a.type !== ACTIVITIES_TYPES.PLACE_REMOVED && <> · <Link to={`/map/places/${a.objectId}?center=true&zoom=12`}>
+                      <small>{moment(a.createdAt).locale(i18n.language).fromNow()}{a.type !== ACTIVITIES_TYPES.PLACE_REMOVED && <> · <Link to={`/map/places/${a.objectId}?center=true&zoom=10`}>
                               {t(`profile.lets_go_check`)}
                             </Link> </>}
                       </small>
-                      </p>
+                      </div>
                   </div>
                 </div>
             </article>

@@ -26,20 +26,16 @@ const Navbar = () => {
 
               
         <div className="navbar-item">
-          <Link to="/last-activities">
+          <Link to="/activities" className="navbar-link is-arrowless">
             <span className="icon is-large">
-                <i className="mdi mdi-bell-ring"></i>
+                <i className="mdi mdi-24px mdi-bell-ring"></i>
             </span>
           </Link>
-        </div>
-        <div className="navbar-item">
           <Link to="/help" className="navbar-link is-arrowless">
             <span className="icon">
-              <i className="mdi mdi-12px mdi-help"></i>
+              <i className="mdi mdi-24px mdi-help"></i>
             </span>
           </Link>
-        </div>
-        <div className="navbar-item">
           <Link to="/menu" className="navbar-link is-arrowless">
             <span className="icon">
               <i className="mdi mdi-24px mdi-menu"></i>

@@ -89,9 +89,9 @@ const ModalRouteAnimations = () => {
       />
       <ModalRouteWrapper
         exact
-        path="/last-activities"
+        path="/activities"
         component={LastActivities}
-        condition={authenticated}
+        condition
         style={props}
       />
       <ModalRouteWrapper

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../../api/utils/hooks";
 
-export const MESSAGE_VERSION = 1
+export const MESSAGE_VERSION = 2
 
 
 const LastNewsModal = () => {
@@ -37,7 +37,7 @@ const LastNewsModal = () => {
                     Donc, dans l'esprit du libre, nous l'avons réutilisé en pensant agir 
                     en toute légalité.
                     <br/><br/>
-                    La personne a évidemment émis des menaces tribunal (et j'en passe).
+                    La personne a évidemment émis des menaces de tribunal (et j'en passe).
                     Étant convaincus du bien fondé de notre action, ça ne nous a pas inquiété. Et, si besoin, 
                     on enleverai les points concernés. Cela dit, nous comprenons totalement l'avis professionnel et business de l'entreprise. 
                     <br/><br/>
@@ -52,7 +52,7 @@ const LastNewsModal = () => {
                     Donc, on appuie sur le gros bouton rouge pour supprimer les points concernés et on redémarre avec le peu de points qu'on a chacun ajouté.
                      Mais la carte est jeune de quelques jours seulement donc nous pensons que La Carto'Nomades se contruira rapidement et de façon autonome.
                      <br/><br/>
-                     <b>Nous avons ajouté un petit outil (la cloche) qui permet de voir l'activité de la communauté sur la carte.</b>
+                     <b>Nous avons ajouté un petit outil (la cloche) qui permet de voir l'activité de la communauté sur la carte.</b> Selon vos etours, on verra s'il restera à l'avenir.
                     <br/><br/>
                     <b>Franchement, merci à tous pour vos retours. On passe beaucoup de temps dessus en ce moment et on est contents 
                     de lire vos réactions ;)</b>

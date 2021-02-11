@@ -82,7 +82,7 @@ const ActionButtons = () => {
               style={{ alignSelf: "flex-end" }}
               data-tip={t("bottom_menu.last-activities")}
             >
-              <Link to="/last-activities">
+              <Link to="/activities">
                 <span className="icon is-large">
                     <i className="mdi mdi-bell-ring"></i>
                 </span>

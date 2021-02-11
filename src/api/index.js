@@ -19,4 +19,5 @@ import "./utils/rate-limiter";
 
 if (Meteor.isDevelopment) {
   import "./spots/server/fakeData";
+  import "./activities/server/fakeData";
 }

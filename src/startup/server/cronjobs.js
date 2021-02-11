@@ -1,5 +1,7 @@
+import Activities from "../../api/activities/model";
+
 SyncedCron.config({
-  log: false,
+  log: true,
   collectionName: "cronHistory",
   utc: false,
 });
@@ -39,6 +41,18 @@ SyncedCron.add({
       }
     );
     return userUnMarked;
+  },
+});
+SyncedCron.add({
+  name: "Remove activities after 30",
+  schedule: function (parser) {
+    // parser is a later.parse object
+    return parser.text("every 24 hours");
+  },
+  job: function () {
+    const activitiesToRemove = Activities.find({}, { sort: { createdAt: -1 }, skip: 30 })
+
+    return activitiesToRemove.forEach(({ _id }) => Activities.remove({ _id }));
   },
 });
 SyncedCron.start();
