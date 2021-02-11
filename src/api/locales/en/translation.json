@@ -18,13 +18,23 @@
     "limited_height": "Limited height",
     "small_path": "Narrow passage"
   },
+  "activities":{
+    "places": {
+      "created": "Created a new place",
+      "updated": "Updated the place",
+      "reported": "Reported a mistake on the place",
+      "removed": "Deleted the place",
+      "canceled_reports": "Canceled the reports on the place"
+    }
+  },
   "bottom_menu": {
     "display_list": "List",
     "display_map": "Map",
     "filters": "Filters",
     "refresh": "Refresh",
     "locate_me": "Find me",
-    "offline_mode": "Offline mode"
+    "offline_mode": "Offline mode",
+    "last-activities": "Last activities"
   },
   "buttons": {
     "cancel": "Cancel",
@@ -144,7 +154,8 @@
     "reset_password_title": "New password",
     "mentions_title": "legales mentions",
     "help_title": "A bit of help",
-    "last-news_title": "Last news"
+    "last-news_title": "Last news",
+    "last-activities_title": "Last activities"
   },
   "natural_water": {
     "label": "Natural water point",

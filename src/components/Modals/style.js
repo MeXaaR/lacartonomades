@@ -113,6 +113,20 @@ export const HelpWrapper = styled.section`
 `;
 export const AboutWrapper = styled.section`
   margin-top: 0;
+  .activity {
+    .icon-text {
+      span:not(.icon) {
+        font-size: 0.9rem;
+      }
+      small{
+        font-size: 0.9rem;
+      }
+    }
+  }
+  .media + .media {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
   p,
   ul {
     text-align: justify;

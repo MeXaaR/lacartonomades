@@ -22,6 +22,16 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-end">
+
+
+              
+        <div className="navbar-item">
+          <Link to="/last-activities">
+            <span className="icon is-large">
+                <i className="mdi mdi-bell-ring"></i>
+            </span>
+          </Link>
+        </div>
         <div className="navbar-item">
           <Link to="/help" className="navbar-link is-arrowless">
             <span className="icon">
