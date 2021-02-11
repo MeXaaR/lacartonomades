@@ -53,7 +53,7 @@ const LastActivities = () => {
 
       <ModalFooter className="modal-card-foot">
         <Link to="/" className="is-right">
-          <button className={`button is-success`}>{t("buttons.back")}</button>
+          <button className={`button is-danger`}>{t("buttons.close")}</button>
         </Link>
       </ModalFooter>
     </>

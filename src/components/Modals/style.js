@@ -21,6 +21,14 @@ export const ModalHeader = styled.header`
     font-family: ${FONTS.TITLES};
   }
 `;
+export const ModalFooter = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .is-right {
+    margin-left: auto;
+  }
+`;
 export const ModalBody = styled(animated.div)`
   background-color: #fff;
   min-width: ${({ isMobile }) => (isMobile ? "100%" : "300px")};
@@ -34,13 +42,8 @@ export const ModalBody = styled(animated.div)`
   .links-wrapper {
     text-align: right;
   }
-`;
-export const ModalFooter = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .is-right {
-    margin-left: auto;
+  .modal-card-foot {
+    padding: ${({ isMobile }) => (isMobile ? 10 : 15)}px;
   }
 `;
 
