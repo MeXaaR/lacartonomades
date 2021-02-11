@@ -32,7 +32,7 @@ export const placeGetAround = new ValidatedMethod({
       if (!private && !favorites && !presences) {
         query.category = { $in: categories };
       }
-      if (!private && !favorites && !search && !presences) {
+      if (!private && !favorites && !search && !presences && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
         query.geoJSON = {
           $nearSphere: {
             $geometry: {

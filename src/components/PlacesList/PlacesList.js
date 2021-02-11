@@ -28,7 +28,7 @@ const PlacesList = (props) => {
   ] = useAppContext();
   const { t } = useTranslation();
   const { locating, located, isOnLocation } = useLocating();
-  const { places, loading } = usePlaces({ list: true, search })
+  const { places, loading } = usePlaces({ list: true, search, location })
 
   return (
     <ListWrapper open={menuOpened} isMobile={isMobile}>

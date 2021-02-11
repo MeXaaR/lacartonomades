@@ -1,6 +1,6 @@
 {
   "name": "lacartonomades",
-  "version": "1.0.2-1",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "start": "meteor run --exclude-archs web.browser.legacy --settings settings.json",
@@ -46,6 +46,7 @@
     "react-json-view": "^1.19.1",
     "react-leaflet": "^2.7.0",
     "react-leaflet-geosearch": "^0.3.0",
+    "react-leaflet-markercluster": "^2.0.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",

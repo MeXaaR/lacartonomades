@@ -18,7 +18,7 @@ Meteor.publish("places.category", function ({
   if (!private && !favorites) {
     query.category = { $in: categories };
   }
-  if (!private && !favorites && !search) {
+  if (!private && !favorites && !search && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
     query.geoJSON = {
       $nearSphere: {
         $geometry: {

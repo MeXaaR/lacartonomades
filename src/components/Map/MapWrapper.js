@@ -9,6 +9,8 @@ import MakerCategory from "./MarkerCategory";
 import { useHistory } from "react-router";
 import { useTranslation } from "react-i18next";
 import usePlaces from "./usePlaces";
+import MarkerClusterGroup from "react-leaflet-markercluster";
+import "react-leaflet-markercluster/dist/styles.min.css"
 
 export const DEFAULT_VIEWPORT = {
   center: {
@@ -92,7 +94,7 @@ const MapWrapper = () => {
         attribution={ATTRIBUTION}
         url={MAP_TILES}
       />
-      {!!circleCenter && online && (
+      {!!circleCenter && online && Meteor.settings.public.LIMIT_SEARCH_SURFACE && (
         <Circle
           center={circleCenter}
           color={COLORS.MAIN}
@@ -104,7 +106,14 @@ const MapWrapper = () => {
         />
       )}
       {!isMobile && <ZoomControl position="topright" />}
-      <MakerCategory selected={selected} places={places} />
+      {Meteor.settings.public.LIMIT_SEARCH_SURFACE ? 
+        <MakerCategory selected={selected} places={places} />
+        :
+        <MarkerClusterGroup disableClusteringAtZoom={11}>
+          <MakerCategory selected={selected} places={places} />
+        </MarkerClusterGroup>
+      }
+
       {location && location.lng ? <Marker position={location} icon={GPS_MARKER} /> : null}
     </StyledMap>
   );

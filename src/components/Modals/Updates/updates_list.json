@@ -1,5 +1,14 @@
 [
   {
+    "version": "1.0.3",
+    "date": "2021-02-11",
+    "features": [],
+    "corrections": [
+      "Modification de l'icone SPOTS_NATURE",
+      "Suppression de tous les endroits venant d'une autre base, sauf ceux modifiés"
+    ]
+  },
+  {
     "version": "1.0.2-1",
     "date": "2021-02-08",
     "features": [
