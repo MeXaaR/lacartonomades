@@ -34,7 +34,13 @@
     "refresh": "Refresh",
     "locate_me": "Find me",
     "offline_mode": "Offline mode",
-    "last-activities": "Last activities"
+    "last-activities": "Last activities",
+    "new_place": "Add"
+  },
+  "top_menu": {
+    "last-activities": "Last activities",
+    "new_place": "Add a place",
+    "help": "A bit of help"
   },
   "buttons": {
     "cancel": "Cancel",

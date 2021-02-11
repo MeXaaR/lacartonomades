@@ -34,7 +34,13 @@
     "refresh": "Rafraîchir",
     "locate_me": "Trouve-moi",
     "offline_mode": "Mode Hors-Ligne",
-    "last-activities": "Dernières activités"
+    "last-activities": "Dernières activités",
+    "new_place": "Ajouter"
+  },
+  "top_menu": {
+    "last-activities": "Dernières activités",
+    "new_place": "Ajouter un lieu",
+    "help": "Un peu d'aide"
   },
   "buttons": {
     "cancel": "Annuler",
