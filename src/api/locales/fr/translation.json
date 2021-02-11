@@ -18,13 +18,23 @@
     "limited_height": "Hauteur limitée",
     "small_path": "Passage étroit"
   },
+  "activities":{
+    "places": {
+      "created": "A créé un nouveau lieu",
+      "updated": "A mis à jour le lieu",
+      "reported": "A signalé une erreur sur le lieu ",
+      "removed": "A supprimé le lieu",
+      "canceled_reports": "A annulé les signalements faits sur le lieu"
+    }
+  },
   "bottom_menu": {
     "display_list": "Liste",
     "display_map": "Carte",
     "filters": "Filtres",
     "refresh": "Rafraîchir",
     "locate_me": "Trouve-moi",
-    "offline_mode": "Mode Hors-Ligne"
+    "offline_mode": "Mode Hors-Ligne",
+    "last-activities": "Dernières activités"
   },
   "buttons": {
     "cancel": "Annuler",
@@ -145,7 +155,8 @@
     "reset_password_title": "Nouveau mot de passe",
     "mentions_title": "Mentions Légales",
     "help_title": "Un peu d'aide",
-    "last-news_title": "Un mot de la team"
+    "last-news_title": "Un mot de la team",
+    "last-activities_title": "Dernières activités"
   },
   "natural_water": {
     "label": "Point d'eau naturel",

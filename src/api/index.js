@@ -9,6 +9,9 @@ import "./spots/methods";
 import "./spots/server/methods";
 import "./spots/server/publications";
 
+import "./activities/model";
+import "./activities/server/publications";
+
 import "./migrations/server/index";
 import "./emails/index";
 

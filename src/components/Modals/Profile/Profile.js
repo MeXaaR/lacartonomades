@@ -37,7 +37,6 @@ const Profile = () => {
       msg.info(t("profile.cache_removed"));
     });
   };
-  console.log(emails)
   const isPresentOnPlace = profile.presentInPlace;
   const timeLeftOnPlace = profile.presenceUntil - new Date().valueOf();
   const deleteAccount = () => {
@@ -74,7 +73,6 @@ const Profile = () => {
   const changeEmail = () => {
       setLoading(true)
       Meteor.call("users.methods.changeEmail",{ newEmail }, (e,s) => {
-        console.log(e, s)
         setLoading(false)
         if(e){
           msg.error(e.reason)

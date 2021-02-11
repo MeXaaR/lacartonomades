@@ -1,4 +1,5 @@
 import { ValidatedMethod } from "meteor/mdg:validated-method";
+import { updateActivities } from "../activities/utils";
 
 export const addPlaceToFavorites = new ValidatedMethod({
   name: "users.methods.addFavorites",
@@ -55,6 +56,9 @@ export const chooseNewAvatar = new ValidatedMethod({
   },
   run({ avatar }) {
     try {
+      if(Meteor.isServer){
+        updateActivities({ avatar: `/avatars/${avatar}`, userId: this.userId })
+      }
       return Meteor.users.update(
         {
           _id: this.userId,
