@@ -90,14 +90,7 @@ const BottomMenu = () => {
         : watchId
         ? "mdi-crosshairs-gps"
         : "mdi-crosshairs",
-    },
-    {
-      text: "bottom_menu.new_place",
-      onClick: () => {
-        history.push("/newplace");
-      },
-      icon: "mdi-map-marker-plus",
-    },
+    }
   ];
 
   return (
@@ -105,7 +98,7 @@ const BottomMenu = () => {
       <div className="columns is-multiline is-mobile">
         {actions.map(({ icon, text, onClick }) => (
           <a
-            className="column is-one-fifth is-narrow"
+            className="column is-one-quarter is-narrow"
             key={text}
             onClick={onClick}
           >

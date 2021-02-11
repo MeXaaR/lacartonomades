@@ -41,6 +41,11 @@ const Navbar = () => {
           </Link>
           <Link 
             to="/newplace" 
+            onClick={() => {
+              if(!Meteor.userId()){
+                msg.error(`${t("system.you_need_an_account")}`);
+              }
+            }}
             className="navbar-link is-arrowless"
             data-tip={t("top_menu.new_place")}
           >

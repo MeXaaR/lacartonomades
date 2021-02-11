@@ -120,35 +120,35 @@ const ModalRouteAnimations = () => {
         exact
         path="/newplace"
         component={Newplace}
-        condition
+        condition={authenticated}
         style={props}
       />
       <ModalRouteWrapper
         exact
         path="/map/places/:_id/edit"
         component={Newplace}
-        condition
+        condition={authenticated}
         style={props}
       />
       <ModalRouteWrapper
         exact
         path="/map/places/:_id/signal"
         component={DeletionSteps}
-        condition
+        condition={authenticated}
         style={props}
       />
       <ModalRouteWrapper
         exact
         path="/list/places/:_id/edit"
         component={Newplace}
-        condition
+        condition={authenticated}
         style={props}
       />
       <ModalRouteWrapper
         exact
         path="/list/places/:_id/signal"
         component={DeletionSteps}
-        condition
+        condition={authenticated}
         style={props}
       />
       <ModalRouteWrapper
