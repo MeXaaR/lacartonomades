@@ -1,7 +1,7 @@
 import Activities from "../../api/activities/model";
 
 SyncedCron.config({
-  log: true,
+  log: Meteor.isDevelopment,
   collectionName: "cronHistory",
   utc: false,
 });
