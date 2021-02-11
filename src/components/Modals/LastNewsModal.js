@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useLocalStorage } from "../../api/utils/hooks";
 
-export const MESSAGE_VERSION = 1
+export const MESSAGE_VERSION = 2
 
 
 const LastNewsModal = () => {
@@ -18,54 +18,44 @@ const LastNewsModal = () => {
     <>
       <AboutWrapper className="modal-card-body columns is-multiline is-centered">
         <div className="column is-full">
-                    Le vendredi 5 février
+                    Le Jeudi 11 février
                     <br/>
                     <b>Salut à toi,</b>
                     <br/><br/>
-                    Nous avons pu voir beaucoup de téléchargement pour ce lancement de l'appli.
-                    Les commentaires et retours nous ont fait plaisir également, car nous 
-                    avons beaucoup travaillé pour la réaliser.
+                    La carte compte désormais plus de 250 utilisateurs connectés et nous ignorons combien de non connectés.
+                    Merci à tous, on a eu de bon retours et des critiques constructives :)
                     <br/><br/>
-                    En revanche, nous avons eu une grosse réflexion après certains retours. Notre
-                    application ne va-t-elle pas contribuer à un afflux de gens irrespectueux en 
-                    pleine nature? C'est tout à fait possible, il y a même de fortes chances.
+                    <b>Mais il s'est passé un truc entre temps</b>
                     <br/><br/>
-                    <b>Nous avons donc décidé de retirer l'application des stores d'Apple et de Google.</b>
+                    La carte a été 2 jours sur les stores Apple et Google et 
+                    cela a suffit à Park4Night pour nous appeler. 
+                    Il est clair que nous avons modifié et utilisé des données GPS 
+                    (uniquement) ouvertement accessibles depuis leur site.
                     <br/><br/>
-                    Notre but étant ainsi de pouvoir partager ce savoir et donc cette application avec
-                    le "bouche-à-oreille" principalement. Elle sera toujours téléchargeable mais par un biais alternatif
-                    et donc pas référencée sur internet. Le site en lui-mếme est non référençable. Nous voulons
-                    aider la communauté et, comme vos retours nous l'ont appris, nous avons également la 
-                    responsabilité de l'impact d'une nouvelle appli. Surtout que si elle est vraiment fonctionnelle, 
-                    elle va vite attirer trop de monde.
+                    Nous n'avons pas pensé à mal, on s'est juste dit que c'était du travail 
+                    collaboratif qui était entouré de pubs avec des fonctionnalités payantes. 
+                    Donc, dans l'esprit du libre, nous l'avons réutilisé en pensant agir 
+                    en toute légalité.
                     <br/><br/>
-                    <b>Qu'est-ce que ça change pour toi ?</b><br/>
-                    En gros, tu l'as téléchargé donc pas grand chose. Les mises à jour se feront toutes seules 
-                    quand même grâce à la technologie qu'on utilise.<br/>
+                    La personne a évidemment émis des menaces de tribunal (et j'en passe).
+                    Étant convaincus du bien fondé de notre action, ça ne nous a pas inquiété. Et, si besoin, 
+                    on enleverai les points concernés. Cela dit, nous comprenons totalement l'avis professionnel et business de l'entreprise. 
                     <br/><br/>
-                    <b>Comment partager cette application alors ?</b><br/>
-                    Si tu vois quelqu'un qui vit comme nous ou un réseau de nomades, en tout cas, des gens qui, tu le sais, 
-                    sauront respecter les endroits naturellement préservés et que tu aimerais voir dans notre communauté.
-                    Dans ce cas, le site existe toujours sur <a href="https://lacartonomades.fr">https://lacartonomades.fr</a>,
-                    et dans la page "à propos", tu trouveras le lien vers <b>l'application Android qu'on héberge ailleurs</b>.
-                    <br /><br />
-                    Tu peux aussi directement partager ce lien ou même le fichier.
-                    L'application en elle-même pèse aussi lourd qu'une bonne photo.
-                    Sur Telegram (lien sur la page a propos), nous avertirons toujours quand une version importante sort.
+                    Et, encore une fois, nous sommes persuadés que les <b>2 applications n'ont qu'une chose en commun</b>: les endroits où dormir.
+                    Le type d'utilisateur, la communauté, les types de lieux, de ravitaillement et le modèle de fonctionnement n'ont rien à voir.
                     <br/><br/>
-                    <b>Et pour les gens qui ont un iPhone ?</b><br/>
-                    Nous avons fait un choix. Un choix drastique certes, mais nous pensons que c'est la meilleure chose à faire. 
-                    En gros, il est impossible pour les iPhone d'installer une application externe à l'AppStore.
-                    Le site internet restera fonctionnel complètement et je m'efforcerai de l'améliorer au maximum pour
-                    qu'il fonctionne parfaitement et que le ressenti soit comme sur une application, je vais améliorer ça dans les prochains jours. 
-                    N'étant pas super fort sur les technologies Apple :/ si vous voyez des bugs, je vous invite à nous les transmettre sur Telegram
-                    et je les corrigerai au plus vite.
+                    Mais voilà, ça nous a fait réfléchir, et on s'est dit que les points étant disponibles sur 
+                    leur application, libre à nous tous de les rajouter manuellement, petit à petit, chacun 
+                    de notre coté, quand on tombe sur un endroit qui nous plaît. Et cela nous rend une certaine 
+                    tranquilité d'esprit quant à la légalité ou la morale.
                     <br/><br/>
-                    Voilà, ça fera plaisir à certains, grincer des dents d'autres, mais nous espérons que vous comprendrez. 
-                    N'hésitez pas à nous faire part de ce que vous pensez, nous sommes ouverts.
+                    Donc, on appuie sur le gros bouton rouge pour supprimer les points concernés et on redémarre avec le peu de points qu'on a chacun ajouté.
+                     Mais la carte est jeune de quelques jours seulement donc nous pensons que La Carto'Nomades se contruira rapidement et de façon autonome.
+                     <br/><br/>
+                     <b>Nous avons ajouté un petit outil (la cloche) qui permet de voir l'activité de la communauté sur la carte.</b> Selon vos etours, on verra s'il restera à l'avenir.
                     <br/><br/>
-                    Nous sommes persuadés que cet outil nous servira, mais il doit être correctement utilisé. 
-                    Comme le disait l'oncle de Spider-Man, un grand pouvoir entraîne de grandes responsabilités... Ok, je m'arrête là :)
+                    <b>Franchement, merci à tous pour vos retours. On passe beaucoup de temps dessus en ce moment et on est contents 
+                    de lire vos réactions ;)</b>
                     <br/><br/>
                     À bientôt sur la route
                     <br/><br/>

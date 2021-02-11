@@ -1,4 +1,5 @@
 import { ValidatedMethod } from "meteor/mdg:validated-method";
+import { updateActivities } from "../../activities/utils";
 import Places from "../../spots/model";
 
 export const removeAccount = new ValidatedMethod({
@@ -48,7 +49,9 @@ export const changeUserName = new ValidatedMethod({
   run({ newUsername }) {
     try {
       console.log(`User account modified: ${this.userId} - ${newUsername}`);
-      return Accounts.setUsername(this.userId, newUsername)
+      const success = Accounts.setUsername(this.userId, newUsername)
+      updateActivities({ username: newUsername, userId: this.userId })
+      return success
     } catch (error) {
       throw new Meteor.Error(error.code, error.reason);
     }

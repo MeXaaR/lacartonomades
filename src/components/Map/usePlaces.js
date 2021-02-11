@@ -6,7 +6,7 @@ import { SPECIAL_CATEGORIES } from "../../settings/categories";
 import { DEFAULT_VIEWPORT } from "./MapWrapper";
 const { FAVORITES, PRIVATES, PRESENCES } = SPECIAL_CATEGORIES;
 
-const usePlaces = ({ list = false, search }) => {
+const usePlaces = ({ list = false, search, location }) => {
 
     const [
         {
@@ -28,7 +28,7 @@ const usePlaces = ({ list = false, search }) => {
     useEffect(() => {
         if (!loading && viewport.center && viewport.center.lng && online) {
           setLoading(true);
-          const searchCenter = [viewport.center.lng, viewport.center.lat]
+          const searchCenter = list && location ? [location.lng, location.lat] : [viewport.center.lng, viewport.center.lat]
           Meteor.call(
             "places.methods.get_around",
             {
@@ -102,7 +102,7 @@ const usePlaces = ({ list = false, search }) => {
                 getStored();
               }
         }
-      }, [filters, selected, refresh, online, search]);
+      }, [filters, selected, refresh, online, search, location]);
 
       return {
           places: !online && storedPlaces ? storedPlaces : placesMongo,

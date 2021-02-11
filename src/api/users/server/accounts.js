@@ -2,7 +2,7 @@ import { ROLES_ENUMS } from "../roles";
 
 const emails = ["francois@aubeut.com", "contact@marie-aure.com"];
 
-Accounts.onCreateUser(({ email }, user) => {
+Accounts.onCreateUser(({ email, username }, user) => {
   user.profile = {
     favorites: [],
     avatar: null,

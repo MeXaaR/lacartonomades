@@ -4,6 +4,7 @@ import axios from "axios";
 import FormData from "form-data";
 import { ROLES_ENUMS } from "/src/api/users/roles";
 import allCategories from "../../settings/categories";
+import { ACTIVITIES_TYPES, addActivities } from "../activities/utils";
 
 const uploadPic = async (picture) => {
   var bodyData = new FormData();
@@ -39,6 +40,14 @@ export const createNewPlace = new ValidatedMethod({
       const objectId = Places.insert(newPlace);
 
       console.log(`Place created: ${objectId}`);
+      if(!newPlace.private){
+        addActivities({ 
+          type: ACTIVITIES_TYPES.PLACE_CREATED,
+          objectId,
+          userId: this.userId,
+          name: newPlace.name
+        })
+      }
       return Places.findOne({ _id: objectId });
     } catch (error) {
       throw new Meteor.Error(error.code, error.reason);
@@ -57,7 +66,8 @@ export const updatePlace = new ValidatedMethod({
         throw new Meteor.Error("405", "you_need_an_account");
       }
       const placeDB = Places.findOne({ _id });
-      if (placeDB.private && placeDB.createdBy !== this.userId) {
+      const isOnlyOwner = !!placeDB && allCategories.find((cat) => placeDB.category.find(c => c === cat.name) && cat.onlyOwner)
+      if (!!placeDB && (placeDB.private || isOnlyOwner) && placeDB.createdBy !== this.userId) {
         throw new Meteor.Error("405", "this_is_not_your_private_place");
       }
       if (newPlace.picture && Meteor.isServer) {
@@ -66,6 +76,14 @@ export const updatePlace = new ValidatedMethod({
       }
       Places.update({ _id }, { $set: newPlace });
       console.log(`Place updated: ${_id}`);
+      if(!newPlace.private){
+        addActivities({ 
+          type: ACTIVITIES_TYPES.PLACE_UPDATED,
+          objectId: _id,
+          userId: this.userId,
+          name: newPlace.name
+        })
+      }
       return Places.findOne({ _id });
     } catch (error) {
       console.log(error);
@@ -86,8 +104,17 @@ export const removePlaceForFounders = new ValidatedMethod({
         throw new Meteor.Error("405", "you_cannot_do_that");
       }
       console.log(`Place removed: ${_id}`);
+      const place = Places.findOne({ _id })
       const success =  Places.remove({ _id });
 
+      if(!place.private){
+        addActivities({ 
+          type: ACTIVITIES_TYPES.PLACE_REMOVED,
+          objectId: _id,
+          userId: this.userId,
+          name: place.name
+        })
+      }
       Meteor.users.update(
         {},
         {
@@ -130,6 +157,14 @@ export const removePlacesWithSteps = new ValidatedMethod({
         (place.delete_steps && place.delete_steps.length == steps_needed - 1)
       ) {
         Places.remove({ _id });
+        if(!place.private){
+          addActivities({ 
+            type: ACTIVITIES_TYPES.PLACE_REMOVED,
+            objectId: _id,
+            userId: this.userId,
+            name: place.name
+          })
+        }
         Meteor.users.update(
           {},
           {
@@ -143,6 +178,12 @@ export const removePlacesWithSteps = new ValidatedMethod({
         return "deleted";
       } else {
         console.log(`Place signaled: ${_id}`);
+        addActivities({ 
+          type: ACTIVITIES_TYPES.PLACE_REPORTED,
+          objectId: _id,
+          userId: this.userId,
+          name: place.name
+        })
         return Places.update(
           { _id },
           { $addToSet: { delete_steps: this.userId } }
@@ -166,7 +207,14 @@ export const cancelPlaceSignals = new ValidatedMethod({
         throw new Meteor.Error("405", "you_need_an_account");
       }
       console.log(`Place signaled canceled: ${_id}`);
-      return Places.update({ _id }, { $unset: { delete_steps: 1 } });
+      const success = Places.update({ _id }, { $unset: { delete_steps: 1 } });
+      addActivities({ 
+        type: ACTIVITIES_TYPES.PLACE_CANCELED_REPORTS,
+        objectId: _id,
+        userId: this.userId,
+        name: Places.findOne({ _id }).name
+      })
+      return success
     } catch (error) {
       throw new Meteor.Error(error.code, error.reason);
     }

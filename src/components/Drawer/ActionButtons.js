@@ -77,6 +77,17 @@ const ActionButtons = () => {
                 <i className={`mdi mdi-wifi${online ? "" : "-off"}`}></i>
               </span>
             </RoundedButton>
+            <RoundedButton
+              className={`${buttonClasses} white`}
+              style={{ alignSelf: "flex-end" }}
+              data-tip={t("bottom_menu.last-activities")}
+            >
+              <Link to="/activities">
+                <span className="icon is-large">
+                    <i className="mdi mdi-bell-ring"></i>
+                </span>
+              </Link>
+            </RoundedButton>
           </>
         ) : (
           <>

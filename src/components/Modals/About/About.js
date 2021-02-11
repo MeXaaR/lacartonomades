@@ -22,13 +22,6 @@ const gogocarto = [
   },
 ];
 
-const apps = [
-  {
-    name: "myserver",
-    pic: "/images/myserver.png",
-  },
-];
-
 const Languages = {
   en: EnAbout,
   fr: FrAbout
@@ -74,7 +67,7 @@ const About = ({ history }) => {
         {showLanguage && 
           <LanguagePicker />
         }
-        <LanguageComponent gogocarto={gogocarto} apps={apps} openBrowser={openBrowser} share={share} />
+        <LanguageComponent gogocarto={gogocarto} openBrowser={openBrowser} share={share} />
       </AboutWrapper>
 
       <ModalFooter className="modal-card-foot">

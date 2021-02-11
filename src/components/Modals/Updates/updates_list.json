@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.0.3",
+    "date": "2021-02-11",
+    "features": [
+      "Outil d'activités pour voir les dernières modifs de la carte",
+      "Seuls les propriétaires des terrains peuvent modifier la fiche"
+    ],
+    "corrections": [
+      "Modification de l'icone SPOTS_NATURE",
+      "Suppression de tous les endroits venant d'une autre base, sauf ceux modifiés",
+      "iOS: 'Y aller' ouvre désormais la carte même depuis un navigateur"
+    ]
+  },
+  {
     "version": "1.0.2-1",
     "date": "2021-02-08",
     "features": [

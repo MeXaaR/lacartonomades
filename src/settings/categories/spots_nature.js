@@ -7,7 +7,7 @@ const spots_natures = {
   order: 0,
   color: "#00964c",
   color_text: "#fff",
-  icon: "mdi-paw",
+  icon: "mdi-leaf",
   fields: [access, size, natural_water, internet, pollution],
   comments: true,
   delete_steps: 3,

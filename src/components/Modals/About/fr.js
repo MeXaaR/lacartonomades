@@ -1,7 +1,7 @@
 import React from 'react'
 import Divider from "/src/components/system/Divider";
 
-const FrAbout = ({ gogocarto, apps, openBrowser, share }) => (
+const FrAbout = ({ gogocarto, openBrowser, share }) => (
     <>
         <div className="column is-full">
             <h3 className="title is-5">Une carte pour tous les nomades</h3>            
@@ -52,26 +52,23 @@ const FrAbout = ({ gogocarto, apps, openBrowser, share }) => (
                 l’ajouter avec une description et ses coordonnées. 
             </p>
             <p>
-            La Carto’Nomades, c’est aussi une manière de se rencontrer entre nomades. <br />
-            Il t’est possible d’indiquer ta présence sur un lieu en consultant sa fiche. 
-            Nous pensons que cet outil peut améliorer l’aspect communautaire de la vie nomade. 
-            Merci, encore une fois, à chacun de respecter les uns et les autres.
+                La Carto’Nomades, c’est aussi une manière de se rencontrer entre nomades. <br />
+                Il t’est possible d’indiquer ta présence sur un lieu en consultant sa fiche. 
+                Nous pensons que cet outil peut améliorer l’aspect communautaire de la vie nomade. 
+                Merci, encore une fois, à chacun de respecter les uns et les autres.
             </p>
             <Divider />
-            <h3 className="title is-5">Les lieux à compléter</h3>
             <p>
-                Tous les lieux avec des données "À préciser" sont des points GPS qui
-                ont été extrait depuis un site internet par{" "}
-                <b>un moyen parfaitement légal</b>. Nous n'avons collectés que les
-                coordonnées GPS qui sont un savoir commun, c'est pour cela que les
-                autres infos devront être renseignées par nous tous, ensemble.
+                Nous avons supprimé tous les lieux que nous aurions extrait 
+                d'un autre site (Park4Night ou autre) mais libre à vous de 
+                les rajouter quand vous le souhaitez ;)
             </p>
             <p>
-                Nous justifions cette action de manière simple. Nous pensons, en
-                tant que nomades, que ces informations doivent être facilement
-                accessibles à tous <b>gratuitement</b> et <b>sans publicité</b>.
-                Notre but n'est pas de gagner de l'argent mais de partager le
-                maximum d'infos de manière à rendre notre vie à tous plus simple.
+                Nous pensons, en tant que nomades, que ces informations doivent 
+                être facilement accessibles à tous <b>gratuitement</b> et  
+                <b> sans publicité</b>. Notre but n'est pas de gagner de l'argent 
+                mais de partager le maximum d'infos de manière à rendre notre 
+                vie à tous plus simple.
             </p>
             <p>
                 Alors que les abonnements et les publicités ont envahi nos vies,
@@ -133,25 +130,21 @@ const FrAbout = ({ gogocarto, apps, openBrowser, share }) => (
             </div>
 
             {!Meteor.isCordova ?
-            apps.map(({ pic, name }) => (
-                <div key={name} className="column is-one-third">
-                <a href={Meteor.settings.public.APPS[name]} target="_blank">
-                    <figure className={`${name} image`}>
-                    <img src={pic} alt={name} />
+                <div className="column is-half">
+                <a href={Meteor.settings.public.APPS.myserver} target="_blank">
+                    <figure className={`myserver image`}>
+                    <img src="/images/myserver.png" alt="myserver" />
                     </figure>
                 </a>
                 </div>
-            ))
             :
-            apps.map(({ pic, name }) => (
-                <div key={name} className="column is-one-third">
-                <a onClick={() => share(Meteor.settings.public.APPS[name], "en")}>
-                    <figure className={`${name} image`}>
-                    <img src={pic} alt={name} />
-                    </figure>
-                </a>
+                <div  className="column is-half">
+                    <a onClick={() => share(Meteor.settings.public.APPS.myserver, "fr")}>
+                        <figure className={`myserver image`}>
+                        <img src="/images/myserver.png" alt="myserver" />
+                        </figure>
+                    </a>
                 </div>
-            ))
             }
             <div className="column is-full">
             <Divider />

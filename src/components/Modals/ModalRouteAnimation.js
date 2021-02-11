@@ -18,6 +18,7 @@ import DeletionSteps from "./Places/DeletionStep";
 import ResetPassword from "./Account/ResetPassword";
 import Mentions from "./Mentions";
 import LastNewsModal from "./LastNewsModal";
+import LastActivities from "./LastActivities";
 
 const ModalRouteAnimations = () => {
   const location = useLocation();
@@ -84,6 +85,13 @@ const ModalRouteAnimations = () => {
         path="/login"
         component={Login}
         condition={!authenticated}
+        style={props}
+      />
+      <ModalRouteWrapper
+        exact
+        path="/activities"
+        component={LastActivities}
+        condition
         style={props}
       />
       <ModalRouteWrapper
