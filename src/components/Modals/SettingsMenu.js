@@ -102,11 +102,11 @@ const SettingsMenu = ({ history }) => {
       className: "is-info",
       condition: Meteor.isCordova,
     },
-    {
-      text: "menu.last-news",
-      link: "/last-news",
-      condition: true,
-    },
+    // {
+    //   text: "menu.last-news",
+    //   link: "/last-news",
+    //   condition: true,
+    // },
     {
       text: "menu.mentions",
       link: "/mentions",
