@@ -80,6 +80,16 @@ const SettingsMenu = ({ history }) => {
       link: "/help",
       className: "",
       condition: true,
+    },  
+    {
+      text: "menu.share",
+      action: share,
+      link: null,
+      className: "is-info",
+      condition: Meteor.isCordova,
+    },
+    {
+      content: <Divider key="divider" />,
     },
     {
       text: "menu.updates",
@@ -92,21 +102,6 @@ const SettingsMenu = ({ history }) => {
       ),
       condition: true,
     },
-    {
-      content: <Divider key="divider" />,
-    },
-    {
-      text: "menu.share",
-      action: share,
-      link: null,
-      className: "is-info",
-      condition: Meteor.isCordova,
-    },
-    // {
-    //   text: "menu.last-news",
-    //   link: "/last-news",
-    //   condition: true,
-    // },
     {
       text: "menu.mentions",
       link: "/mentions",
