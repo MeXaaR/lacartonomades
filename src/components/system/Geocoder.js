@@ -129,6 +129,11 @@ const Geocoder = ({ onChange, label, coordinates, address, ...props }) => {
             {...props}
             onChange={handleUpdate}
             autoComplete="false"
+            onBlur={() => {
+              setTimeout(() => {
+                setChoices([])
+              }, 500);
+            }}
             value={address}
           />
         </div>
