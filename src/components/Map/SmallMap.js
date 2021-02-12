@@ -62,26 +62,15 @@ const SmallMap = ({ position, onChange, getAddress, noUpdate }) => {
     }
   }, [position]);
 
-  useEffect(() => {
-    if (getAddress) {
-      findAddressFromLocation(position, (address) =>
-        onChange({
-          address,
-        })
-      );
-    }
-  }, [getAddress]);
 
   const updatePosition = () => {
     const marker = refmarker.current;
     if (marker != null) {
       const coordinates = Object.values(marker.leafletElement.getLatLng());
-      onChange({
-        coordinates,
-      });
       findAddressFromLocation(coordinates, (address) =>
         onChange({
           address,
+          coordinates,
         })
       );
     }

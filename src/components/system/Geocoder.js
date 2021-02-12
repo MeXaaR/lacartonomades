@@ -3,6 +3,7 @@ import { useMapContext } from "../../context/mapContext";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import styled from "styled-components";
 import findAddressFromLocation from "../../api/utils/findAddressFromLocation";
+import { useToggle } from "../../api/utils/hooks";
 const provider = new OpenStreetMapProvider({
   params: {
     email: "contact@mexar.fr", // auth for large number of requests
@@ -44,14 +45,23 @@ const ChoicesWrapper = styled.div`
     margin-right: 8px;
   }
 `;
-
+let timer
 const Geocoder = ({ onChange, label, coordinates, address, ...props }) => {
   const [{ location, loading, locateMe }, dispatch] = useMapContext();
   const [choices, setChoices] = useState([]);
+  const [searching, setSearching] = useState(false)
   const [value, setValue] = useState("");
   const handleUpdate = ({ target }) => {
     setValue(target.value);
     onChange({ address: target.value });
+    if(timer){
+      clearTimeout(timer)
+    }
+    if(target.value){
+      timer = setTimeout(() => {
+        onSubmitSearch(target.value)
+      }, 1000)
+    }
   };
   const handleLocateMe = () => {
     dispatch({ type: "map.locateMe" });
@@ -82,15 +92,18 @@ const Geocoder = ({ onChange, label, coordinates, address, ...props }) => {
         dispatch({ type: "map.location", data: [] });
         msg.error(error.reason);
       },
-      { timeout: 30000, enableHighAccuracy: true }
+      { timeout: 5000, enableHighAccuracy: true }
     );
   };
-  const onSubmitSearch = async () => {
+  const onSubmitSearch = async (query) => {
+    setSearching(true)
     try {
-      const results = await provider.search({ query: value });
+      const results = await provider.search({ query: query ? query : value });
       setChoices(results);
+      setSearching(false)
     } catch (error) {
       setChoices([]);
+      setSearching(false)
     }
   };
 
@@ -109,18 +122,7 @@ const Geocoder = ({ onChange, label, coordinates, address, ...props }) => {
         style={{ position: "relative" }}
         onSubmit={onSubmitSearch}
       >
-        <div className="control">
-          <a
-            className={`button ${loading ? "is-loading" : ""}`}
-            onClick={onSubmitSearch}
-          >
-            {!loading && (
-              <span className="icon is-small">
-                <i className="mdi mdi-magnify"></i>
-              </span>
-            )}
-          </a>
-        </div>
+
         <div className={`control ${loading ? "is-loading" : ""} is-expanded`}>
           <input
             className="input"
@@ -132,7 +134,19 @@ const Geocoder = ({ onChange, label, coordinates, address, ...props }) => {
         </div>
         <div className="control">
           <a
-            className={`button ${loading ? "is-loading" : ""}`}
+            className={`button is-success ${searching ? "is-loading" : ""}`}
+            onClick={onSubmitSearch}
+          >
+            {!searching && (
+              <span className="icon is-small">
+                <i className="mdi mdi-magnify"></i>
+              </span>
+            )}
+          </a>
+        </div>
+        <div className="control">
+          <a
+            className={`button is-info ${loading ? "is-loading" : ""}`}
             onClick={handleLocateMe}
           >
             {!loading && (

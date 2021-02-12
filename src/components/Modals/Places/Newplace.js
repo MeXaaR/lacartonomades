@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useToggle } from "/src/api/utils/hooks";
-import { ModalFooter, NewPlaceForm } from "../style";
+import { ModalFooter, NewPlaceForm, Field } from "../style";
 import { useTranslation } from "react-i18next";
 import allCategories from "/src/settings/categories";
 import Input from "/src/components/system/Input";
@@ -11,10 +11,10 @@ import Divider from "/src/components/system/Divider";
 import Checkboxes from "/src/components/system/Checkboxes";
 import Radios from "/src/components/system/Radios";
 import Select from "/src/components/system/Select";
+import Checkbox from "/src/components/system/Checkbox";
 import { Link, useHistory } from "react-router-dom";
 import { forbidden_gathering } from "../../../settings/categories";
 import { useAppContext } from "../../../context/appContext";
-import Checkbox from "../../system/Checkbox";
 import ImageReduce from "image-blob-reduce";
 import Pica from "pica";
 import Places from "../../../api/spots/model";
@@ -23,6 +23,7 @@ const pica = Pica({ features: ["js", "wasm", "cib"] });
 const PICTURES_FORMAT = ["png", "jpg", "jpeg"];
 const PICTURE_SIZE = 800000;
 const reducer = new ImageReduce({ pica });
+
 
 const initialState = {
   latitude: 47.010225655683485,
@@ -37,6 +38,7 @@ const Newplace = ({
 }) => {
   const [state, setState] = useState({ ...initialState });
   const [loading, toggleLoading] = useToggle(false);
+  const [editmap, toggleEditMap] = useToggle(false);
   const [isValid, toggleValid] = useState(null);
   const [{ user, online }] = useAppContext();
   const { t } = useTranslation();
@@ -167,8 +169,8 @@ const Newplace = ({
       ...state,
       address,
       name: state.name && state.name !== state.address ? state.name : address,
-      latitude: coordinates && !_id ? coordinates[0] : state.latitude,
-      longitude: coordinates && !_id ? coordinates[1] : state.longitude,
+      latitude: coordinates ? coordinates[0] : state.latitude,
+      longitude: coordinates ? coordinates[1] : state.longitude,
     }));
   };
 
@@ -201,7 +203,7 @@ const Newplace = ({
 
   useEffect(() => {
     const { description, category, name, address, latitude } = state;
-    if (description && !!category[0] && name && address && latitude) {
+    if (!!category[0] && name && address && latitude) {
       toggleValid(true);
     } else {
       toggleValid(false);
@@ -291,14 +293,24 @@ const Newplace = ({
             address={state.address}
             onChange={handleChangeAdress}
           />
+          {!!_id && 
+              <Field>
+                <Checkbox
+                  checked={!editmap}
+                  onChange={toggleEditMap}
+                />
+                <div className="name" onClick={toggleEditMap}>
+                {t("place_form.locked_map")}
+                </div>
+              </Field>
+          }
           <div className="map-cover-wrapper">
-            {!!_id && <div className="map-cover" />}
+          {!!_id && !editmap && <div className="map-cover" />}
             <SmallMap
               position={[state.latitude, state.longitude]}
               onChange={handleChangeAdress}
-              getAddress={_id && state.address === "A préciser"}
-              noUpdate={_id}
             />
+            
           </div>
           {!!state.category &&
             !!state.category.length &&

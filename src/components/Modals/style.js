@@ -74,7 +74,7 @@ export const NewPlaceForm = styled.div`
     position: relative;
     .map-cover {
       width: 100%;
-      background: transparent;
+      background: rgba(255,255,255, 0.4);
       position: absolute;
       height: 300px;
       top: 0;
@@ -185,5 +185,16 @@ export const DeletionStepsWrapper = styled.section`
   }
   .is-one-quarter-mobile {
     text-align: center;
+  }
+`;
+export const Field = styled.div`
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  width: 100%;
+  margin: 8px 0px;
+  .name {
+    width: 100%;
+    font-weight: ${({ small }) => (small ? "normal" : "bold")};
   }
 `;

@@ -228,6 +228,7 @@
   },
   "place_form": {
     "add_a_category": "Ajouter une catégorie",
+    "locked_map": "Carte verrouillée",
     "categories_and_details": "Détails pour",
     "choose_a_category": "Choisis une catégorie",
     "create_a_private_place": "Créer un endroit privé (uniquement pour toi).",

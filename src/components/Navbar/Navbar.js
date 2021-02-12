@@ -25,11 +25,8 @@ const Navbar = () => {
           />
         </Link>
       </div>
-      <div className="navbar-end">
-
-
-              
-        <div className="navbar-item">
+      <div className="navbar-end" style={{ display: "flex" }}>
+        <div className="navbar-item" style={{ display: "flex" }}>
           <Link 
             to="/activities" 
             className="navbar-link is-arrowless"

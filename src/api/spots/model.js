@@ -46,11 +46,9 @@ export const PlacesSchemaBase = {
   },
   latitude: {
     type: Number,
-    autoValue: dontUpdate,
   },
   longitude: {
     type: Number,
-    autoValue: dontUpdate,
   },
   geoJSON: {
     type: GeoJSON,

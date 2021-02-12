@@ -227,6 +227,7 @@
   },
   "place_form": {
     "add_a_category": "Add a category",
+    "locked_map": "Locked map",
     "categories_and_details": "Details for",
     "choose_a_category": "Choose a category",
     "create_a_private_place": "Create as a private place (only for you)",
