@@ -26,7 +26,7 @@ import { useQuery } from "../../api/utils/hooks";
 import SignalIcon from "./SignalIcons";
 import PresencesOfNomads from "./PresencesOfNomads";
 
-const DrawerMobile = ({ match, location: { state } }) => {
+const DrawerMobile = ({ match, location: { state = {} } }) => {
   const [{ online }] = useAppContext();
   const [{ location }, updateMap] = useMapContext();
   const [place, setPlace] = useState({});
@@ -56,7 +56,6 @@ const DrawerMobile = ({ match, location: { state } }) => {
     } 
     if(state && state.fromBrowserLink){
       setTimeout(() => {
-        
         updateMap({
           type: "map.refresh",
           data: true,
@@ -79,6 +78,11 @@ const DrawerMobile = ({ match, location: { state } }) => {
         data: dataViewport,
       });
       setloaded(true);
+      if(zoom || state.refresh){
+        setTimeout(() => {
+          updateMap({ type: "map.refresh", data: true });
+        }, 1000);
+      }
     }
   }, [place]);
 
@@ -92,7 +96,9 @@ const DrawerMobile = ({ match, location: { state } }) => {
       data: dataViewport,
     });
     setFullOpened(false);
-    updateMap({ type: "map.refresh", data: true });
+    setTimeout(() => {
+      updateMap({ type: "map.refresh", data: true });
+    }, 1000);
   };
 
   if (!place._id || !place.category) {

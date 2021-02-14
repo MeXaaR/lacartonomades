@@ -75,13 +75,11 @@ const DrawerDesktop = ({ match, location: { state } }) => {
         type: "map.viewport",
         data: dataViewport,
       });
-      if(zoom){
+      if(zoom || state.refresh){
         setTimeout(() => {
           updateMap({ type: "map.refresh", data: true });
         }, 1000);
       }
-
-
       setloaded(true);
     }
   }, [place]);

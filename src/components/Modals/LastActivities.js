@@ -38,7 +38,12 @@ const LastActivities = () => {
                           </span>
                           <span>{t(`activities.${a.type}`)} <b>{a.name}</b></span>
                       </div>
-                      <small>{moment(a.createdAt).locale(i18n.language).fromNow()}{a.type !== ACTIVITIES_TYPES.PLACE_REMOVED && <> · <Link to={`/map/places/${a.objectId}?center=true&zoom=10`}>
+                      <small>{moment(a.createdAt).locale(i18n.language).fromNow()}{a.type !== ACTIVITIES_TYPES.PLACE_REMOVED && <> · <Link 
+                      to={{
+                        pathname: `/map/places/${a.objectId}`,
+                        search: "?center=true&zoom=10",
+                        state: { refresh: true }
+                      }}>
                               {t(`profile.lets_go_check`)}
                             </Link> </>}
                       </small>
