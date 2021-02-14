@@ -1,3 +1,4 @@
+import moment from "moment"
 import Activities from "./model"
 
 export const ACTIVITIES_TYPES = {
@@ -22,9 +23,16 @@ export const ACTIVITIES_COLORS = {
     [ACTIVITIES_TYPES.PLACE_CANCELED_REPORTS]: "has-text-success",
 }
 export const addActivities = ({ type, objectId, userId, name }) => {
-    Activities.insert({
-        type, objectId, createdBy: userId, name
+    const date = new Date()
+    const isThereAlreadyOne = Activities.findOne({ 
+        type, objectId, createdBy: userId, name,
+        createdAt: { $gt: new Date(date.setHours(date.getHours() - 1))}
     })
+    if(!isThereAlreadyOne){
+        Activities.insert({
+            type, objectId, createdBy: userId, name
+        })
+    }
 }
 export const updateActivities = ({ username, avatar, userId }) => {
     const query = {
@@ -36,4 +44,7 @@ export const updateActivities = ({ username, avatar, userId }) => {
         query.createdByAvatar = avatar
     }
     Activities.update({ createdBy: userId }, { $set: query }, { multi: true })
+}
+export const removeObjectActivities = ({ objectId }) => {
+    Activities.remove({ objectId })
 }

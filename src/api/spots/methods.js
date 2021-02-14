@@ -4,7 +4,7 @@ import axios from "axios";
 import FormData from "form-data";
 import { ROLES_ENUMS } from "/src/api/users/roles";
 import allCategories from "../../settings/categories";
-import { ACTIVITIES_TYPES, addActivities } from "../activities/utils";
+import { ACTIVITIES_TYPES, addActivities, removeObjectActivities } from "../activities/utils";
 
 const uploadPic = async (picture) => {
   var bodyData = new FormData();
@@ -67,7 +67,7 @@ export const updatePlace = new ValidatedMethod({
       }
       const placeDB = Places.findOne({ _id });
       const isOnlyOwner = !!placeDB && allCategories.find((cat) => placeDB.category.find(c => c === cat.name) && cat.onlyOwner)
-      if (!!placeDB && (placeDB.private || isOnlyOwner) && placeDB.createdBy !== this.userId) {
+      if (!!placeDB && (placeDB.private || (isOnlyOwner && !Roles.userIsInRole(this.userId, ROLES_ENUMS.FOUNDERS))) && placeDB.createdBy !== this.userId) {
         throw new Meteor.Error("405", "this_is_not_your_private_place");
       }
       if (newPlace.picture && Meteor.isServer) {
@@ -76,7 +76,10 @@ export const updatePlace = new ValidatedMethod({
       }
       Places.update({ _id }, { $set: newPlace });
       console.log(`Place updated: ${_id}`);
-      if(!newPlace.private){
+      if(
+        (!newPlace.private && !isOnlyOwner) || 
+        (isOnlyOwner && placeDB.createdBy === this.userId)
+        ){
         addActivities({ 
           type: ACTIVITIES_TYPES.PLACE_UPDATED,
           objectId: _id,
@@ -104,17 +107,9 @@ export const removePlaceForFounders = new ValidatedMethod({
         throw new Meteor.Error("405", "you_cannot_do_that");
       }
       console.log(`Place removed: ${_id}`);
-      const place = Places.findOne({ _id })
       const success =  Places.remove({ _id });
+      removeObjectActivities({ objectId: _id })
 
-      if(!place.private){
-        addActivities({ 
-          type: ACTIVITIES_TYPES.PLACE_REMOVED,
-          objectId: _id,
-          userId: this.userId,
-          name: place.name
-        })
-      }
       Meteor.users.update(
         {},
         {
@@ -158,6 +153,7 @@ export const removePlacesWithSteps = new ValidatedMethod({
       ) {
         Places.remove({ _id });
         if(!place.private){
+          removeObjectActivities({ objectId: _id })
           addActivities({ 
             type: ACTIVITIES_TYPES.PLACE_REMOVED,
             objectId: _id,
