@@ -25,6 +25,7 @@ import LacartoLoader from "./LacartoLoader";
 import { useQuery } from "../../api/utils/hooks";
 import SignalIcon from "./SignalIcons";
 import PresencesOfNomads from "./PresencesOfNomads";
+import ErrorDisplayer from "../system/ErrorDisplayer";
 
 const DrawerMobile = ({ match, location: { state = {} } }) => {
   const [{ online }] = useAppContext();
@@ -41,26 +42,35 @@ const DrawerMobile = ({ match, location: { state = {} } }) => {
         "places.methods.getOne",
         { _id: match.params._id },
         (error, success) => {
+          console.log(error, success)
           if (success) {
             setPlace(success);
             Places.setPersisted({ [match.params._id]: success });
+          } else {
+            setloaded(true)
+            Places.removePersisted(match.params._id)
           }
         }
       );
     } else {
       const getStored = async () => {
         const stored = await Places.getPersisted(match.params._id);
-        setPlace({ ...stored, _id: match.params._id });
+        if((stored && Object.keys(stored).length <= 1) || !stored) {
+          Places.removePersisted(match.params._id)
+          setloaded(true)
+        } else {
+          setPlace({ ...stored, _id: match.params._id });
+        }
       };
-      getStored();
-    } 
-    if(state && state.fromBrowserLink){
-      setTimeout(() => {
-        updateMap({
-          type: "map.refresh",
-          data: true,
-        });
-      }, 1000);
+      if(state && state.fromBrowserLink){
+        setTimeout(() => {
+          updateMap({
+            type: "map.refresh",
+            data: true,
+          });
+        }, 1000);
+      }
+      getStored()
     }
   }, []);
 
@@ -78,7 +88,7 @@ const DrawerMobile = ({ match, location: { state = {} } }) => {
         data: dataViewport,
       });
       setloaded(true);
-      if(zoom || state.refresh){
+      if(zoom || state && state.refresh){
         setTimeout(() => {
           updateMap({ type: "map.refresh", data: true });
         }, 1000);
@@ -101,8 +111,23 @@ const DrawerMobile = ({ match, location: { state = {} } }) => {
     }, 1000);
   };
 
+  if (!place._id && loaded) {
+    return (
+        <div className="wrapper">
+            <Description mobile empty>
+              <ErrorDisplayer message={t("errors.place_doesnt_exists")} />
+            </Description>
+        </div>
+      );
+  } 
   if (!place._id || !place.category) {
-    return <LacartoLoader />;
+    return (
+        <div className="wrapper">
+          <Description mobile empty>
+            <LacartoLoader />
+          </Description>
+        </div>
+      );
   }
   const category = allCategories.find((cat) => cat.name === place.category[0]);
 

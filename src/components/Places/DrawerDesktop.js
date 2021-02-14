@@ -24,8 +24,9 @@ import LacartoLoader from "./LacartoLoader";
 import { useQuery } from "../../api/utils/hooks";
 import SignalIcon from "./SignalIcons";
 import PresencesOfNomads from "./PresencesOfNomads";
+import ErrorDisplayer from "../system/ErrorDisplayer";
 
-const DrawerDesktop = ({ match, location: { state } }) => {
+const DrawerDesktop = ({ match, location: { state = {} } }) => {
   const { t, i18n } = useTranslation();
   const [{ online }] = useAppContext();
   const [{ location }, updateMap] = useMapContext();
@@ -39,16 +40,25 @@ const DrawerDesktop = ({ match, location: { state } }) => {
         "places.methods.getOne",
         { _id: match.params._id },
         (error, success) => {
+          console.log(error, success)
           if (success) {
             setPlace(success);
             Places.setPersisted({ [match.params._id]: success });
+          } else {
+            setloaded(true)
+            Places.removePersisted(match.params._id)
           }
         }
       );
     } else {
       const getStored = async () => {
         const stored = await Places.getPersisted(match.params._id);
-        setPlace({ ...stored, _id: match.params._id });
+        if((stored && Object.keys(stored).length <= 1) || !stored) {
+          Places.removePersisted(match.params._id)
+          setloaded(true)
+        } else {
+          setPlace({ ...stored, _id: match.params._id });
+        }
       };
       getStored();
     }
@@ -75,7 +85,7 @@ const DrawerDesktop = ({ match, location: { state } }) => {
         type: "map.viewport",
         data: dataViewport,
       });
-      if(zoom || state.refresh){
+      if(zoom || state && state.refresh){
         setTimeout(() => {
           updateMap({ type: "map.refresh", data: true });
         }, 1000);
@@ -96,10 +106,12 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       updateMap({ type: "map.refresh", data: true });
     }, 1000);
   };
-
+  if (!place._id && loaded) {
+    return <ErrorDisplayer message={t("errors.place_doesnt_exists")} />
+  } 
   if (!place._id || !place.category) {
     return <LacartoLoader />;
-  }
+  } 
   const category =
     allCategories.find((cat) => cat.name === place.category[0]) || {};
   return (

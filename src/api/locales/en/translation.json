@@ -92,7 +92,8 @@
     "already_stepped_for_delete": "You have already reported this place",
     "password_dont_match": "YOur passwords don't match",
     "this_is_not_your_private_place": "You cannot edit other people's private places.",
-    "you_are_already_present": "You have already indicated your presence, you can cancel on your profile"
+    "you_are_already_present": "You have already indicated your presence, you can cancel on your profile",
+    "place_doesnt_exists": "This place doesn't exist or has been deleted"
   },
   "features": {
     "electricity": "Electricity",

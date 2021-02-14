@@ -66,7 +66,11 @@ export const DrawerWrapper = styled(animated.div)`
 export const Description = styled.div`
   padding: 1rem 1rem ${({ mobile }) => (mobile ? 0.5 : 1)}rem;
   background-color: ${COLORS.LIGHT};
-  ${({ mobile, fullOpened }) =>
+  ${({ mobile, fullOpened, empty }) =>
+  empty ? css`
+      min-height: 200px;
+      ` 
+      :
     !fullOpened &&
     mobile &&
     css`
