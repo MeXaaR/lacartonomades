@@ -42,7 +42,6 @@ const DrawerMobile = ({ match, location: { state = {} } }) => {
         "places.methods.getOne",
         { _id: match.params._id },
         (error, success) => {
-          console.log(error, success)
           if (success) {
             setPlace(success);
             Places.setPersisted({ [match.params._id]: success });
