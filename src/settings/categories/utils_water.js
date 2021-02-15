@@ -8,7 +8,7 @@ const utils_water = {
   color: "#6FACC0",
   color_text: "#fff",
   icon: "mdi-water",
-  fields: [water_quality, participation],
+  fields: [participation],
   comments: true,
   delete_steps: 2,
 };
