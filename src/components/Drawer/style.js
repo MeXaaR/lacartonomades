@@ -248,6 +248,10 @@ export const MenuDetails = styled.div`
     top: 15px;
     right: 10px;
     color: ${COLORS.MENUS.MENU_DETAILS.COLOR} !important;
+
+    z-index: 4;
+    background-color: ${COLORS.LIGHT_GREY};
+    border: 1px solid ${COLORS.MENUS.MENU_DETAILS.COLOR};
     &::before,
     &::after {
       background-color: ${COLORS.MENUS.MENU_DETAILS.COLOR} !important;
