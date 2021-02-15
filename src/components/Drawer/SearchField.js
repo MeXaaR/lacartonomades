@@ -156,7 +156,7 @@ const SearchField = ({ onClose }) => {
 
   const Field = (
     <div className="field has-addons">
-      <div className="control has-icons-left has-icons-right">
+      <div className="control has-icons-left has-icons-right" style={{ width: "100%" }}>
         <input
           className={`input ${isMobile ? "is-medium" : ""}`}
           type="text"
