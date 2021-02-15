@@ -305,7 +305,7 @@ const SingleCategoryType = ({currentType, changeCategory, allTypedCategs, select
         }
       }) 
     }
-    changeCategory(newSelected)()
+    changeCategory(newSelected, true)()
   }
 
   return(
