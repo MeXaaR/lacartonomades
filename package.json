@@ -1,6 +1,6 @@
 {
   "name": "lacartonomades",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "start": "meteor run --exclude-archs web.browser.legacy --settings settings.json",

@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { COLORS } from "/src/settings/theme";
 import { animated } from "react-spring";
 import allCategories, { SPECIAL_CATEGORIES } from "../../settings/categories";
+import { FONTS } from "../../settings/theme";
 
 export const RoundedButton = styled.button`
   border-radius: 50%;
@@ -207,7 +208,7 @@ export const MenuIcons = styled.div`
     li {
       cursor: pointer;
       width: 3.5rem;
-      height: 3.5rem;
+      height: 3.7rem;
       line-height: 3.5rem;
       display: flex;
       justify-content: center;
@@ -286,6 +287,14 @@ export const SingleCategoryLineStyle = styled.li`
   .name-wrapper {
     display: flex;
     align-items: center;
+  }
+  .title {
+    font-family: ${FONTS.TITLES};
+    color: ${COLORS.MAIN};
+    margin-left: 12px;
+  }
+  &.title {
+    margin-bottom: 0.5rem;
   }
 `;
 export const MenusWrapper = styled.div`

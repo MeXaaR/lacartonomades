@@ -65,7 +65,9 @@
   },
   "drawer": {
     "all_categories": "TOUS",
-    "all_places": "Tous les endroits"
+    "all_places": "Tous les endroits",
+    "utils": "Ravitaillement and Co",
+    "spots": "Se garer"
   },
   "equipment": {
     "drinking_water": "Eau potable",

@@ -35,7 +35,7 @@ export const CheckboxContainer = styled.label`
     height: 25px;
     width: 25px;
     background-color: #eee;
-    ${({ small }) => small && `border-radius: 50%;`}
+    border-radius: ${({ small }) => small ? `50%`: "5px"};
   }
 
   /* On mouse-over, add a grey background color */
@@ -46,6 +46,7 @@ export const CheckboxContainer = styled.label`
   /* When the checkbox is checked, add a blue background */
   & input:checked ~ .checkmark {
     background-color: ${({ small }) => (!small ? COLORS.MAIN : COLORS.LIGHT)};
+    ${({ small }) => small && `border: 1px solid ${COLORS.MAIN};`}
   }
 
   /* Create the checkmark/indicator (hidden when not checked) */

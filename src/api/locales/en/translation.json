@@ -65,7 +65,9 @@
   },
   "drawer": {
     "all_categories": "ALL",
-    "all_places": "All places"
+    "all_places": "All places",
+    "utils": "Utils",
+    "spots": "Spots"
   },
   "equipment": {
     "drinking_water": "Drinking water",

@@ -30,6 +30,7 @@ const Drawer = () => {
   const history = useHistory();
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const [mainMenu, setMainMenu] = useState(true)
 
   const listMode = pathname.indexOf("list") > -1;
 
@@ -40,12 +41,13 @@ const Drawer = () => {
     config: { duration: 200 },
   });
 
-  const changeCategory = (name) => (e) => {
+  const changeCategory = (name, keepMenu) => (e) => {
     updateMapParams({ type: "categories.change", data: name });
+    setMainMenu(keepMenu)
     history.push(listMode ? "/list" : "/");
   };
   const currentCategory =
-    selected.length === 1 &&
+    selected.length === 1 && !mainMenu &&
     allCategories.find(({ name }) => selected.indexOf(name) > -1);
   return transitions.map(({ item, key, props }) =>
     item ? (
@@ -62,44 +64,49 @@ const Drawer = () => {
             <ul className="menu-list">
               <li
                 className={`menu-item all ${
-                  selected.length === 1 ? "" : "active"
+                  selected.length === 1 && !mainMenu ? "" : "active"
                 }`}
                 onClick={changeCategory(allCategories.map(({ name }) => name))}
               >
                 <span>{t("drawer.all_categories")}</span>
               </li>
-              {allCategories.map((categ) => (
-                <li
-                  key={categ.name}
-                  className={`menu-item ${categ.name} ${
-                    selected.length === 1 && selected[0] === categ.name
-                      ? "active"
-                      : ""
-                  }`}
-                  onClick={changeCategory([categ.name])}
-                >
-                  <span
-                    className="is-large icon"
-                    data-tip
-                    data-for={categ.name}
+              {allCategories.map((categ, i) => (
+                <>
+                {allCategories[i-1] && categ.type !== allCategories[i-1].type && 
+                  <SmallDivider className="menu-item" key={`divider-${i}`} />
+                }
+                  <li
+                    key={categ.name}
+                    className={`menu-item ${categ.name} ${
+                      selected.length === 1 && !mainMenu && selected[0] === categ.name
+                        ? "active"
+                        : ""
+                    }`}
+                    onClick={changeCategory([categ.name])}
                   >
-                    <i
-                      className={`mdi ${categ.icon} mdi-24px ${categ.name} white`}
-                    ></i>
-                  </span>
-                  {!isMobile && (
-                    <ReactTooltip
-                      textColor={COLORS.MENUS.MENU_ICONS.COLOR}
-                      backgroundColor={COLORS.MENUS.MENU_ICONS.BACKGROUND}
-                      className="tooltip-category"
-                      id={categ.name}
-                      place="right"
-                      effect="solid"
+                    <span
+                      className="is-large icon"
+                      data-tip
+                      data-for={categ.name}
                     >
-                      {t(categ.name)}
-                    </ReactTooltip>
-                  )}
-                </li>
+                      <i
+                        className={`mdi ${categ.icon} mdi-24px ${categ.name} white`}
+                      ></i>
+                    </span>
+                    {!isMobile && (
+                      <ReactTooltip
+                        textColor={COLORS.MENUS.MENU_ICONS.COLOR}
+                        backgroundColor={COLORS.MENUS.MENU_ICONS.BACKGROUND}
+                        className="tooltip-category"
+                        id={categ.name}
+                        place="right"
+                        effect="solid"
+                      >
+                        {t(categ.name)}
+                      </ReactTooltip>
+                    )}
+                  </li>
+                </>
               ))}
 
               {Meteor.user() && (
@@ -107,7 +114,7 @@ const Drawer = () => {
                   <SmallDivider className="menu-item" />
                   <li
                     className={`menu-item ${FAVORITES.NAME} ${
-                      selected.length === 1 && selected[0] === FAVORITES.NAME
+                      selected.length === 1 && !mainMenu && selected[0] === FAVORITES.NAME
                         ? "active"
                         : ""
                     }`}
@@ -137,7 +144,7 @@ const Drawer = () => {
                   </li>
                   <li
                     className={`menu-item ${PRIVATES.NAME} ${
-                      selected.length === 1 && selected[0] === PRIVATES.NAME
+                      selected.length === 1 && !mainMenu && selected[0] === PRIVATES.NAME
                         ? "active"
                         : ""
                     }`}
@@ -167,7 +174,7 @@ const Drawer = () => {
                   </li>
                   <li
                     className={`menu-item ${PRESENCES.NAME} ${
-                      selected.length === 1 && selected[0] === PRESENCES.NAME
+                      selected.length === 1 && !mainMenu && selected[0] === PRESENCES.NAME
                         ? "active"
                         : ""
                     }`}
@@ -211,24 +218,29 @@ const Drawer = () => {
               <SingleCategoryMenu category={currentCategory} />
             ) : (
               <>
-                <h3 style={{ textTransform: "uppercase" }}>
+              <h3 style={{ textTransform: "uppercase" }}>
                   {t("drawer.all_places")}
                 </h3>
-
-                {allTypes.map((t) => (
-                  <ul className="menu-list" key={t}>
-                    {allCategories
-                      .filter(({ type }) => type === t)
-                      .map((categ) => (
-                        <SingleCategoryLine
-                          changeCategory={changeCategory}
-                          category={categ}
-                          selected={selected}
-                          key={categ.name}
-                        />
-                      ))}
+                {allTypes.map(type => {
+                  const allTypedCategs = allCategories.filter((c) => c.type === type)
+                  return (
+                  <ul className="menu-list" key={type}>
+                    <SingleCategoryType 
+                      currentType={type} 
+                      allTypedCategs={allTypedCategs}
+                      changeCategory={changeCategory}
+                      selected={selected}
+                    />
+                    {allTypedCategs.map((categ) => (
+                      <SingleCategoryLine
+                        changeCategory={changeCategory}
+                        category={categ}
+                        key={categ.name}
+                        selected={selected}
+                      />
+                    ))}
                   </ul>
-                ))}
+                )})}
                 {!!user && (
                   <ul className="menu-list">
                     <SingleCategoryLine
@@ -269,14 +281,57 @@ const Drawer = () => {
   );
 };
 
+const SingleCategoryType = ({currentType, changeCategory, allTypedCategs, selected}) => {
+  const { t } = useTranslation();
+  let allChecked = true
+  allTypedCategs.forEach(c => {
+    if(!selected.find(s => s === c.name)){
+      allChecked = false
+    }
+  }) 
+  const updateCategories = () => {
+    let newSelected = []
+    if(allChecked){
+      selected.map(s => {
+        if(!allTypedCategs.find(c => c.name === s)){
+          newSelected.push(s)
+        }
+      })
+    } else {  
+      newSelected = [...selected]
+      allTypedCategs.forEach(c => {
+        if(!selected.find(s => s === c.name)){
+          newSelected.push(c.name)
+        }
+      }) 
+    }
+    changeCategory(newSelected)()
+  }
+
+  return(
+      <SingleCategoryLineStyle className="menu-item title">
+        <span className="name-wrapper">
+          <h4 className="title is-6" onClick={updateCategories}>
+            {t(`drawer.${currentType}`)}
+          </h4>
+        </span>
+        <Checkbox
+          checked={allChecked}
+          onChange={updateCategories}
+        />
+      </SingleCategoryLineStyle>
+  )
+}
+
 const SingleCategoryLine = ({
   changeCategory,
   category,
   favorites,
-  selected = [],
+  selected
 }) => {
   const exceptions = [PRIVATES.NAME, FAVORITES.NAME, PRESENCES.NAME];
   const isExceptionCateg = exceptions.find((e) => category.name === e);
+  const isChecked = !!selected.find((s) => category.name === s)
 
   const count = useTracker(() => {
     if (category.name === PRIVATES.NAME) {
@@ -296,7 +351,7 @@ const SingleCategoryLine = ({
     } else if (selected.find((s) => category.name === s)) {
       changeCategory(selected.filter((s) => s !== category.name))();
     } else {
-      changeCategory([...selected, category.name])();
+      changeCategory([...selected, category.name], true)();
     }
   };
   const { t } = useTranslation();
@@ -314,10 +369,11 @@ const SingleCategoryLine = ({
         </div>
       </span>
       {!isExceptionCateg &&
-        selected.find((s) => !exceptions.find((e) => e == s)) && (
+        !selected.find((s) => exceptions.find((e) => e == s)) && (
           <Checkbox
-            checked={selected.find((s) => category.name === s)}
+            checked={isChecked}
             onChange={toggleCategory}
+            small
           />
         )}
     </SingleCategoryLineStyle>

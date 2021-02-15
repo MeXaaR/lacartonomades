@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.0.4",
+    "date": "2021-02-15",
+    "features": [
+      "Possibilité de désactiver plusieurs types de filtres"
+    ],
+    "corrections": [
+      "Eau devient Eau Potable pour éviter les confusions",
+      "Correction d'un bug d'affichage sur Mac"
+    ]
+  },
+  {
     "version": "1.0.3",
     "date": "2021-02-11",
     "features": [
