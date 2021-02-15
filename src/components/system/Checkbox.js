@@ -35,7 +35,7 @@ export const CheckboxContainer = styled.label`
     height: 25px;
     width: 25px;
     background-color: #eee;
-    border-radius: ${({ small }) => small ? `50%`: "5px"};
+    border-radius: ${({ small }) => small ? `50%`: "3px"};
   }
 
   /* On mouse-over, add a grey background color */

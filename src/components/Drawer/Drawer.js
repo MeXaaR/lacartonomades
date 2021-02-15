@@ -347,9 +347,9 @@ const SingleCategoryLine = ({
 
   const toggleCategory = () => {
     if (exceptions.find((a) => a === selected[0])) {
-      changeCategory(allCategories.map(({ name }) => name));
+      changeCategory(allCategories.map(({ name }) => name), true);
     } else if (selected.find((s) => category.name === s)) {
-      changeCategory(selected.filter((s) => s !== category.name))();
+      changeCategory(selected.filter((s) => s !== category.name), true)();
     } else {
       changeCategory([...selected, category.name], true)();
     }
