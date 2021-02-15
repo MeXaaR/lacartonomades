@@ -19,8 +19,8 @@ const FrAbout = ({ gogocarto, openBrowser, share }) => (
                 indispensable des lieux et de l’espace de chacun!
             </p>
             <p>
-                En toutes circonstances, respectes les lieux et ses habitants.<br /> 
-                Laisses l’endroit propre, même s’il ne l’était pas à ton arrivée... 
+                En toutes circonstances, respecte les lieux et ses habitants.<br /> 
+                Laisse l’endroit propre, même s’il ne l’était pas à ton arrivée... 
             </p>
             {Meteor.isCordova &&
             <>
@@ -42,20 +42,20 @@ const FrAbout = ({ gogocarto, openBrowser, share }) => (
             <p>
                 C’est à chacun d’inscrire les lieux qui lui semblent appropriés 
                 (si un lieu inscrit a besoin d’être préservé de la présence humaine, 
-                signales-le, nous pouvons l’enlever de la carte. Si tu découvres un 
+                signale-le, nous pouvons l’enlever de la carte. Si tu découvres un 
                 lieu magique qui a besoin de rester inconnu, ne l’inscris pas...)
                 Nos présences sur les lieux ont des conséquences et nous y sommes 
                 de plus en plus nombreux.
             </p>
             <p>
-                Si tu as connaissance d’un terrain privé, proposes au propriétaire de 
+                Si tu as connaissance d’un terrain privé, propose au propriétaire de 
                 l’ajouter avec une description et ses coordonnées. 
             </p>
             <p>
                 La Carto’Nomades, c’est aussi une manière de se rencontrer entre nomades. <br />
                 Il t’est possible d’indiquer ta présence sur un lieu en consultant sa fiche. 
                 Nous pensons que cet outil peut améliorer l’aspect communautaire de la vie nomade. 
-                Merci, encore une fois, à chacun de respecter les uns et les autres.
+                Merci, encore une fois, à chacun d'être respectueux des uns et des autres.
             </p>
             <Divider />
             <p>
@@ -115,7 +115,7 @@ const FrAbout = ({ gogocarto, openBrowser, share }) => (
                     Nous avons choisi de retirer l’application des stores d’Apple et de Google.
                     Nous espérons ainsi pouvoir partager cette application avec le «bouche-à-oreille» 
                     principalement. Elle sera toujours téléchargeable, mais par un biais alternatif 
-                    et pas référencé sur internet. Le site web en lui même est non-référençable.
+                    et pas référencée sur internet. Le site web en lui même est non-référençable.
                 </p>
                 <p>
                 L'application mobile est donc disponible pour Android seulement sur GitHub où nous 
