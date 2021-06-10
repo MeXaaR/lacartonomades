@@ -228,13 +228,9 @@ export const MenuIcons = styled.div`
     li.active.${SPECIAL_CATEGORIES.FAVORITES.NAME} {
       background-color: ${SPECIAL_CATEGORIES.FAVORITES.COLOR};
     }
-    li.active.${SPECIAL_CATEGORIES.PRIVATES.NAME} {
-      background-color: ${SPECIAL_CATEGORIES.PRIVATES.COLOR};
-    }
     li.active.${SPECIAL_CATEGORIES.PRESENCES.NAME} {
       background-color: ${SPECIAL_CATEGORIES.PRESENCES.COLOR};
     }
-
     li.all:not(.active) {
       transform: rotate(-45deg);
     }

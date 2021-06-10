@@ -1,10 +1,10 @@
-import { Map } from 'react-leaflet'
+import { MapContainer } from 'react-leaflet'
 import styled, { css } from 'styled-components'
 import { POINTER_ICONS, ICON_SIZE } from "./categories_markers";
 import { COLORS, ICONS } from '/src/settings/theme'
-import allCategories from '../../settings/categories'
+import allCategories, { SPECIAL_CATEGORIES } from '../../settings/categories'
 
-export const StyledMap = styled(Map)`
+export const StyledMap = styled(MapContainer)`
   position: relative;
   ${({ small, menuOpened, isMobile }) =>
     small
@@ -66,6 +66,19 @@ export const StyledMap = styled(Map)`
       }
     `
   )}
+
+  .ICONS_MARKER.${SPECIAL_CATEGORIES.NEW_PLACE.NAME} {
+    fill:${SPECIAL_CATEGORIES.NEW_PLACE.COLOR};
+  }
+  .leaflet-tooltip.${SPECIAL_CATEGORIES.NEW_PLACE.NAME} {
+      background-color: ${SPECIAL_CATEGORIES.NEW_PLACE.COLOR};
+      border: 1px solid ${SPECIAL_CATEGORIES.NEW_PLACE.COLOR};
+      color: ${SPECIAL_CATEGORIES.NEW_PLACE.COLOR_TEXT};
+      margin-left: -${ICON_SIZE / 3}px;
+  } 
+  .leaflet-tooltip.${SPECIAL_CATEGORIES.NEW_PLACE.NAME}::before {
+      border-top-color: ${SPECIAL_CATEGORIES.NEW_PLACE.COLOR};
+  }
   .icon-marker-location {
     border-radius: 50%;
     background-color: #5353e8;

@@ -13,7 +13,6 @@ export const placeGetAround = new ValidatedMethod({
     categories,
     filters,
     favorites,
-    private,
     presences,
     searchCenter,
     search,
@@ -29,10 +28,10 @@ export const placeGetAround = new ValidatedMethod({
           { address: regex },
         ];
       }
-      if (!private && !favorites && !presences) {
+      if (!favorites && !presences) {
         query.category = { $in: categories };
       }
-      if (!private && !favorites && !search && !presences && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
+      if (!favorites && !search && !presences && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
         query.geoJSON = {
           $nearSphere: {
             $geometry: {
@@ -79,11 +78,6 @@ export const placeGetAround = new ValidatedMethod({
       if (favorites && this.userId) {
         const user = Meteor.users.findOne({ _id: this.userId });
         query._id = { $in: user.profile.favorites || [] };
-      } else if (!private && !this.userId) {
-        query.private = false;
-      } else if (private) {
-        query.private = true;
-        query.createdBy = this.userId;
       } else if (presences) {
         const usersWithPresence = Meteor.users
           .find(
@@ -96,15 +90,6 @@ export const placeGetAround = new ValidatedMethod({
           $in: usersWithPresence.map(
             ({ profile: { presentInPlace } }) => presentInPlace
           ),
-        };
-      } else if (this.userId) {
-        const { geoJSON, ...restOfQuery } = query;
-        query = {
-          geoJSON,
-          $or: [
-            { ...restOfQuery, private: false },
-            { ...restOfQuery, private: true, createdBy: this.userId }
-          ],
         };
       }
 
@@ -119,7 +104,6 @@ export const placeGetAround = new ValidatedMethod({
           latitude: 1,
           longitude: 1,
           category: 1,
-          private: 1,
         };
       } else {
         params.fields = {

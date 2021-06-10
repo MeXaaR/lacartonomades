@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import Places from "/src/api/spots/model";
+import Places, { PlacesStored } from "/src/api/spots/model";
 import { useAppContext } from "../../context/appContext";
 import { useMapContext } from "../../context/mapContext";
-import { SPECIAL_CATEGORIES } from "../../settings/categories";
+import allCategories, { SPECIAL_CATEGORIES } from "../../settings/categories";
 import { DEFAULT_VIEWPORT } from "./MapWrapper";
-const { FAVORITES, PRIVATES, PRESENCES } = SPECIAL_CATEGORIES;
+import { isDate } from "moment";
+const { FAVORITES, PRESENCES } = SPECIAL_CATEGORIES;
 
 const usePlaces = ({ list = false, search, location }) => {
 
@@ -20,23 +21,41 @@ const usePlaces = ({ list = false, search, location }) => {
       const [{ user, online }] = useAppContext();
       
       const [loading, setLoading] = useState(false);
-      const [storedPlaces, setStoredPlaces] = useState();
-      const [placesMongo, setPlaces] = useState([]);
+      const [places, setPlaces] = useState([]);     
       const [circleCenter, setCircleCenter] = useState();
       
 
-    useEffect(() => {
+      const getStoredIntoMini = async () => {
+        const stored = await Places.getPersisted();
+        const placesIds = Object.keys(stored)
+        placesIds.forEach((_id, index) => {
+          if(!PlacesStored.findOne({ _id })) {
+            PlacesStored.insert({ ...stored[_id] });
+            if(index === placesIds.length - 1) {
+              dispatch({
+                type: "map.refresh",
+                data: false,
+              });
+            }
+          }
+        })
+      }
+
+      useEffect(() => {
+
+      const categories = selected;
+      const favorites = selected.indexOf(FAVORITES.NAME) > -1;
+      const presences = selected.indexOf(PRESENCES.NAME) > -1; 
+      const searchCenter = list && location ? [location.lng, location.lat] : [viewport.center.lng, viewport.center.lat]
         if (!loading && viewport.center && viewport.center.lng && online) {
           setLoading(true);
-          const searchCenter = list && location ? [location.lng, location.lat] : [viewport.center.lng, viewport.center.lat]
           Meteor.call(
             "places.methods.get_around",
             {
-              categories: selected,
+              categories,
               filters,
-              favorites: selected.indexOf(FAVORITES.NAME) > -1,
-              private: selected.indexOf(PRIVATES.NAME) > -1,
-              presences: selected.indexOf(PRESENCES.NAME) > -1,
+              favorites,
+              presences,
               searchCenter,
               search,
               list
@@ -45,9 +64,8 @@ const usePlaces = ({ list = false, search, location }) => {
               setLoading(false);
               if (!error) {
                 if (
-                  selected.indexOf(FAVORITES.NAME) === -1 &&
-                  selected.indexOf(PRIVATES.NAME) === -1 &&
-                  selected.indexOf(PRESENCES.NAME) === -1
+                  !favorites &&
+                  !favorites
                 ) {
                   setCircleCenter([searchCenter[1], searchCenter[0]]);
                 } else {
@@ -68,44 +86,70 @@ const usePlaces = ({ list = false, search, location }) => {
             }
           );
         } else {
-            const getStored = async () => {
-                let selector;
-                if (selected.indexOf(FAVORITES.NAME) > -1 && user) {
-                  selector = user.profile.favorites;
-                } else if (selected.indexOf(PRIVATES.NAME) > -1) {
-                  selector = null;
-                } else {
-                  selector = null;
-                }
-          
-                const stored = await Places.getPersisted(selector);
-                const storedData = [];
-                Object.values(stored).forEach((d) => {
-                  if (d) {
-                    if (
-                      selected.indexOf(FAVORITES.NAME) > -1 ||
-                      (selected.indexOf(PRIVATES.NAME) > -1 && d.private) ||
-                      selected.find((s) => d.category && d.category.indexOf(s) > -1)
-                    ) {
-                      storedData.push(d);
+          let query = {};
+          if (search) {
+          const regex = { $regex: new RegExp(search, "i") };
+            query.$or = [
+              { name: regex },
+              { description: regex },
+              { address: regex },
+            ];
+          }
+          if (!favorites && !presences) {
+            query.category = { $in: categories };
+          }
+    
+          categories.forEach((category) => {
+            if (filters[category]) {
+              Object.keys(filters[category]).forEach((field) => {
+                const categObject = allCategories.find(
+                  (categ) => categ.name === category
+                );
+                const fieldObject = categObject.fields.find(
+                  (f) => f.name === field
+                );
+    
+                if (!!fieldObject && fieldObject.options) {
+                  const isAllToggled =
+                    !!filters[field] && filters[field].length === 0;
+                  if (
+                    !isAllToggled &&
+                    !!filters[category][field] &&
+                    !!filters[category][field].length
+                  ) {
+                    if (fieldObject.type === "radios") {
+                      query[field] = filters[category][field];
+                    } else if (fieldObject.type === "checkboxes") {
+                      query[field] = { $nin: filters[category][field] };
                     }
                   }
-                });
-                setStoredPlaces(storedData);
-
-                dispatch({
-                  type: "map.placesFound",
-                  data: storedData.length,
-                });
-              };
-              if (!online) {
-                getStored();
-              }
+                } else if (fieldObject.type !== "input") {
+                  query[field] = filters[category][field];
+                }
+              });
+            }
+          });
+    
+          if (favorites && this.userId) {
+            const user = Meteor.users.findOne({ _id: this.userId });
+            query._id = { $in: user.profile.favorites || [] };
+          }
+    
+            const params = {
+              sort: { name: 1 },
+              limit: list ? 100 : 10000000,
+            };
+            const placesFound = PlacesStored.find(query, params).fetch()
+            setPlaces(placesFound)
         }
       }, [filters, selected, refresh, online, search, location]);
 
+      useEffect(() => {
+        getStoredIntoMini()
+      }, [])
+
       return {
-          places: !online && storedPlaces ? storedPlaces : placesMongo,
+          places,
           loading,
           circleCenter
       }

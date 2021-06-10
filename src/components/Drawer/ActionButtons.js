@@ -71,7 +71,6 @@ const ActionButtons = () => {
 
             <RoundedButton
               className={`${buttonClasses} ${online ? "colored" : "is-danger"}`}
-              onClick={online ? Meteor.disconnect : Meteor.reconnect}
             >
               <span className="icon is-large">
                 <i className={`mdi mdi-wifi${online ? "" : "-off"}`}></i>

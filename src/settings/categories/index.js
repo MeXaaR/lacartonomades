@@ -41,15 +41,16 @@ export const SPECIAL_CATEGORIES = {
     ICON: "mdi-heart",
     COLOR: "#c21026",
   },
-  PRIVATES: {
-    NAME: "PRIVATES",
-    ICON: "mdi-map-marker-circle",
-    COLOR: "grey",
-  },
   PRESENCES: {
     NAME: "PRESENCES",
     ICON: "mdi-account-group",
     COLOR: "#3e9f74",
+  },
+  NEW_PLACE: {
+    NAME: "NEW_PLACE",
+    ICON: "mdi-account-group",
+    COLOR: "grey",
+    COLOR_TEXT: "white"
   },
 };
 

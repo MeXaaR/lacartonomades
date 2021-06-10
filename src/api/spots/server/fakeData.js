@@ -2,8 +2,9 @@ import Places from "../model";
 import allCategories from "../../../settings/categories";
 import faker from "faker";
 
-// const QUANTITY = 60000;
+// const QUANTITY = 2000;
 // Meteor.startup(() => {
+//     Places.remove({})
 //   if (Places.find().count() === 0) {
 //     new Array(QUANTITY).fill(0).map((_, i) => {
 //       const random = Math.floor(Math.random() * (allCategories.length - 1));

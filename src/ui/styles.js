@@ -20,9 +20,6 @@ export const AppWrapper = createGlobalStyle`
     `
   )}
 
-  .${SPECIAL_CATEGORIES.PRIVATES.NAME}.icon {
-      color: ${SPECIAL_CATEGORIES.PRIVATES.COLOR};
-  }
   .${SPECIAL_CATEGORIES.FAVORITES.NAME}.icon {
       color: ${SPECIAL_CATEGORIES.FAVORITES.COLOR};
   }

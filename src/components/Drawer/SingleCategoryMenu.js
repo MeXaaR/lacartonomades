@@ -39,11 +39,6 @@ const SingleCategoryMenu = ({ category }) => {
         <br />({places_total})
       </h3>
 
-      {!online && (
-        <article style={{ margin: 5 }} className="message is-info">
-          <div className="message-body">{t("category_menu.offline_info")}</div>
-        </article>
-      )}
       <ul className="menu-list">
         {fields.map(
           (field) =>

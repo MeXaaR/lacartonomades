@@ -22,7 +22,7 @@ import SearchField from "./SearchField";
 import { ICONS } from "../../settings/theme";
 import { SPECIAL_CATEGORIES, allTypes } from "../../settings/categories";
 import Checkbox from "../system/Checkbox";
-const { FAVORITES, PRIVATES, PRESENCES } = SPECIAL_CATEGORIES;
+const { FAVORITES, PRESENCES } = SPECIAL_CATEGORIES;
 
 const Drawer = () => {
   const [{ menuOpened, isMobile, user }, dispatch] = useAppContext();
@@ -136,36 +136,6 @@ const Drawer = () => {
                     )}
                   </li>
                   <li
-                    className={`menu-item ${PRIVATES.NAME} ${
-                      selected.length === 1 && selected[0] === PRIVATES.NAME
-                        ? "active"
-                        : ""
-                    }`}
-                    onClick={changeCategory([PRIVATES.NAME])}
-                  >
-                    <span
-                      className="is-large icon"
-                      data-tip
-                      data-for={PRIVATES.NAME}
-                    >
-                      <i
-                        className={`mdi ${PRIVATES.ICON} mdi-24px ${PRIVATES.NAME} white`}
-                      ></i>
-                    </span>
-                    {!isMobile && (
-                      <ReactTooltip
-                        textColor={COLORS.MENUS.MENU_ICONS.COLOR}
-                        backgroundColor={COLORS.MENUS.MENU_ICONS.BACKGROUND}
-                        className="tooltip-category"
-                        id={PRIVATES.NAME}
-                        place="right"
-                        effect="solid"
-                      >
-                        {t(PRIVATES.NAME)}
-                      </ReactTooltip>
-                    )}
-                  </li>
-                  <li
                     className={`menu-item ${PRESENCES.NAME} ${
                       selected.length === 1 && selected[0] === PRESENCES.NAME
                         ? "active"
@@ -244,14 +214,6 @@ const Drawer = () => {
                       changeCategory={changeCategory}
                       selected={selected}
                       category={{
-                        name: PRIVATES.NAME,
-                        icon: PRIVATES.ICON,
-                      }}
-                    />
-                    <SingleCategoryLine
-                      changeCategory={changeCategory}
-                      selected={selected}
-                      category={{
                         name: PRESENCES.NAME,
                         icon: PRESENCES.ICON,
                       }}
@@ -275,14 +237,11 @@ const SingleCategoryLine = ({
   favorites,
   selected = [],
 }) => {
-  const exceptions = [PRIVATES.NAME, FAVORITES.NAME, PRESENCES.NAME];
+  const exceptions = [FAVORITES.NAME, PRESENCES.NAME];
   const isExceptionCateg = exceptions.find((e) => category.name === e);
 
   const count = useTracker(() => {
-    if (category.name === PRIVATES.NAME) {
-      Meteor.subscribe("places.private.count");
-      return Counts.get("places.private.count");
-    } else if (category.name === PRESENCES.NAME) {
+    if (category.name === PRESENCES.NAME) {
       Meteor.subscribe("places.presences.count");
       return Counts.get("places.presences.count");
     } else if (category.name === FAVORITES.NAME) {

@@ -20,7 +20,7 @@ import {
 } from "./styles";
 import { useMapContext } from "../../context/mapContext";
 import { SPECIAL_CATEGORIES } from "../../settings/categories";
-import Places from "../../api/spots/model";
+import Places, { PlacesStored } from "../../api/spots/model";
 import LacartoLoader from "./LacartoLoader";
 import { useQuery } from "../../api/utils/hooks";
 import SignalIcon from "./SignalIcons";
@@ -36,24 +36,32 @@ const DrawerMobile = ({ match, location: { state } }) => {
   const { center, zoom } = useQuery();
 
   useEffect(() => {
-    if (online) {
-      Meteor.call(
-        "places.methods.getOne",
-        { _id: match.params._id },
-        (error, success) => {
-          if (success) {
-            setPlace(success);
-            Places.setPersisted({ [match.params._id]: success });
+    const getStored = async () => {
+      const stored =  PlacesStored.findOne(match.params._id) || {};
+      setPlace(stored);
+
+      if (online) {
+        Meteor.call(
+          "places.methods.getOne",
+          { _id: match.params._id },
+          (error, success) => {
+            if (success) {
+              setPlace(success);
+              Places.setPersisted({ [match.params._id]: success }).then(() =>{
+                const isPlaceRegistered = PlacesStored.findOne(match.params._id)
+                if(isPlaceRegistered) {
+                  PlacesStored.update(match.params._id, { $set: success })
+                } else {
+                  PlacesStored.insert(success)
+                }
+              });
+            }
           }
-        }
-      );
-    } else {
-      const getStored = async () => {
-        const stored = await Places.getPersisted(match.params._id);
-        setPlace({ ...stored, _id: match.params._id });
-      };
-      getStored();
-    } 
+        );
+      }
+    };
+    getStored();
+    
     if(state && state.fromBrowserLink){
       setTimeout(() => {
         
@@ -142,27 +150,12 @@ const DrawerMobile = ({ match, location: { state } }) => {
         </Description>
         {fullOpened && (
           <Information fullOpened mobile>
-            {" "}
             <h4 className="title is-5 address-title">
               {t("place.address")}
               <button onClick={zoomOnPlace} className="button is-small is-info">
                 {t("place.zoom")}
               </button>
             </h4>
-            {place.private && (
-              <div className="private-label">
-                <span
-                  className="icon"
-                  data-tip
-                  data-for={SPECIAL_CATEGORIES.PRIVATES.NAME}
-                >
-                  <i
-                    className={`mdi ${SPECIAL_CATEGORIES.PRIVATES.ICON} mdi-24px`}
-                  ></i>
-                </span>
-                <span>{t("place.this_is_a_private_place")}</span>
-              </div>
-            )}
             <p>
               {place.address}
               {!!location.lat && (

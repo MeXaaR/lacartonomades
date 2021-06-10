@@ -85,10 +85,6 @@ export const createNewPresence = new ValidatedMethod({
     try {
       if (!this.userId) {
         throw new Meteor.Error("405", "you_need_an_account");
-      } else if (
-        Meteor.users.findOne({ _id: this.userId }).profile.presentInPlace
-      ) {
-        throw new Meteor.Error("405", "you_are_already_present");
       }
       console.log(`Presence created: ${this.userId}`);
       const untilDate = new Date().valueOf() + duration * 60 * 60 * 1000;

@@ -17,7 +17,7 @@ import { Link, useHistory } from "react-router-dom";
 import geolib from "geolib";
 import { OpenStreetMapProvider } from "leaflet-geosearch";
 import { DEFAULT_VIEWPORT } from "../Map/MapWrapper";
-const { FAVORITES, PRIVATES } = SPECIAL_CATEGORIES;
+const { FAVORITES } = SPECIAL_CATEGORIES;
 
 const provider = new OpenStreetMapProvider({
   params: {
@@ -60,7 +60,6 @@ const SearchField = ({ onClose }) => {
     Meteor.subscribe("places.search", {
       categories: selected,
       favorites: selected.indexOf(FAVORITES.NAME) > -1,
-      private: selected.indexOf(PRIVATES.NAME) > -1,
       search,
     });
 

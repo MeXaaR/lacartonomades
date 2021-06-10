@@ -174,9 +174,6 @@ const Newplace = ({
 
   const sendNewPlace = async () => {
     toggleLoading(true);
-    if (state.private && state.picture) {
-      delete state.picture;
-    }
 
     Meteor.call(
       `places.methods.${_id ? "update" : "create"}`,
@@ -347,7 +344,6 @@ const Newplace = ({
                   <input
                     id="upload"
                     type="file"
-                    disabled={state.private}
                     onChange={({ target: { value, files } }) =>
                       updatePicture({ value, files })
                     }
@@ -356,36 +352,13 @@ const Newplace = ({
               </div>
             )}
 
-            {state.private && (
-              <article className="message is-warning">
-                <div className="message-body">
-                  {t("place_form.no_picture_for_private")}
-                </div>
-              </article>
-            )}
           </div>
-          {!!state.picture && !state.private ? (
+          {!!state.picture ? (
             <img src={state.picture} />
-          ) : state.photo && !state.private ? (
+          ) : state.photo ? (
             <img src={state.photo} />
           ) : null}
 
-          {(!!user && !_id) || (!!user && _id && state.private) ? (
-            <Checkbox
-              checked={state.private}
-              onChange={handleChange}
-              name="private"
-              text={t("place_form.create_a_private_place")}
-            />
-          ) : null}
-          {(!!user && !_id && state.private) ||
-          (!!user && _id && state.private) ? (
-            <article className="message is-warning">
-              <div className="message-body">
-                {t("place_form.this_is_your_private_place")}
-              </div>
-            </article>
-          ) : null}
           {!!state.category && !!state.category.length ? null : (
             <article className="message is-warning">
               <div className="message-body">

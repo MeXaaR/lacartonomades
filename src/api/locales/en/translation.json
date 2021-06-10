@@ -1,6 +1,5 @@
 {
   "FAVORITES": "Favorites",
-  "PRIVATES": "Private places",
   "SPOTS_NATURE": "Nature spots",
   "SPOTS_PARKING": "Parkings",
   "SPOTS_PRIVATE_LAND": "Private lands",
@@ -91,7 +90,6 @@
     "you_cannot_do_that": "You are authorized to do this",
     "already_stepped_for_delete": "You have already reported this place",
     "password_dont_match": "YOur passwords don't match",
-    "this_is_not_your_private_place": "You cannot edit other people's private places.",
     "you_are_already_present": "You have already indicated your presence, you can cancel on your profile"
   },
   "features": {
@@ -129,7 +127,8 @@
     "username_mandatory": "You must enter your username"
   },
   "map": {
-    "drag_me_around": "Drag me around"
+    "drag_me_around": "Drag me around",
+    "new_place_tooltip": "Click to create a new place"
   },
   "menu": {
     "about": "About",
@@ -191,7 +190,6 @@
     "modify": "Edit",
     "more_info": "More Info",
     "share_url": "Share",
-    "this_is_a_private_place": "Private place",
     "signal": "Report",
     "presences_of_nomads": "Signaled Nomadics",
     "no_nomads": "Presence of Nomads",
@@ -229,7 +227,6 @@
     "add_a_category": "Add a category",
     "categories_and_details": "Details for",
     "choose_a_category": "Choose a category",
-    "create_a_private_place": "Create as a private place (only for you)",
     "created_success": "LPlace created successfully",
     "edit_place_explaination": "You are going to modify a place. Be sure to check your info, this is a community card. There is no administrator to check your data",
     "new_place_explaination": "You are about to add a new location. Everyone has the freedom to add, edit, and view places added by the community.",
@@ -243,10 +240,7 @@
     "place_picture": "Take a picture",
     "picture_select": "Choose a picture",
     "select_a_category": "Choose a category",
-    "this_is_your_private_place": "This is your private place, if you put it in public it will no longer be possible to put it back in private",
-    "updated_success": "Place updated successfully",
-    "no_picture_for_private": "We do not store photos for private places",
-    "private": "This info will not be displayed publicly, a module will allow users to send an email"
+    "updated_success": "Place updated successfully"
   },
   "pollution": {
     "clean": "Clean",
@@ -268,7 +262,7 @@
     "presence_on_a_place": "You signaled your presence on a place",
     "time_left": "It will be displayed for",
     "lets_go_check": "Go check the place",
-    "delete_explain": "This action removes your account and your private places from our database. It is irreversible and it is impossible to recover the data."
+    "delete_explain": "This action removes your account from our database. It is irreversible and it is impossible to recover the data."
   },
   "search": {
     "geolocalise": "Geolocalised",

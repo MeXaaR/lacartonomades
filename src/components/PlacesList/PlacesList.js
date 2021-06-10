@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMapContext } from "../../context/mapContext";
 import { ListWrapper } from "./style";
 import allCategories, { SPECIAL_CATEGORIES } from "../../settings/categories";
@@ -11,8 +11,7 @@ import Places from "../../api/spots/model";
 import geolib from "geolib";
 import { useLocating } from "../../api/utils/hooks";
 import usePlaces from '../Map/usePlaces'
-import { DEFAULT_VIEWPORT } from "../Map/MapWrapper";
-const { FAVORITES, PRIVATES } = SPECIAL_CATEGORIES;
+const { FAVORITES } = SPECIAL_CATEGORIES;
 
 
 const PlacesList = (props) => {
@@ -87,32 +86,21 @@ const PlacesList = (props) => {
                             {!!description &&
                               description
                                 .split("\n")
-                                .map((paragraph) => <p>{paragraph}</p>)}
+                                .map((paragraph, i) => <p key={i}>{paragraph}</p>)}
                           </div>
                         ) : (
                           <p className="description">{description}</p>
                         )}
 
                         <div className="category">
-                          {place.private && (
-                            <span
-                              className={`icon ${SPECIAL_CATEGORIES.PRIVATES.NAME}`}
-                              data-tip
-                              data-for={SPECIAL_CATEGORIES.PRIVATES.NAME}
-                            >
-                              <i
-                                className={`mdi ${SPECIAL_CATEGORIES.PRIVATES.ICON} mdi-24px`}
-                              ></i>
-                            </span>
-                          )}
                           {favorites && favorites.indexOf(place._id) > -1 && (
                             <span
-                              className={`icon ${SPECIAL_CATEGORIES.FAVORITES.NAME}`}
+                              className={`icon ${FAVORITES.NAME}`}
                               data-tip
-                              data-for={SPECIAL_CATEGORIES.FAVORITES.NAME}
+                              data-for={FAVORITES.NAME}
                             >
                               <i
-                                className={`mdi ${SPECIAL_CATEGORIES.FAVORITES.ICON} mdi-24px`}
+                                className={`mdi ${FAVORITES.ICON} mdi-24px`}
                               ></i>
                             </span>
                           )}

@@ -1,6 +1,5 @@
 {
   "FAVORITES": "Favoris",
-  "PRIVATES": "Lieux privés",
   "SPOTS_NATURE": "Spots nature",
   "SPOTS_PARKING": "Parkings",
   "SPOTS_PRIVATE_LAND": "Terrains privés",
@@ -91,7 +90,6 @@
     "you_cannot_do_that": "Tu n'es pas autorisé à faire ça",
     "already_stepped_for_delete": "Tu as déjà signalé ce lieu",
     "password_dont_match": "tes mots de passe ne correspondent pas",
-    "this_is_not_your_private_place": "Tu ne peux pas éditer les lieux privés des autres.",
     "you_are_already_present": "Tu as déjà signalé ta présence, tu peux annuler sur ton profil"
   },
   "features": {
@@ -125,12 +123,12 @@
     "go_to_register": "Tu veux t'inscrire ?",
     "logged_out": "Tu as été déconnecté(e)",
     "no_email_creation_account": "Tu peux créer un compte sans adresse email si tu tiens a rester anonyme. Mais si tu oublies ton mot de passe, il sera impossible de le récupérer",
-    "private_places_deleted_from_device": "private_places_deleted_from_device",
     "welcome_onboard": "Bienvenue sur La Carto'Nomades",
     "username_mandatory": "Tu dois choisir un nom d'utilisateur"
   },
   "map": {
-    "drag_me_around": "Déplace moi"
+    "drag_me_around": "Déplace moi",
+    "new_place_tooltip": "Clique pour créer un lieu"
   },
   "menu": {
     "about": "À propos",
@@ -192,7 +190,6 @@
     "modify": "Modifier",
     "more_info": "Plus d'infos",
     "share_url": "Partager",
-    "this_is_a_private_place": "Endroit privé",
     "signal": "Signaler",
     "presences_of_nomads": "Nomades présents",
     "no_nomads": "Aucun nomade n'a signalé sa présence",
@@ -230,7 +227,6 @@
     "add_a_category": "Ajouter une catégorie",
     "categories_and_details": "Détails pour",
     "choose_a_category": "Choisis une catégorie",
-    "create_a_private_place": "Créer un endroit privé (uniquement pour toi).",
     "created_success": "Lieu créé avec succès",
     "edit_place_explaination": "Tu vas modifier un lieu. Prends soin de bien vérifier tes infos, ceci est une carte communautaire. Il n'y a pas d'administrateur pour vérifier tes données",
     "new_place_explaination": "Tu es sur le point d'ajouter un nouvel endroit. Tout le monde a la liberté d'ajouter, de modifier et de voir les endroits ajoutés par la communauté.",
@@ -244,10 +240,7 @@
     "place_picture": "Prendre une photo",
     "picture_select": "Choisir une photo",
     "select_a_category": "Sélectionne une catégorie",
-    "this_is_your_private_place": "Ceci est ton endroit privé, si tu le mets en public, il ne sera plus possible de le remettre en privé",
-    "updated_success": "Lieu mis à jour avec succès",
-    "no_picture_for_private": "Nous ne stockons pas de photos pour les lieux privés",
-    "private": "Ce champs ne sera pas affiché publiquement, un module permettra d'envoyer un email"
+    "updated_success": "Lieu mis à jour avec succès"
   },
   "pollution": {
     "clean": "Propre",
@@ -278,7 +271,7 @@
     "results": "Résultats"
   },
   "size": {
-    "big": "Palaces",
+    "big": "Palace",
     "label": "Taille du spot",
     "many": "Moyen",
     "small": "Petit"

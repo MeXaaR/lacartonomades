@@ -39,7 +39,6 @@ const PlacesRoute = () => {
       <Route
         exact
         path="/map/places/:_id"
-        // component={isTablet || isMobile ? DrawerMobile : DrawerDesktop}
         render={(routerProps) => (
           <DrawerWrapper
             isMobile={isMobile}

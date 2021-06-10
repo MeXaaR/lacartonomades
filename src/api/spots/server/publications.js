@@ -5,7 +5,6 @@ Meteor.publish("places.category", function ({
   categories,
   filters,
   favorites,
-  private,
   searchCenter,
   search,
   list,
@@ -15,10 +14,10 @@ Meteor.publish("places.category", function ({
     const regex = { $regex: new RegExp(search, "i") };
     query.$or = [{ name: regex }, { description: regex }, { address: regex }];
   }
-  if (!private && !favorites) {
+  if (!favorites) {
     query.category = { $in: categories };
   }
-  if (!private && !favorites && !search && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
+  if (!favorites && !search && Meteor.settings.public.LIMIT_SEARCH_SURFACE) {
     query.geoJSON = {
       $nearSphere: {
         $geometry: {
@@ -62,20 +61,6 @@ Meteor.publish("places.category", function ({
   if (favorites && this.userId) {
     const user = Meteor.users.findOne({ _id: this.userId });
     query._id = { $in: user.profile.favorites || [] };
-  } else if (!private && !this.userId) {
-    query.private = false;
-  } else if (private) {
-    query.private = true;
-    query.createdBy = this.userId;
-  } else if (this.userId) {
-    const { geoJSON, ...restOfQuery } = query;
-    query = {
-      geoJSON,
-      $or: [
-        { ...restOfQuery },
-        { ...restOfQuery, private: true, createdBy: this.userId },
-      ],
-    };
   }
 
   const params = {
@@ -90,7 +75,6 @@ Meteor.publish("places.category", function ({
       latitude: 1,
       longitude: 1,
       category: 1,
-      private: 1,
     };
   }
   return Places.find(query, params);
@@ -99,7 +83,6 @@ Meteor.publish("places.category", function ({
 Meteor.publish("places.search", function ({
   categories,
   favorites,
-  private,
   search,
 }) {
   if (search) {
@@ -112,11 +95,6 @@ Meteor.publish("places.search", function ({
     if (favorites && this.userId) {
       const user = Meteor.users.findOne({ _id: this.userId });
       query._id = { $in: user.profile.favorites || [] };
-    } else if (private && this.userId) {
-      query.private = true;
-      query.createdBy = this.userId;
-    } else if (!private) {
-      query.private = false;
     }
 
     const params = {
@@ -130,16 +108,6 @@ Meteor.publish("places.search", function ({
   }
 });
 
-Meteor.publish("places.private.count", function () {
-  Counts.publish(
-    this,
-    "places.private.count",
-    Places.find(
-      { private: true, createdBy: this.userId },
-      { sort: { name: 1 }, limit: 4000000 }
-    )
-  );
-});
 Meteor.publish("places.one.details", function ({ _id }) {
   return Places.find(
     { _id },

@@ -48,20 +48,6 @@ const AllInformation = ({ place }) => {
       <div className="wrapper">
         <Information fullOpened mobile list>
           <h4 className="title is-5">{t("place.address")}</h4>
-          {place.private && (
-            <div className="private-label">
-              <span
-                className="icon"
-                data-tip
-                data-for={SPECIAL_CATEGORIES.PRIVATES.NAME}
-              >
-                <i
-                  className={`mdi ${SPECIAL_CATEGORIES.PRIVATES.ICON} mdi-24px`}
-                ></i>
-              </span>
-              <span>{t("place.this_is_a_private_place")}</span>
-            </div>
-          )}
           <p>
             {place.address}
             {!!location.lat && (

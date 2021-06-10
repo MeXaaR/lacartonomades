@@ -69,8 +69,6 @@ export const useFooterActions = (place = {}) => {
   const handleEdit = () => {
     if (!user) {
       msg.error(`${t("system.you_need_an_account")}`);
-    } else if (place.private && place.createdBy !== user._id) {
-      msg.error(`${t("errors.this_is_not_your_private_place")}`);
     } else {
       history.push(
         `/${pathname.indexOf("list") > -1 ? "list" : "map"}/places/${_id}/edit`
@@ -80,8 +78,6 @@ export const useFooterActions = (place = {}) => {
   const handleSignal = () => {
     if (!user) {
       msg.error(`${t("system.you_need_an_account")}`);
-    } else if (place.private && place.createdBy !== user._id) {
-      msg.error(`${t("errors.this_is_not_your_private_place")}`);
     } else {
       history.push(
         `/${

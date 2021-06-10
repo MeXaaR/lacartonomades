@@ -4,6 +4,7 @@ import { preventClientModifications } from "../utils/preventClientModifications"
 import allCategories from "/src/settings/categories/index";
 
 const Places = new Mongo.Collection("places");
+export const PlacesStored = new Mongo.Collection(null);
 
 const GeoJSON = new SimpleSchema({
   type: {
@@ -34,11 +35,6 @@ export const PlacesSchemaBase = {
   },
   description: {
     type: String,
-    optional: true,
-  },
-  private: {
-    type: Boolean,
-    defaultValue: false,
     optional: true,
   },
   address: {

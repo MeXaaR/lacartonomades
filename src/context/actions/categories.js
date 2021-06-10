@@ -9,8 +9,8 @@ const categories_actions = {
   "categories.change": (state, data) => {
     const filters = {};
 
-    const { FAVORITES, PRIVATES, PRESENCES } = SPECIAL_CATEGORIES;
-    const exceptions = [PRIVATES.NAME, FAVORITES.NAME, PRESENCES.NAME];
+    const { FAVORITES, PRESENCES } = SPECIAL_CATEGORIES;
+    const exceptions = [FAVORITES.NAME, PRESENCES.NAME];
     const isExceptionCateg = exceptions.find((e) => data.indexOf(e) > -1);
 
     if (isExceptionCateg) {
