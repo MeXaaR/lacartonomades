@@ -34,7 +34,6 @@ export const ModalRouteWrapper = ({
           <ModalStyled className="modal is-active" style={{ opacity }}>
             <Link to={pathToGo} className="modal-background"></Link>
             <ModalBody
-              isMobile={isMobile}
               className="modal-card"
               style={{ transform }}
             >

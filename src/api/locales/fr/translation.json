@@ -240,7 +240,8 @@
     "place_picture": "Prendre une photo",
     "picture_select": "Choisir une photo",
     "select_a_category": "Sélectionne une catégorie",
-    "updated_success": "Lieu mis à jour avec succès"
+    "updated_success": "Lieu mis à jour avec succès",
+    "private": "Ce champs ne sera pas affiché publiquement, un module permettra d'envoyer un email"
   },
   "pollution": {
     "clean": "Propre",

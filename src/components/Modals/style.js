@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { COLORS } from "/src/settings/theme";
 import { animated } from "react-spring";
 import { FONTS } from "../../settings/theme";
+import { MOBILE_SIZE } from "../../context/appContext";
 
 export const ModalHeader = styled.header`
   border-radius: 0px;
@@ -31,14 +32,14 @@ export const ModalFooter = styled.footer`
 `;
 export const ModalBody = styled(animated.div)`
   background-color: #fff;
-  min-width: ${({ isMobile }) => (isMobile ? "100%" : "300px")};
-  min-height: ${({ isMobile }) => (isMobile ? "100%" : "300px")};
+  min-width: 300px;
+  min-height: 300px;
+  border-radius: 8px;
   background: #fff;
   .modal-card-body {
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  ${({ isMobile }) => (isMobile ? "max-height: 100vh;" : "border-radius: 8px;")}
   .links-wrapper {
     text-align: right;
   }
@@ -52,6 +53,16 @@ export const ModalStyled = styled(animated.div)`
   .modal-background {
     background-color: rgba(0, 0, 0, 0.3);
   }
+
+  @media screen and (max-width: ${MOBILE_SIZE}px) {
+    ${ModalBody} {  
+      min-width: 100%;
+      min-height: 100vh;
+      max-height: 100vh;
+    }
+  }
+
+
 `;
 
 export const NewPlaceForm = styled.div`

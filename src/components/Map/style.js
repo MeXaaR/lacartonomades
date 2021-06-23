@@ -1,12 +1,11 @@
 import { MapContainer } from 'react-leaflet'
 import styled, { css } from 'styled-components'
-import { POINTER_ICONS, ICON_SIZE } from "./categories_markers";
-import { COLORS, ICONS } from '/src/settings/theme'
+import { ICON_SIZE } from "./categories_markers";
 import allCategories, { SPECIAL_CATEGORIES } from '../../settings/categories'
 
 export const StyledMap = styled(MapContainer)`
   position: relative;
-  ${({ small, menuOpened, isMobile }) =>
+  ${({ small }) =>
     small
       ? css`
           height: 300px;

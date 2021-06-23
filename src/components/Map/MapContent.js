@@ -10,6 +10,7 @@ import { SPECIAL_CATEGORIES } from "../../settings/categories";
 import { useTranslation } from "react-i18next";
 
 import SVG_ICONS from "./svg_icons";
+import { DEFAULT_VIEWPORT } from "./MapWrapper";
 
 const { PRESENCES, FAVORITES, NEW_PLACE } = SPECIAL_CATEGORIES
 
@@ -29,14 +30,20 @@ const MapContent = (props) => {
   ] = useMapContext();
   const [newPlaceMarker, setNewPlaceMarker] = useState()
   const { t } = useTranslation()
-  const handleCreatePlace = ({ latlng })=> {
+  const handleCreateMarker = ({ latlng })=> {
     setNewPlaceMarker(latlng)
+  }
+  const handleCreatePlace = () =>{
+    if(!Meteor.userId){
+      msg.error(`${t("system.you_need_an_account")}`);
+    }
+    history.push(`/newplace?lat=${newPlaceMarker.lat}&lng=${newPlaceMarker.lng}`);
+    setNewPlaceMarker()
   }
   
   const map = useMapEvents({
     click: () => {
       history.push('/')
-      setNewPlaceMarker()
     },
     moveend: (event) => {
       const data = {
@@ -58,7 +65,7 @@ const MapContent = (props) => {
       dispatch({ type: "map.location", data: null });
       msg.error(message);
     },
-    contextmenu: handleCreatePlace
+    contextmenu: handleCreateMarker
   })
 
   const { places, loading, circleCenter } = usePlaces({})
@@ -81,7 +88,8 @@ const MapContent = (props) => {
         eventHandlers={{
           click: () => {
             history.push(`/map/places/${place._id}`);
-          }
+            setNewPlaceMarker();
+          },
         }}
       >
         <Tooltip
@@ -96,34 +104,15 @@ const MapContent = (props) => {
     ))
   ), [places])
 
-  return (
-    <>
-      {loading && (
-        <div className="loading-map-message">{t("system.loading")}...</div>
-      )}
-      {displayCircle && (
-        <Circle
-          center={circleCenter}
-          color={COLORS.MAIN}
-          fillOpacity="0"
-          weight="2"
-          eventHandlers={{
-            contextmenu: handleCreatePlace
-          }}
-          radius={Meteor.settings.public.LIMIT_SEARCH_DISTANCE}
-        />
-      )}
-      {markers}
-      {newPlaceMarker && (
-        <Marker
+
+  const newPlaceMarkerComp = useMemo(() => newPlaceMarker ? (
+    <Marker
           position={[newPlaceMarker.lat, newPlaceMarker.lng]}
           icon={new L.divIcon({
-            html: SVG_ICONS.NEW_PLACE(),
+            html: SVG_ICONS.NEW_PLACE(true),
           })}
           eventHandlers={{
-            click: () => {
-              history.push(`/newplace?lat=${newPlaceMarker.lat}&lng=${newPlaceMarker.lng}`);
-            }
+            click: handleCreatePlace
           }}
         >
           <Tooltip
@@ -136,7 +125,27 @@ const MapContent = (props) => {
             {t("map.new_place_tooltip")}
           </Tooltip>
         </Marker>
+  ) : null, [newPlaceMarker])
+
+  return (
+    <>
+      {loading && (
+        <div className="loading-map-message">{t("system.loading")}...</div>
       )}
+      {displayCircle && (
+        <Circle
+          center={circleCenter}
+          color={COLORS.MAIN}
+          fillOpacity="0"
+          weight="2"
+          eventHandlers={{
+            contextmenu: handleCreateMarker
+          }}
+          radius={Meteor.settings.public.LIMIT_SEARCH_DISTANCE}
+        />
+      )}
+      {newPlaceMarkerComp}
+      {markers}
     </>
     );
 };

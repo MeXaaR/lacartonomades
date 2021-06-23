@@ -14,7 +14,6 @@ import Select from "/src/components/system/Select";
 import { Link, useHistory } from "react-router-dom";
 import { forbidden_gathering } from "../../../settings/categories";
 import { useAppContext } from "../../../context/appContext";
-import Checkbox from "../../system/Checkbox";
 import ImageReduce from "image-blob-reduce";
 import Pica from "pica";
 import Places from "../../../api/spots/model";
@@ -57,7 +56,6 @@ const Newplace = ({
       getStored();
     }
   }, []);
-
   const updatePicture = async ({ files }) => {
     let picture = files[0];
     toggleLoading(true);
@@ -99,15 +97,12 @@ const Newplace = ({
       msg.error(error.message || error.reason);
     }
   };
-
   const openLibrary = () => {
     triggerLibrary(Camera.PictureSourceType.SAVEDPHOTOALBUM);
   };
-
   const openCamera = () => {
     triggerLibrary();
   };
-
   const triggerLibrary = (library) => {
     // capture callback
     const options = {
@@ -139,7 +134,6 @@ const Newplace = ({
     // start audio capture
     navigator.camera.getPicture(cameraSuccess, captureError, options);
   };
-
   const handleChange = (event) => {
     const { value, name, checked } = event;
 
@@ -171,7 +165,6 @@ const Newplace = ({
       longitude: coordinates && !_id ? coordinates[1] : state.longitude,
     }));
   };
-
   const sendNewPlace = async () => {
     toggleLoading(true);
 
@@ -195,7 +188,6 @@ const Newplace = ({
       }
     );
   };
-
   useEffect(() => {
     const { description, category, name, address, latitude } = state;
     if (description && !!category[0] && name && address && latitude) {
@@ -204,7 +196,6 @@ const Newplace = ({
       toggleValid(false);
     }
   }, [state]);
-
   const isAForbiddenGathering = (name) => {
     let isForbidden = false;
     forbidden_gathering.forEach((gathering) => {
@@ -255,14 +246,15 @@ const Newplace = ({
             label={t("place_form.select_a_category")}
             noSelection={t("place_form.add_a_category")}
           />
+          {state.category.length === 0 && (
+            <article className="message is-warning">
+              <div className="message-body">
+                {t("place_form.no_category_selected")}
+              </div>
+            </article>
+          )}
           <p>
-            {state.category.length === 0 && (
-              <article className="message is-warning">
-                <div className="message-body">
-                  {t("place_form.no_category_selected")}
-                </div>
-              </article>
-            )}
+            
             {state.category.map((categ) => (
               <span className={`tag is-medium ${categ}`} key={categ}>
                 {t(categ)}

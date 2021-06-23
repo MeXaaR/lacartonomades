@@ -240,7 +240,8 @@
     "place_picture": "Take a picture",
     "picture_select": "Choose a picture",
     "select_a_category": "Choose a category",
-    "updated_success": "Place updated successfully"
+    "updated_success": "Place updated successfully",
+    "private": "This info will not be displayed publicly, a module will allow users to send an email"
   },
   "pollution": {
     "clean": "Clean",

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Marker, TileLayer, ZoomControl, Tooltip, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { StyledMap } from "./style";
 import L from "leaflet";
 import { useTranslation } from "react-i18next";
-import { MAP_TILES, ATTRIBUTION, ICONS } from "../../settings/theme";
+import { MAP_TILES, ATTRIBUTION } from "../../settings/theme";
 import findAddressFromLocation from "../../api/utils/findAddressFromLocation";
 import SVG_ICONS from "./svg_icons";
 import { useMapContext } from "../../context/mapContext";
@@ -106,26 +106,22 @@ const MapContent = ({ noUpdate, position, onChange, viewportHook: [viewport, set
   }, [position]);
 
 
-  return (
-    <>
-      {!!position && (
-        <Marker
-          position={position}
-          draggable={!noUpdate}
-          icon={MARKER}
-          eventHandlers={{
-            dragend: updatePosition,
-          }}
-        >
-        <Tooltip
-          direction="top"
-          offset={[0, -(4 * ICON_SIZE + 15)]}
-          opacity={1}
-        >
-          {t("map.drag_me_around")}
-        </Tooltip>
-        </Marker>
-      )}
-    </>
+  return !!position && (
+    <Marker
+      position={position}
+      draggable={!noUpdate}
+      icon={MARKER}
+      eventHandlers={{
+        dragend: updatePosition,
+      }}
+    >
+      <Tooltip
+        direction="top"
+        offset={[0, -(4 * ICON_SIZE + 15)]}
+        opacity={1}
+      >
+        {t("map.drag_me_around")}
+      </Tooltip>
+    </Marker>
   )
 }

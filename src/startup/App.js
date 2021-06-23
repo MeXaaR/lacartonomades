@@ -63,6 +63,7 @@ const App = (props) => {
         <Route exact path="/list/places/:_id" component={PlacesList} />
         <Route path="/list" component={PlacesList} />
         <Route path="/map/places/:_id" component={MapWrapper} />
+        <Route exact path="/" component={MapWrapper} />
         <Route path="*" component={MapWrapper} />
       </Switch>
       {devtools && Roles.userIsInRole(Meteor.userId(), ROLES_ENUMS.FOUNDERS) && (
