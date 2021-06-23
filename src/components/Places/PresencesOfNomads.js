@@ -120,13 +120,19 @@ const PresencesOfNomads = ({ placeId }) => {
           )}
           <div className="buttons">
             {showTimer && (
-              <ConfirmButton
-                text={t("place.say_i_am_here")}
-                onAction={sayIAmHere}
-                icon="mdi mdi-account-plus"
-                onCancel={() => console.log("canceled")}
-                classes={`is-info ${loading ? "is-loading" : ""}`}
-              />
+              <button
+                onClick={sayIAmHere}
+                className={`button is-info ${loading ? "is-loading" : ""}`}
+              >
+                <span className="icon">
+                  <i
+                    className="mdi mdi-account-plus"
+                  ></i>
+                </span>
+                <span>
+                  {t("place.say_i_am_here")}
+                </span>
+              </button>
             )}
             <button
               onClick={() => setShowTimer(!showTimer)}
