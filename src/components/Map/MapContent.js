@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 import SVG_ICONS from "./svg_icons";
 import { DEFAULT_VIEWPORT } from "./MapWrapper";
+import { useEffect } from "react/cjs/react.development";
 
 const { PRESENCES, FAVORITES, NEW_PLACE } = SPECIAL_CATEGORIES
 
@@ -25,6 +26,7 @@ const MapContent = (props) => {
     {
       selected,
       viewport = DEFAULT_VIEWPORT,
+      refresh
     },
     dispatch,
   ] = useMapContext();
@@ -67,6 +69,12 @@ const MapContent = (props) => {
     },
     contextmenu: handleCreateMarker
   })
+
+  useEffect(() => {
+    if(refresh){
+      map.invalidateSize()
+    }
+  }, [refresh])
 
   const { places, loading, circleCenter } = usePlaces({})
 

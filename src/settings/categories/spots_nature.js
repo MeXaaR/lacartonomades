@@ -1,4 +1,4 @@
-import { access, size, natural_water, internet, pollution } from "./commons";
+import { access, size, natural_water, internet, pollution, equipment } from "./commons";
 
 const spots_natures = {
   name: "SPOTS_NATURE",
@@ -8,7 +8,7 @@ const spots_natures = {
   color: "#00964c",
   color_text: "#fff",
   icon: "mdi-leaf",
-  fields: [access, size, natural_water, internet, pollution],
+  fields: [access, size, natural_water, internet, equipment, pollution],
   comments: true,
   delete_steps: 3,
   presences: true,

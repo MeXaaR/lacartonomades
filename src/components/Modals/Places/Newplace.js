@@ -17,6 +17,7 @@ import { useAppContext } from "../../../context/appContext";
 import ImageReduce from "image-blob-reduce";
 import Pica from "pica";
 import Places from "../../../api/spots/model";
+import { useMapContext } from "../../../context/mapContext";
 const pica = Pica({ features: ["js", "wasm", "cib"] });
 
 const PICTURES_FORMAT = ["png", "jpg", "jpeg"];
@@ -38,6 +39,7 @@ const Newplace = ({
   const [loading, toggleLoading] = useToggle(false);
   const [isValid, toggleValid] = useState(null);
   const [{ user, online }] = useAppContext();
+  const [{}, updateMap] = useMapContext();
   const { t } = useTranslation();
   const history = useHistory();
 
@@ -179,6 +181,11 @@ const Newplace = ({
           msg.info(
             t(_id ? "place_form.updated_success" : "place_form.created_success")
           );
+
+          updateMap({
+            type: "map.refresh",
+            data: true,
+          });
           history.push(
             `/${pathname.indexOf("list") > -1 ? "list" : "map"}/places/${
               _id ? _id : success._id

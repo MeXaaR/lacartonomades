@@ -15,7 +15,8 @@
     "complicated": "Rugged path",
     "label": "Access",
     "limited_height": "Limited height",
-    "small_path": "Narrow passage"
+    "small_path": "Narrow passage",
+    "wet_soil": "Getting stuck possible"
   },
   "activities":{
     "places": {
@@ -71,7 +72,8 @@
     "label": "public equipments",
     "table": "Table",
     "toilet": "Toilets",
-    "trash_bin": "Trash can"
+    "trash_bin": "Trash can",
+    "shade": "Some shade"
   },
   "lost_password": {
     "explanation": "Enter your address and we'll send you a link right away to reset your password.",

@@ -15,7 +15,8 @@
     "complicated": "Chemin accidenté",
     "label": "Accès",
     "limited_height": "Hauteur limitée",
-    "small_path": "Passage étroit"
+    "small_path": "Passage étroit",
+    "wet_soil": "Embourbement possible"
   },
   "activities":{
     "places": {
@@ -71,7 +72,8 @@
     "label": "Équipement public",
     "table": "Table",
     "toilet": "Toilettes",
-    "trash_bin": "Poubelle"
+    "trash_bin": "Poubelle",
+    "shade": "Ombragé"
   },
   "lost_password": {
     "explanation": "Entre ton adresse et on t'envoi un lien tout de suite pour réinitialiser ton mot de passe.",

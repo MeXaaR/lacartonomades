@@ -6,7 +6,7 @@ export const access = {
   name: "access",
   label: "access.label",
   type: "checkboxes",
-  options: ["access.limited_height", "access.small_path", "access.complicated"],
+  options: ["access.limited_height", "access.small_path", "access.complicated", "access.wet_soil"],
 };
 export const size = {
   name: "size",
@@ -49,6 +49,7 @@ export const equipment = {
     "equipment.drinking_water",
     "equipment.trash_bin",
     "equipment.toilet",
+    "equipment.shade",
     "equipment.table",
   ],
 };
@@ -58,13 +59,6 @@ export const water_quality = {
   type: "radios",
   options: ["water_quality.drinking_water", "water_quality.not_drinking"],
 };
-// export const water_verified = {
-//   name: "water_verified",
-//   label: "water_verified.label",
-//   type: "radios",
-//   options: ["water_verified.yes", "water_verified.no"],
-//   defaultValue: "water_verified.yes"
-// };
 export const participation = {
   name: "participation",
   label: "participation.label",
