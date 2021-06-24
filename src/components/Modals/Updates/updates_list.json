@@ -1,5 +1,21 @@
 [
   {
+    "version": "1.1.0",
+    "date": "2021-06-23",
+    "features": [
+      "Ajout d'un lieu depuis la carte en pressant"
+    ],
+    "corrections": [
+      "Correction de la carte après l'ajout d'un lieu",
+      "Ajout des filtres ombre et embourbement",
+      "Suppression de la confirmation \"J'suis là\"",
+      "Mise à jour du rendu de la carte",
+      "Amélioration du mode Hors Ligne",
+      "Accélération du mode En Ligne",
+      "Corrections des filtres qui ne fonctionnaient pas"
+    ]
+  },
+  {
     "version": "1.0.3",
     "date": "2021-02-11",
     "features": [

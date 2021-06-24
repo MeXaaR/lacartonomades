@@ -62,11 +62,7 @@ export const placeGetAround = new ValidatedMethod({
                 !!filters[category][field] &&
                 !!filters[category][field].length
               ) {
-                if (fieldObject.type === "radios") {
-                  query[field] = filters[category][field];
-                } else if (fieldObject.type === "checkboxes") {
-                  query[field] = { $nin: filters[category][field] };
-                }
+                query[field] = { $nin: filters[category][field] };
               }
             } else if (fieldObject.type !== "input") {
               query[field] = filters[category][field];
