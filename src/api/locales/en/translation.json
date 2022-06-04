@@ -18,7 +18,7 @@
     "small_path": "Narrow passage",
     "wet_soil": "Getting stuck possible"
   },
-  "activities":{
+  "activities": {
     "places": {
       "created": "Created a new place",
       "updated": "Updated the place",
@@ -140,6 +140,7 @@
     "profile": "Profile",
     "devtools": "Dev Tools",
     "updates": "Updates",
+    "guidedTour": "Guided tour",
     "mentions": "Legales mentions",
     "help": "A bit of help",
     "last-news": "Message from the authors",
@@ -342,5 +343,23 @@
     "offline_text": "This mod comes in handy when going to a place without a network. Every place you open in the app is saved in the phone / browser. Suddenly, as soon as you no longer receive or activate the mode, the map displays all these places without zone restriction.",
     "gps": "Location",
     "gps_text": "The location has two modes. Tracking tracking, when there is a point in the middle of the icon, or single tracking when the point is not present. It is possible to switch between them by pressing the button."
+  },
+  "tour": {
+    "welcome": {
+      "title": "Welcome to the guided tour",
+      "text": "Because we would like to show you how to benefit the most of La Carto'Nomades, we thought it would a good idea to make this tour with you."
+    },
+    "filter_button": {
+      "title": "The filter button",
+      "text": "Il sert a afficher la"
+    },
+    "search_zone": {
+      "title": "The filter button",
+      "text": "Il sert a afficher la"
+    },
+    "end": {
+      "title": "End of the tour",
+      "text": "There is other features in this app. They are pretty easy to find once your created your account. If you have any other questons, don't hesitate to come on the Telegram channel"
+    }
   }
 }

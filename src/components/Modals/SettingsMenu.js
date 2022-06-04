@@ -75,10 +75,25 @@ const SettingsMenu = ({ history }) => {
       condition: true,
     },
     {
+      content: <Divider key="divider0" />,
+    },
+    {
       text: "menu.help",
       action: null,
       link: "/help",
       className: "",
+      condition: true,
+    },
+    {
+      text: "menu.guidedTour",
+      action: () => {
+        dispatchApp({
+          type: "guidedTour",
+          data: true,
+        })
+        history.push('/')
+      },
+      className: "is-info",
       condition: true,
     },
     {

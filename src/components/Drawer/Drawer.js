@@ -53,7 +53,9 @@ const Drawer = () => {
         isMobile={isMobile}
         open={menuOpened}
         className="menu"
+        id="filter-drawer"
         style={props}
+        data-tour="filters_global"
         key={key}
       >
         {!isMobile && !listMode && <SearchField />}

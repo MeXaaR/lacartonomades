@@ -1,10 +1,10 @@
-import Places from "../model";
-import allCategories from "../../../settings/categories";
-import faker from "faker";
+// import Places from '../model';
+// import allCategories from '../../../settings/categories';
+// import faker from 'faker';
 
 // const QUANTITY = 2000;
 // Meteor.startup(() => {
-//     Places.remove({})
+//   Places.remove({});
 //   if (Places.find().count() === 0) {
 //     new Array(QUANTITY).fill(0).map((_, i) => {
 //       const random = Math.floor(Math.random() * (allCategories.length - 1));
@@ -18,11 +18,11 @@ import faker from "faker";
 //         latitude: 42 + Math.random() * 8,
 //         longitude: -5 + Math.random() * 14,
 //       };
-//       currentCategory.fields.forEach((field) => {
+//       currentCategory.fields.forEach(field => {
 //         if (field.options) {
 //           const value =
 //             field.options[Math.floor(Math.random() * field.options.length)];
-//           document[field.name] = field.type === "checkboxes" ? [value] : value;
+//           document[field.name] = field.type === 'checkboxes' ? [value] : value;
 //         }
 //       });
 

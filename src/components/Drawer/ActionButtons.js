@@ -1,27 +1,25 @@
-import React, { useEffect } from "react";
-import { useToggle } from "/src/api/utils/hooks";
-import SearchField from "./SearchField";
-import { useAppContext } from "/src/context/appContext";
-import { ActionButtonsWrapper, RoundedButton } from "./style";
-import { useMapContext } from "../../context/mapContext";
-import { useHistory, useLocation } from "react-router";
-import { Link } from "react-router-dom";
-import ReactTooltip from "react-tooltip";
-import { useTranslation } from "react-i18next";
+import React, { useEffect } from 'react';
+import { useToggle } from '/src/api/utils/hooks';
+import SearchField from './SearchField';
+import { useAppContext } from '/src/context/appContext';
+import { ActionButtonsWrapper, RoundedButton } from './style';
+import { useMapContext } from '../../context/mapContext';
+import { useHistory, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
+import { useTranslation } from 'react-i18next';
 
-const buttonClasses = "button is-medium";
+const buttonClasses = 'button is-medium';
 const ActionButtons = () => {
-  const [
-    { menuOpened, isMobile, isTablet, online },
-    dispatch,
-  ] = useAppContext();
+  const [{ menuOpened, isMobile, isTablet, online }, dispatch] =
+    useAppContext();
   const [{ loading, refresh }, updateMap] = useMapContext();
   const [search, toggleSearch] = useToggle(false);
   const history = useHistory();
   const { pathname } = useLocation();
   const { t } = useTranslation();
-  const isList = pathname.indexOf("list") > -1;
-  const pathToGo = isList ? "/list" : "/";
+  const isList = pathname.indexOf('list') > -1;
+  const pathToGo = isList ? '/list' : '/';
 
   useEffect(() => {
     if (search) {
@@ -30,16 +28,16 @@ const ActionButtons = () => {
   }, [search]);
 
   const toggleMenu = () => {
-    dispatch({ type: "menu.toggle", data: !menuOpened });
+    dispatch({ type: 'menu.toggle', data: !menuOpened });
     history.push(pathToGo);
   };
   const refreshMap = () => {
-    if(!refresh){
-      updateMap({ type: "map.refresh", data: true });
+    if (!refresh) {
+      updateMap({ type: 'map.refresh', data: true });
     }
   };
 
-  if (isMobile && pathname.indexOf("list") > -1) {
+  if (isMobile && pathname.indexOf('list') > -1) {
     return null;
   }
   if (search) {
@@ -58,7 +56,7 @@ const ActionButtons = () => {
           <>
             <RoundedButton
               className={`${buttonClasses} colored  ${
-                loading ? "is-loading" : ""
+                loading ? 'is-loading' : ''
               }`}
               onClick={toggleSearch}
             >
@@ -70,20 +68,20 @@ const ActionButtons = () => {
             </RoundedButton>
 
             <RoundedButton
-              className={`${buttonClasses} ${online ? "colored" : "is-danger"}`}
+              className={`${buttonClasses} ${online ? 'colored' : 'is-danger'}`}
             >
               <span className="icon is-large">
-                <i className={`mdi mdi-wifi${online ? "" : "-off"}`}></i>
+                <i className={`mdi mdi-wifi${online ? '' : '-off'}`}></i>
               </span>
             </RoundedButton>
             <RoundedButton
               className={`${buttonClasses} white`}
-              style={{ alignSelf: "flex-end" }}
-              data-tip={t("bottom_menu.last-activities")}
+              style={{ alignSelf: 'flex-end' }}
+              data-tip={t('bottom_menu.last-activities')}
             >
               <Link to="/activities">
                 <span className="icon is-large">
-                    <i className="mdi mdi-bell-ring"></i>
+                  <i className="mdi mdi-bell-ring"></i>
                 </span>
               </Link>
             </RoundedButton>
@@ -93,31 +91,37 @@ const ActionButtons = () => {
             <RoundedButton
               className={`${buttonClasses} white`}
               onClick={toggleMenu}
-              data-tip={t("bottom_menu.filters")}
+              data-tip={t('bottom_menu.filters')}
+              data-tour="filter_button"
             >
               <span className="icon is-large">
                 <i className="mdi mdi-tune"></i>
               </span>
             </RoundedButton>
-            {!isList && <RoundedButton
-              className={`${buttonClasses} colored ${
-                refresh ? "is-loading" : ""
-              }`}
-              data-tip={t("bottom_menu.refresh")}
-              onClick={refreshMap}
-            >
-              <span className="icon is-large">
-                <i className="mdi mdi-refresh"></i>
-              </span>
-            </RoundedButton>}
+            {!isList && (
+              <RoundedButton
+                className={`${buttonClasses} colored ${
+                  refresh ? 'is-loading' : ''
+                }`}
+                data-tip={t('bottom_menu.refresh')}
+                onClick={refreshMap}
+                data-tour="refresh_button"
+                id="refresh_button"
+              >
+                <span className="icon is-large">
+                  <i className="mdi mdi-refresh"></i>
+                </span>
+              </RoundedButton>
+            )}
             <RoundedButton
               className={`${buttonClasses} white`}
-              style={{ alignSelf: "flex-end" }}
+              style={{ alignSelf: 'flex-end' }}
+              data-tour="list_button"
               data-tip={t(
-                !isList ? "bottom_menu.display_list" : "bottom_menu.display_map"
+                !isList ? 'bottom_menu.display_list' : 'bottom_menu.display_map'
               )}
             >
-              <Link to={!isList ? "/list" : "/"}>
+              <Link to={!isList ? '/list' : '/'}>
                 <span className="icon is-large">
                   {isList ? (
                     <i className="mdi mdi-map"></i>
@@ -128,12 +132,12 @@ const ActionButtons = () => {
               </Link>
             </RoundedButton>
             <RoundedButton
-              className={`${buttonClasses} ${online ? "colored" : "is-danger"}`}
+              className={`${buttonClasses} ${online ? 'colored' : 'is-danger'}`}
               onClick={online ? Meteor.disconnect : Meteor.reconnect}
-              data-tip={t("bottom_menu.offline_mode")}
+              data-tip={t('bottom_menu.offline_mode')}
             >
               <span className="icon is-large">
-                <i className={`mdi mdi-wifi${online ? "" : "-off"}`}></i>
+                <i className={`mdi mdi-wifi${online ? '' : '-off'}`}></i>
               </span>
             </RoundedButton>
           </>

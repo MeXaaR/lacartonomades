@@ -1,7 +1,7 @@
 // This section sets up some basic app metadata, the entire section is optional.
 App.info({
-  id: "com.mexar.lacartonomades",
-  name: "La Carto'Nomades",
+  id: "com.mexar.lacartonomadesDEV",
+  name: "La Carto'NomadesDEV",
   description: "Get a sleep spot anywhere in France",
   author: "MeXaR",
   email: "contact@mexar.fr",

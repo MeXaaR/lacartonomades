@@ -1,12 +1,12 @@
-import React, { createContext, useReducer, useEffect, useContext } from "react";
-import { Accounts } from "meteor/accounts-base";
-import { withTracker } from "meteor/react-meteor-data";
+import React, { createContext, useReducer, useEffect, useContext } from 'react';
+import { Accounts } from 'meteor/accounts-base';
+import { withTracker } from 'meteor/react-meteor-data';
 // import { Roles } from 'meteor/alanning:roles';
 
-import actions from "./actions";
-import { useLocalStorage, useWindowSize } from "../api/utils/hooks";
-import { useTranslation } from "react-i18next";
-import { updateUserLanguage } from "../api/users/methods";
+import actions from './actions';
+import { useLocalStorage, useWindowSize } from '../api/utils/hooks';
+import { useTranslation } from 'react-i18next';
+import { updateUserLanguage } from '../api/users/methods';
 
 export const MOBILE_SIZE = 768;
 export const TABLET_SIZE = 1200;
@@ -27,14 +27,16 @@ const initialState = {
   devtools: false,
   online: Meteor.status().connected,
   news: 0,
+  guidedTour: false,
+  map: null,
 };
 
 const logger = (state, action) => {
   const newState = actions(state, action);
   if (Meteor.isDevelopment) {
-    console.groupCollapsed("Action Type:", action.type);
-    console.log("Prev state: ", state);
-    console.log("Next state: ", newState);
+    console.groupCollapsed('Action Type:', action.type);
+    console.log('Prev state: ', state);
+    console.log('Next state: ', newState);
     console.groupEnd();
   }
   return newState;
@@ -60,7 +62,7 @@ const Store = ({
 
   useEffect(() => {
     dispatch({
-      type: "user",
+      type: 'user',
       data: {
         loggingIn,
         user,
@@ -71,35 +73,43 @@ const Store = ({
       },
     });
 
-    if(user && user.profile && user.profile.language !== state.language){
+    if (user && user.profile && user.profile.language !== state.language) {
       i18n.changeLanguage(user.profile.language);
-    } 
-
-  }, [loggingIn, user, userId, authenticated, roles, favorites, state.language]);
+    }
+  }, [
+    loggingIn,
+    user,
+    userId,
+    authenticated,
+    roles,
+    favorites,
+    state.language,
+  ]);
 
   useEffect(() => {
     dispatch({
-      type: "online",
+      type: 'online',
       data: online,
     });
   }, [online]);
 
   useEffect(() => {
-    const newState = JSON.parse(JSON.stringify(state));
+    const { map, ...restState } = state;
+    const newState = JSON.parse(JSON.stringify(restState));
     delete newState.isMobile;
     setStored(newState);
   }, [state]);
 
   useEffect(() => {
     dispatch({
-      type: "isMobile",
+      type: 'isMobile',
       data: width,
     });
   }, [width]);
   if (Meteor.isProduction && Meteor.isClient && !Meteor.isCordova) {
     Package.reload.Reload._onMigrate(() => {
-      msg.info(t("system.updated"), {
-        toastId: "updatedToast",
+      msg.info(t('system.updated'), {
+        toastId: 'updatedToast',
       });
       return [false];
     });
@@ -110,13 +120,11 @@ const Store = ({
   );
 };
 
-
-
 export const Context = createContext(initialState);
 export const useAppContext = () => useContext(Context);
 
 const DynamicStore = withTracker(() => {
-  Meteor.subscribe("users.current.profile");
+  Meteor.subscribe('users.current.profile');
   Meteor.users.attachPersister({ _id: Meteor.userId() });
   const loggingIn = Meteor.loggingIn();
   const user = Meteor.users.findOne({ _id: Meteor.userId() });

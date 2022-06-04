@@ -1,7 +1,7 @@
-import map_actions from "./actions/map";
-import uploads_actions from "./actions/upload";
-import categories_actions from "./actions/categories";
-import { MOBILE_SIZE, TABLET_SIZE } from "./appContext";
+import map_actions from './actions/map';
+import uploads_actions from './actions/upload';
+import categories_actions from './actions/categories';
+import { MOBILE_SIZE, TABLET_SIZE } from './appContext';
 
 const reducer = (state, action) => {
   const { type, data = {} } = action;
@@ -10,7 +10,7 @@ const reducer = (state, action) => {
       ...state,
       ...data,
     }),
-    "menu.toggle": (state, data) => ({
+    'menu.toggle': (state, data) => ({
       ...state,
       menuOpened: typeof data !== undefined ? data : !state.menuOpened,
     }),
@@ -34,6 +34,14 @@ const reducer = (state, action) => {
     language: (state, language) => ({
       ...state,
       language,
+    }),
+    guidedTour: (state, guidedTour) => ({
+      ...state,
+      guidedTour,
+    }),
+    map: (state, data) => ({
+      ...state,
+      map: data,
     }),
     ...uploads_actions,
   };

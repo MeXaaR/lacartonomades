@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useAppContext } from "/src/context/appContext";
-import { MobileNav } from "./style";
-import { useHistory, useLocation } from "react-router";
-import { useMapContext } from "../../context/mapContext";
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useAppContext } from '/src/context/appContext';
+import { MobileNav } from './style';
+import { useHistory, useLocation } from 'react-router';
+import { useMapContext } from '../../context/mapContext';
 
 const BottomMenu = () => {
   const { t } = useTranslation();
@@ -12,25 +12,26 @@ const BottomMenu = () => {
   const [{ location }, updateMap] = useMapContext();
   const history = useHistory();
   const { pathname } = useLocation();
-  const isList = pathname.indexOf("list") > -1;
-  const pathToGo = isList ? "/list" : "/";
+  const isList = pathname.indexOf('list') > -1;
+  const pathToGo = isList ? '/list' : '/';
 
   const handleLocateMe = () => {
-    updateMap({ type: "map.loading", data: true });
+    updateMap({ type: 'map.loading', data: true });
     navigator.geolocation.getCurrentPosition(
-      function({ coords }){
+      function ({ coords }) {
         updateMap({
-          type: "map.location",
+          type: 'map.location',
           data: {
             lat: coords.latitude,
             lng: coords.longitude,
           },
         });
       },
-      function (error){
-        updateMap({ type: "map.loading", data: false });
+      function (error) {
+        updateMap({ type: 'map.loading', data: false });
         msg.error(error.reason);
-      }, {maximumAge: 2000, timeout:5000, enableHighAccuracy:true}
+      },
+      { maximumAge: 2000, timeout: 5000, enableHighAccuracy: true }
     );
     if (watchId) {
       navigator.geolocation.clearWatch(watchId);
@@ -39,7 +40,7 @@ const BottomMenu = () => {
       const watcher = navigator.geolocation.watchPosition(
         ({ coords }) => {
           updateMap({
-            type: "map.location.follow",
+            type: 'map.location.follow',
             data: {
               lat: coords.latitude,
               lng: coords.longitude,
@@ -55,51 +56,55 @@ const BottomMenu = () => {
 
   const actions = [
     {
-      text: "bottom_menu.filters",
+      text: 'bottom_menu.filters',
       onClick: () => {
-        dispatch({ type: "menu.toggle", data: !menuOpened });
+        dispatch({ type: 'menu.toggle', data: !menuOpened });
         history.push(pathToGo);
       },
-      icon: "mdi-tune",
+      icon: 'mdi-tune',
+      dataTour: 'filter_button',
     },
     {
-      text: !isList ? "bottom_menu.display_list" : "bottom_menu.display_map",
+      text: !isList ? 'bottom_menu.display_list' : 'bottom_menu.display_map',
       onClick: () => {
-        dispatch({ type: "menu.toggle", data: false });
+        dispatch({ type: 'menu.toggle', data: false });
         if (isList) {
-          history.push("/");
+          history.push('/');
         } else {
-          history.push("/list");
+          history.push('/list');
         }
       },
-      icon: !isList ? "mdi-format-list-bulleted-square" : "mdi-map",
+      dataTour: 'list_button',
+      icon: !isList ? 'mdi-format-list-bulleted-square' : 'mdi-map',
     },
     {
-      text: "bottom_menu.refresh",
+      text: 'bottom_menu.refresh',
       onClick: () => {
-        updateMap({ type: "map.refresh", data: true });
+        updateMap({ type: 'map.refresh', data: true });
         history.push(pathToGo);
       },
-      icon: "mdi-refresh",
+      icon: 'mdi-refresh',
+      dataTour: 'refresh_button',
     },
     {
-      text: "bottom_menu.locate_me",
+      text: 'bottom_menu.locate_me',
       onClick: handleLocateMe,
       icon: !location.lng
-        ? "mdi-crosshairs-question"
+        ? 'mdi-crosshairs-question'
         : watchId
-        ? "mdi-crosshairs-gps"
-        : "mdi-crosshairs",
-    }
+        ? 'mdi-crosshairs-gps'
+        : 'mdi-crosshairs',
+    },
   ];
 
   return (
     <MobileNav className="navbar is-transparent is-fixed-bottom">
       <div className="columns is-multiline is-mobile">
-        {actions.map(({ icon, text, onClick }) => (
+        {actions.map(({ icon, text, onClick, dataTour }) => (
           <a
             className="column is-one-quarter is-narrow"
             key={text}
+            data-tour={dataTour}
             onClick={onClick}
           >
             <span className="icon is-small">

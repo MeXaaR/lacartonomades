@@ -18,7 +18,7 @@
     "small_path": "Passage étroit",
     "wet_soil": "Embourbement possible"
   },
-  "activities":{
+  "activities": {
     "places": {
       "created": "A créé un nouveau lieu",
       "updated": "A mis à jour le lieu",
@@ -141,6 +141,7 @@
     "devtools": "Outils Dev",
     "updates": "Mises à jour",
     "mentions": "Mentions légales",
+    "guidedTour": "Visite guidée",
     "help": "Un peu d'aide",
     "last-news": "Message des auteurs",
     "share": "Partager l'Appli"
@@ -337,11 +338,48 @@
     "nomadics_text": "Cette fonctionnalité permet de voir si des nomades ont indiqué leur position sur un endroit. Les lieux apparaissent pour l'instant sans restrictions de zone, ca pourra changer. C'est en test :)",
     "filters": "Filtres",
     "filters_text": "Les filtres servent à afficher plus ou moins de types d'endroits en fonction de ce que tu souhaites. Il est possible que la certe ralentisse un peu quand elle affiche toutes les catégories en même temps.",
-    "refresh":"Rafraîchir",
+    "refresh": "Rafraîchir",
     "refresh_text": "Ce bouton sert à rechercher les lieux en fonctions des filtres sélectionnés sur un cercle de 30 km autour du centre de l'écran.",
     "offline": "Mode Hors-Ligne",
     "offline_text": "Ce mod est très pratique quand on part dans un endroit sans réseau. Chaque endroit que l'on ouvre dans l'application est sauvegardé dans le téléphone/navigateur. Du coup, dès qu'on ne capte plus ou qu'on active le mode, la carte affiche tous ces lieux sans restriction de zone.",
     "gps": "Localisation",
     "gps_text": "La localisation comporte deux modes. Un repérage suivi, quand il y a une point au milieu de l'icône ou un repérage unique quand le point n'est pas présent. Il est possible de passer de l'un à l'autre en appuyant sur le bouton."
+  },
+  "tour": {
+    "welcome": {
+      "title": "Bienvenue dans la visite guidée",
+      "text": "Parce qu'on aimerai te montrer comment profiter à fond de toutes les fonctionnalités de La Carto'Nomades, on s'est dit que ce serait une bonne idée de te faire une visite guidée."
+    },
+    "filter_button": {
+      "title": "Le bouton des filtres",
+      "text": "Il sert à afficher le menu des filtres où tu choisir quels types de lieu tu veux afficher sur la carte"
+    },
+    "filters_global": {
+      "title": "Les filtres",
+      "text": "Ici, tu as toutes les catégories de l'application et différents filtres pour séléctionner les lieux que tu recherches. Nous avons classé les lieux en plusieurs catégories",
+      "item1": "Les lieux pour se poser et dormir, vivre, faire des trucs quoi",
+      "item2": "Les lieux utiles comme les bon garagistes ou encore les points d'eau",
+      "item3": "Si tu es connecté à ton compte (que tu peux créer), tu verras aussi tes lieux favoris et les nomades qui se sont signalés. Ces deux recherches affichent tous les points concernés sans restrictions géographiques"
+    },
+    "list_button": {
+      "title": "Le mode liste",
+      "text": "Ce mode permet de voir une liste des lieux à la place de la carte avec les marqueurs."
+    },
+    "refresh_button": {
+      "title": "Rafraichir la carte",
+      "text": "Le bouton le plus important, c'est lui qui te sert à chercher les lieux autour de la zone que tu affiches sur la carte"
+    },
+    "search_zone": {
+      "title": "Zone de recherche",
+      "text": "Pour éviter une surcharge et un ralentissement de la carte, seulement une petite zone s'affiche avec les points dedans"
+    },
+    "place_panel": {
+      "title": "Fiche de lieu",
+      "text": "Voilà la fiche d'un lieu avec toutes les infos qui ont été ajoutées et complétées par la communauté."
+    },
+    "end": {
+      "title": "Fin de visite",
+      "text": "Il y a plusieurs autres fonctionnalités faciles a trouver une fois ton compte créé. Si tu as d'autres questions, n'hésite pas a venir nous les poser sur Telegram."
+    }
   }
 }

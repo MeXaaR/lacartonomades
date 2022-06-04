@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import moment from "moment";
-import "moment/locale/fr";
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import moment from 'moment';
+import 'moment/locale/fr';
 
-import allCategories from "/src/settings/categories/index";
-import { Link } from "react-router-dom";
-import { useFooterActions } from "./utils";
-import { getDistance } from "geolib";
+import allCategories from '/src/settings/categories/index';
+import { Link } from 'react-router-dom';
+import { useFooterActions } from './utils';
+import { getDistance } from 'geolib';
 import {
   Description,
   Information,
@@ -14,15 +14,15 @@ import {
   LastUpdate,
   Footer,
   ErrorSignal,
-} from "./styles";
-import { useMapContext } from "../../context/mapContext";
-import { SPECIAL_CATEGORIES } from "../../settings/categories";
-import Places, { PlacesStored } from "../../api/spots/model";
-import { useAppContext } from "/src/context/appContext";
-import LacartoLoader from "./LacartoLoader";
-import { useQuery } from "../../api/utils/hooks";
-import SignalIcon from "./SignalIcons";
-import PresencesOfNomads from "./PresencesOfNomads";
+} from './styles';
+import { useMapContext } from '../../context/mapContext';
+import { SPECIAL_CATEGORIES } from '../../settings/categories';
+import Places, { PlacesStored } from '../../api/spots/model';
+import { useAppContext } from '/src/context/appContext';
+import LacartoLoader from './LacartoLoader';
+import { useQuery } from '../../api/utils/hooks';
+import SignalIcon from './SignalIcons';
+import PresencesOfNomads from './PresencesOfNomads';
 
 const DrawerDesktop = ({ match, location: { state } }) => {
   const { t, i18n } = useTranslation();
@@ -33,24 +33,25 @@ const DrawerDesktop = ({ match, location: { state } }) => {
   const { center, zoom } = useQuery();
 
   useEffect(() => {
-
     const getStored = async () => {
-      const stored =  PlacesStored.findOne(match.params._id) || {};
+      const stored = PlacesStored.findOne(match.params._id) || {};
       setPlace(stored);
 
       if (online) {
         Meteor.call(
-          "places.methods.getOne",
+          'places.methods.getOne',
           { _id: match.params._id },
           (error, success) => {
             if (success) {
               setPlace(success);
-              Places.setPersisted({ [match.params._id]: success }).then(() =>{
-                const isPlaceRegistered = PlacesStored.findOne(match.params._id)
-                if(isPlaceRegistered) {
-                  PlacesStored.update(match.params._id, { $set: success })
+              Places.setPersisted({ [match.params._id]: success }).then(() => {
+                const isPlaceRegistered = PlacesStored.findOne(
+                  match.params._id
+                );
+                if (isPlaceRegistered) {
+                  PlacesStored.update(match.params._id, { $set: success });
                 } else {
-                  PlacesStored.insert(success)
+                  PlacesStored.insert(success);
                 }
               });
             }
@@ -59,11 +60,11 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       }
     };
     getStored();
-    
-    if(state && state.fromBrowserLink){
+
+    if (state && state.fromBrowserLink) {
       setTimeout(() => {
         updateMap({
-          type: "map.refresh",
+          type: 'map.refresh',
           data: true,
         });
       }, 1000);
@@ -80,15 +81,14 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       }
       dataViewport.center = { lng: place.longitude, lat: place.latitude };
       updateMap({
-        type: "map.viewport",
+        type: 'map.viewport',
         data: dataViewport,
       });
-      if(zoom){
+      if (zoom) {
         setTimeout(() => {
-          updateMap({ type: "map.refresh", data: true });
+          updateMap({ type: 'map.refresh', data: true });
         }, 1000);
       }
-
 
       setloaded(true);
     }
@@ -99,11 +99,11 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       zoom: 12,
     };
     updateMap({
-      type: "map.viewport",
+      type: 'map.viewport',
       data: dataViewport,
     });
     setTimeout(() => {
-      updateMap({ type: "map.refresh", data: true });
+      updateMap({ type: 'map.refresh', data: true });
     }, 1000);
   };
 
@@ -111,7 +111,7 @@ const DrawerDesktop = ({ match, location: { state } }) => {
     return <LacartoLoader />;
   }
   const category =
-    allCategories.find((cat) => cat.name === place.category[0]) || {};
+    allCategories.find(cat => cat.name === place.category[0]) || {};
   return (
     <>
       <Description color={category.color}>
@@ -132,13 +132,13 @@ const DrawerDesktop = ({ match, location: { state } }) => {
         <div className="description">
           {!!place.description &&
             place.description
-              .split("\n")
+              .split('\n')
               .map((paragraph, i) => <p key={i}>{paragraph}</p>)}
         </div>
         <h4 className="title is-5 address-title">
-          {t("place.address")}
+          {t('place.address')}
           <button onClick={zoomOnPlace} className="button is-small is-info">
-            {t("place.zoom")}
+            {t('place.zoom')}
           </button>
         </h4>
         <p>
@@ -163,10 +163,10 @@ const DrawerDesktop = ({ match, location: { state } }) => {
         <br />
         {!!place.photo && <img src={place.photo} />}
         <Divider />
-        <h4 className="title is-5">{t("place.information")}</h4>
-        {place.category.map((categ) => {
+        <h4 className="title is-5">{t('place.information')}</h4>
+        {place.category.map(categ => {
           const currentCateg =
-            allCategories.find((cat) => cat.name === categ) || {};
+            allCategories.find(cat => cat.name === categ) || {};
           return (
             <div key={categ}>
               <p>
@@ -184,9 +184,9 @@ const DrawerDesktop = ({ match, location: { state } }) => {
                   if (!place[name]) {
                     return null;
                   }
-                  if (type === "checkboxes") {
-                    value = place[name].map((v) => t(v)).join(", ");
-                  } else if (type === "radios") {
+                  if (type === 'checkboxes') {
+                    value = place[name].map(v => t(v)).join(', ');
+                  } else if (type === 'radios') {
                     value = t(place[name]);
                   } else if (componentRead) {
                     const ComponentToDisplay = componentRead;
@@ -213,8 +213,8 @@ const DrawerDesktop = ({ match, location: { state } }) => {
           );
         })}
         {allCategories
-          .filter((c) => place.category.find((e) => e === c.name))
-          .find((c) => c.presences) && (
+          .filter(c => place.category.find(e => e === c.name))
+          .find(c => c.presences) && (
           <>
             <PresencesOfNomads placeId={place._id} />
 
@@ -222,15 +222,15 @@ const DrawerDesktop = ({ match, location: { state } }) => {
           </>
         )}
         <LastUpdate>
-          {t("place.last_update")} :{" "}
-          {moment(place.updatedAt).locale(i18n.language).format("LLLL")}
+          {t('place.last_update')} :{' '}
+          {moment(place.updatedAt).locale(i18n.language).format('LLLL')}
         </LastUpdate>
 
         {!!place.delete_steps && (
           <>
             <Divider />
             <h5 className="title is-5">
-              {t("place_deletion.signals")}: {place.delete_steps.length}
+              {t('place_deletion.signals')}: {place.delete_steps.length}
             </h5>
             <SignalIcon
               delete_steps={
@@ -245,8 +245,14 @@ const DrawerDesktop = ({ match, location: { state } }) => {
       <Footer color={category.color} color_text={category.color_text}>
         <div className="columns is-multiline is-centered">
           {footerActions.map(({ icon, text, onClick, props }) => (
-            <a className={`column ${footerActions.length === 4 ? "is-3" : "is-4"}`} key={text} onClick={onClick} 
-            {...props}>
+            <a
+              className={`column ${
+                footerActions.length === 4 ? 'is-3' : 'is-4'
+              }`}
+              key={text}
+              onClick={onClick}
+              {...props}
+            >
               <span className="icon">
                 <i className={`mdi ${icon}`}></i>
               </span>
